@@ -23,31 +23,16 @@
 | A_TimeSinceThisHotkey  | 从 A_ThisHotkey 按下后到现在（运行到此处）经过的毫秒数. 如果 A_ThisHotkey 为空, 则此变量的值为 -1. |
 | A_TimeSincePriorHotkey | 从 A_PriorHotkey 按下后到现在经过的毫秒数. 如果 A_PriorHotkey 为空, 则此变量的值为 -1. |
 
-## Typora 脚本代码
+## 目录结构
 
-```AHK
-#IfWinActive ahk_exe Typora.exe
-    #SingleInstance force
-    #NoTrayIcon
-    #w::ExitApp
-    ^+b::addCode("bash")
-    ^+j::addCode("java")
-    ^+p::py()
-
-addCode(lang){
-    Send,{Asc 096}
-    Send,{Asc 096}
-    Send,{Asc 096}
-    Send,%lang%
-    Send,{Enter}
-}
-
-py(){
-    KeyWait, y, D
-    if(A_TimeSinceThisHotkey<1000){
-        addCode("python")
-    }
-}
+```json
+project
+├── app.ahk
+├── main.ahk
+└── src
+    ├── search.ahk
+    ├── typora.ahk
+    └── ...
 ```
 
 ## Tips
