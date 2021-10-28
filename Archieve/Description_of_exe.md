@@ -1,6 +1,7 @@
 # StringFileInfo BLOCK 语句
 
-==可执行文件描述信息==
+==—— 用于描述可执行文件信息==
+
 ## 工具
 
 [**Resource Hacker**](https://www.ghxi.com/resourcehacker.html)
