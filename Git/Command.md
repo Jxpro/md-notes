@@ -1,4 +1,16 @@
-# 一、修改历史commit信息
+## 一、常用命令
+
+| 命令                            | 作用                |
+| ------------------------------- | ------------------- |
+| git status                      | 查看文件状态        |
+| git add <file> ...              | 将工作区修改暂存    |
+| git restore <file> ...          | 撤销工作区修改      |
+| git restore --staged <file> ... | 撤销暂存区修改      |
+| git commit -m "xxx"             | 以"xxx"消息提交修改 |
+| git clone <url>                 | 克隆/拉取仓库       |
+| git push -f origin main         | 强制推送到远程仓库  |
+
+## 二、修改历史commit信息
 
 ### （1）修改最新的 log
 
