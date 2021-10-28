@@ -54,28 +54,39 @@ docker-compose version
  ## 5. 安装 Hyperledger fabric
 
 ```bash
-#cd /root
-#git clone https://github.com/hyperledger/fabric.git
-#修改一下bootstrap.sh
+cd ~
 
+# ---------------------------------------------------
+#    准备阶段
+# ---------------------------------------------------
+git clone https://github.com/hyperledger/fabric.git
+cd fabric/scripts/
+git clone -b main https://github.com/hyperledger/fabric-samples.git
+
+# 修改一下bootstrap.sh：download部分为以下内容
+# download() {
+#     echo "==> Done."
+# }
+
+cd fabric-samples
+# 本机下载并FTP上传以下两个文件
+# hyperledger-fabric-ca-linux-amd64-1.5.2.tar.gz 
+# hyperledger-fabric-linux-amd64-2.3.3.tar.gz 
+# 解压
+tar -xzvf hyperledger-fabric-ca-linux-amd64-1.5.2.tar.gz
+tar -xzvf hyperledger-fabric-linux-amd64-2.3.3.tar.gz
 
 mkdir -p $GOPATH/src/github.com/hyperledger/
 cd $GOPATH/src/github.com/hyperledger/
 
-cp -r /root/fabric/ ./
+# ---------------------------------------------------
+#    直接复制准备好的文件
+# ---------------------------------------------------
+cp -r ~/fabric/ ./
 cd fabric/scripts/
 ./bootstrap.sh 
 
-cp /root/hyperledger-fabric-ca-linux-amd64-1.5.2.tar.gz /root/go/src/github.com/hyperledger/fabric/scripts/fabric-samples/
-
-cp /root/hyperledger-fabric-linux-amd64-2.3.3.tar.gz /root/go/src/github.com/hyperledger/fabric/scripts/fabric-samples/
-
-cd fabric-samples
-
-tar -xzvf hyperledger-fabric-ca-linux-amd64-1.5.2.tar.gz
-tar -xzvf hyperledger-fabric-linux-amd64-2.3.3.tar.gz
-
-cd test-network
+cd fabric-samples/test-network
 ./network.sh up 
 ```
 
@@ -95,5 +106,5 @@ docker ps -a --format "table {{.Command}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"
 
 ------
 
-**参考文章：[Hyperledger fabric 2.3基本环境安装 - linux](https://blog.csdn.net/weixin_44142032/article/details/110230668)**
+参考文章：[Hyperledger fabric 2.3基本环境安装 - linux](https://blog.csdn.net/weixin_44142032/article/details/110230668)
 
