@@ -66,9 +66,9 @@ cp -r /root/fabric/ ./
 cd fabric/scripts/
 ./bootstrap.sh 
 
-cp /root/hyperledger-fabric-ca-linux-amd64-1.5.2.tar.gz /root/go/src/github.com/hyperledger/fabric/scripts/fabric-samples
+cp /root/hyperledger-fabric-ca-linux-amd64-1.5.2.tar.gz /root/go/src/github.com/hyperledger/fabric/scripts/fabric-samples/
 
-cp /root/hyperledger-fabric-linux-amd64-2.3.3.tar.gz /root/go/src/github.com/hyperledger/fabric/scripts/fabric-samples
+cp /root/hyperledger-fabric-linux-amd64-2.3.3.tar.gz /root/go/src/github.com/hyperledger/fabric/scripts/fabric-samples/
 
 cd fabric-samples
 

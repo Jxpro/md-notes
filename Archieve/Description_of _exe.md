@@ -1,10 +1,15 @@
 # StringFileInfo BLOCK 语句
 
 ==可执行文件描述信息==
-
 ## 工具
 
 [**Resource Hacker**](https://www.ghxi.com/resourcehacker.html)
+## 常用字段
+
+```text
+		VALUE "CompanyName", "Joker Xin"
+		VALUE "FileDescription", "AHK Enhance"
+```
 
 ## 参数
 
