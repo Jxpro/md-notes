@@ -1,0 +1,1 @@
+{"name":"picgo-plugins","description":"picgo-plugins","repository":"https://github.com/Molunerfinn/PicGo-Core","license":"MIT","dependencies":{"picgo-plugin-gitee-uploader":"^1.1.2","picgo-plugin-super-prefix":"^1.2.2"}}

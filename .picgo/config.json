@@ -1,0 +1,25 @@
+{
+  "picBed": {
+    "current": "gitee",
+    "gitee": {
+      "repo": "repo",
+      "branch": "master",
+      "token": "token",
+      "path": "md/$customPath",
+      "customPath": "yearMonth",
+      "customUrl": ""
+    },
+    "uploader": "gitee",
+    "transformer": "path"
+  },
+  "picgoPlugins": {
+    "picgo-plugin-gitee-uploader": true,
+    "picgo-plugin-super-prefix": true
+  },
+  "picgo-plugin-gitee-uploader": {
+    "lastSync": "2021-10-29 10:34:30"
+  },
+  "picgo-plugin-super-prefix": {
+    "fileFormat": "DD-HHmmss"
+  }
+}
