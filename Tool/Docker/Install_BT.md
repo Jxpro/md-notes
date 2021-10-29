@@ -1,5 +1,14 @@
 # Docker 中安装宝塔面板
 
+## 一、软硬件版本
+
+|   名称   |                          版本                           |
+| :------: | :-----------------------------------------------------: |
+| 系统版本 | Ubuntu 18.04.6 LTS (GNU/Linux 4.15.0-48-generic x86_64) |
+|  docker  |                        20.10.10                         |
+
+## 二、步骤
+
 1.   宝塔面板对centos7**兼容性**最好 ，且 centos8 的docker镜像下载不了 `step3` 的 `screen`
 
      具体演示见 **问题 (1)**
@@ -57,132 +66,133 @@
 
      ![image-20211029003149634](D:\TASK\Language\Notes\Archieve\assets\img\image-20211029003149634.png)
 
-6.   问题：
+## 三、问题
 
-     1.   Step2 出现错误
-
-          ```bash
-          docker: Error response from daemon: driver failed programming external connectivity on endpoint btpanel (daaeec405d1d7b088754e6a7fe621f9c584a10a5df294e241aa574317b757716): Error starting userland proxy: listen tcp4 0.0.0.0:21: bind: address already in use.
-          ```
-
-          原因：FTP服务 ( `vsftpd` ) 默认占用21端口
-
-          解决方法：
-
-          1.   关闭并禁止自启动 `vsftpd` 
-          2.   更改映射端口
-          3.   修改 `vsftpd` 配置端口
-
-     2.   Setp4 运行出现提示：
-
-          注意: **5.x系列**Linux面板从2020年1月1日起终止维护，与技术支持，请考虑安装全新的7.x版本 宝塔官网: https://www.bt.cn
-
-          ```bash
-          wget -O i.sh http://download.bt.cn/install/install.sh && sh i.sh
-          修改为
-          wget -O i.sh http://download.bt.cn/install/install_6.0.sh && sh i.sh
-          ```
-
-     3.   Setp4 运行出现错误
-
-          ```bash
-          install.sh: line 1: --2021-10-28: command not found
-          install.sh: line 2: syntax error near unexpected token `('
-          install.sh: line 2: `Resolving download.bt.cn (download.bt.cn)... 116.10.184.143, 240e:a5:4200:89::143'
-          ```
-
-          原因：参考文章：[wget命令详解](https://www.cnblogs.com/sx66/p/11887022.html)
-
-          ```bash
-          # step4 原命令
-          wget -o i.sh https://download.bt.cn/install/install_6.0.sh && sh i.sh
-          
-          # 错误位置
-          -o -> -O
-          
-          # 区别
-          -o,  --output-file=FILE    将日志信息写入 FILE
-          -O,  --output-document=FILE    将文档写入 FILE
-          ```
-
-     4.   <span style="color:crimson">Error: DBUS_ERROR: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory</span>
-
-          ```bash
-          确定两点：
-          1. dbus是否启动？如果没启动，则：
-          /etc/init.d/dbus start
-          
-          2. dbus启动了，守护进程dbus-daemon是否启动？如果没启动，则：
-          dbus-daemon --system
-          ```
-
-          原因：**实际上 **docker 下的 centos 镜像**没有** dbus，但是不影响宝塔正常运行
-
-7.   宝塔管理 ( [宝塔linux面板重启、重置等命令](https://www.xp8.net/server/392.html) )
+1.   Step2 出现错误
 
      ```bash
-     # 查看默认入口和账号密码
-     /etc/init.d/bt default
-     # 停止
-     /etc/init.d/bt stop
-     # 启动
-     /etc/init.d/bt start
-     # 重启
-     /etc/init.d/bt restart
-     # 卸载
-     /etc/init.d/bt stop && chkconfig --del bt && rm -f /etc/init.d/bt && rm -rf /www/server/panel
-     # 查看当前面板端口
-     cat /www/server/panel/data/port.pl
-     # 修改面板端口，如要改成8881（centos 6 系统）
-     echo '8881' > /www/server/panel/data/port.pl && /etc/init.d/bt restart
-     iptables -I INPUT -p tcp -m state --state NEW -m tcp --dport 8881 -j ACCEPT
-     service iptables save
-     service iptables restart
-     
-     # 修改面板端口，如要改成8881（centos 7 系统）
-     echo '8881' > /www/server/panel/data/port.pl && /etc/init.d/bt restart
-     firewall-cmd --permanent --zone=public --add-port=8881/tcp
-     firewall-cmd --reload
-     
-     # 强制修改MySQL管理(root)密码，如要改成123456
-     cd /www/server/panel && python tools.pyc root 123456
-     # 修改面板密码，如要改成123456
-     cd /www/server/panel && python tools.pyc panel 123456
-     # 查看宝塔日志
-     cat /tmp/panelBoot.pl
-     # 查看软件安装日志
-     cat /tmp/panelExec.log
-     # 站点配置文件位置
-     /www/server/panel/vhost
-     # 删除域名绑定面板
-     rm -f /www/server/panel/data/domain.conf
-     # 清理登陆限制
-     rm -f /www/server/panel/data/*.login
-     # 查看面板授权IP
-     cat /www/server/panel/data/limitip.conf
-     # 关闭访问限制
-     rm -f /www/server/panel/data/limitip.conf
-     # 查看许可域名
-     cat /www/server/panel/data/domain.conf
-     # 关闭面板SSL
-     rm -f /www/server/panel/data/ssl.pl && /etc/init.d/bt restart
-     # 查看面板错误日志
-     cat /tmp/panelBoot
-     # 查看数据库错误日志
-     cat /www/server/data/*.err
-     
-     站点配置文件目录(nginx)
-     /www/server/panel/vhost/nginx
-     站点配置文件目录(apache)
-     /www/server/panel/vhost/apache
-     站点默认目录
-     /www/wwwroot
-     数据库备份目录
-     /www/backup/database
-     站点备份目录
-     /www/backup/site
-     站点日志
-     /www/wwwlogs
+     docker: Error response from daemon: driver failed programming external connectivity on endpoint btpanel (daaeec405d1d7b088754e6a7fe621f9c584a10a5df294e241aa574317b757716): Error starting userland proxy: listen tcp4 0.0.0.0:21: bind: address already in use.
      ```
+
+     原因：FTP服务 ( `vsftpd` ) 默认占用21端口
+
+     解决方法：
+
+     1.   关闭并禁止自启动 `vsftpd` 
+     2.   更改映射端口
+     3.   修改 `vsftpd` 配置端口
+
+2.   Setp4 运行出现提示：
+
+     注意: **5.x系列**Linux面板从2020年1月1日起终止维护，与技术支持，请考虑安装全新的7.x版本 宝塔官网: https://www.bt.cn
+
+     ```bash
+     wget -O i.sh http://download.bt.cn/install/install.sh && sh i.sh
+     修改为
+     wget -O i.sh http://download.bt.cn/install/install_6.0.sh && sh i.sh
+     ```
+
+3.   Setp4 运行出现错误
+
+     ```bash
+     install.sh: line 1: --2021-10-28: command not found
+     install.sh: line 2: syntax error near unexpected token `('
+     install.sh: line 2: `Resolving download.bt.cn (download.bt.cn)... 116.10.184.143, 240e:a5:4200:89::143'
+     ```
+
+     原因：参考文章：[wget命令详解](https://www.cnblogs.com/sx66/p/11887022.html)
+
+     ```bash
+     # step4 原命令
+     wget -o i.sh https://download.bt.cn/install/install_6.0.sh && sh i.sh
      
+     # 错误位置
+     -o -> -O
      
+     # 区别
+     -o,  --output-file=FILE    将日志信息写入 FILE
+     -O,  --output-document=FILE    将文档写入 FILE
+     ```
+
+4.   <span style="color:crimson">Error: DBUS_ERROR: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory</span>
+
+     ```bash
+     确定两点：
+     1. dbus是否启动？如果没启动，则：
+     /etc/init.d/dbus start
+     
+     2. dbus启动了，守护进程dbus-daemon是否启动？如果没启动，则：
+     dbus-daemon --system
+     ```
+
+     原因：**实际上 **docker 下的 centos 镜像**没有** dbus，但是不影响宝塔正常运行
+
+## 四、宝塔管理
+
+参考文章：[宝塔linux面板重启、重置等命令](https://www.xp8.net/server/392.html)
+
+```bash
+# 查看默认入口和账号密码
+/etc/init.d/bt default
+# 停止
+/etc/init.d/bt stop
+# 启动
+/etc/init.d/bt start
+# 重启
+/etc/init.d/bt restart
+# 卸载
+/etc/init.d/bt stop && chkconfig --del bt && rm -f /etc/init.d/bt && rm -rf /www/server/panel
+# 查看当前面板端口
+cat /www/server/panel/data/port.pl
+# 修改面板端口，如要改成8881（centos 6 系统）
+echo '8881' > /www/server/panel/data/port.pl && /etc/init.d/bt restart
+iptables -I INPUT -p tcp -m state --state NEW -m tcp --dport 8881 -j ACCEPT
+service iptables save
+service iptables restart
+
+# 修改面板端口，如要改成8881（centos 7 系统）
+echo '8881' > /www/server/panel/data/port.pl && /etc/init.d/bt restart
+firewall-cmd --permanent --zone=public --add-port=8881/tcp
+firewall-cmd --reload
+
+# 强制修改MySQL管理(root)密码，如要改成123456
+cd /www/server/panel && python tools.pyc root 123456
+# 修改面板密码，如要改成123456
+cd /www/server/panel && python tools.pyc panel 123456
+# 查看宝塔日志
+cat /tmp/panelBoot.pl
+# 查看软件安装日志
+cat /tmp/panelExec.log
+# 站点配置文件位置
+/www/server/panel/vhost
+# 删除域名绑定面板
+rm -f /www/server/panel/data/domain.conf
+# 清理登陆限制
+rm -f /www/server/panel/data/*.login
+# 查看面板授权IP
+cat /www/server/panel/data/limitip.conf
+# 关闭访问限制
+rm -f /www/server/panel/data/limitip.conf
+# 查看许可域名
+cat /www/server/panel/data/domain.conf
+# 关闭面板SSL
+rm -f /www/server/panel/data/ssl.pl && /etc/init.d/bt restart
+# 查看面板错误日志
+cat /tmp/panelBoot
+# 查看数据库错误日志
+cat /www/server/data/*.err
+
+站点配置文件目录(nginx)
+/www/server/panel/vhost/nginx
+站点配置文件目录(apache)
+/www/server/panel/vhost/apache
+站点默认目录
+/www/wwwroot
+数据库备份目录
+/www/backup/database
+站点备份目录
+/www/backup/site
+站点日志
+/www/wwwlogs
+```
+
