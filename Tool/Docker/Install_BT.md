@@ -14,7 +14,7 @@
      ```bash
      docker pull centos:centos7.9.2009
      ```
-     
+
 2.   创建一个命名为`centos`容器并进入，命名为`btpanel`
 
      将宿主机的`20，21，80，443，888，8888`这五个**端口映射**到`docker`容器中去
@@ -27,10 +27,10 @@
 
      ```bash
      # 没有启动 vsftpd 服务
-     docker run -it -d --name btpanel -p 20:20 -p 21:21 -p 80:80 -p 443:443 -p 888:888 -p 8888:8888 --privileged=true -v /home/www:/www centos:centos7.9.2009 /bin/bash
-     
+     docker run -it --name btpanel -p 20:20 -p 21:21 -p 80:80 -p 443:443 -p 888:888 -p 3306:3306 -p 8888:8888 --privileged=true -v /home/www:/www centos:centos7.9.2009 /bin/bash
+
      # 启动了的话改变一下映射端口或者关一下 vsftpd 服务
-     docker run -it ---name btpanel -p 20:20 -p 210:21 -p 80:80 -p 443:443 -p 3306:3-p 888:888 -p 8888:8888 --privileged=true -v /home/www:/www centos:centos7.9.2009 /bin/bash
+     docker run -it --name btpanel -p 20:20 -p 210:21 -p 80:80 -p 443:443 -p 888:888 -p 3306:3306 -p 8888:8888 --privileged=true -v /home/www:/www centos:centos7.9.2009 /bin/bash
      ```
 
 3.   由于docker中是一个**纯净版本**，我们首先需要给他升级并且安装必要的软件
@@ -38,13 +38,12 @@
      这里使用 `yum update -y` 会升级系统和内核，但是因为是纯净版本，所以升级很快
 
      ```bash
-     # centos 7 
+     # centos 7
      yum update -y && yum install initscripts screen wget -y
-     
+
      # centos 8 下报错
-     No match for argument: screen
-     Error: Unable to find a match: screen
-     
+     # No match for argument: screen
+     # Error: Unable to find a match: screen
      # 所以centos 8下暂时无法安装screen包，但不影响宝塔安装
      yum update -y && yum install initscripts wget -y
      ```
@@ -57,11 +56,13 @@
 
 5.   安装成功 ！
 
+     Tips：删除镜像后记得删除`/home/www`目录
+     
      ```text
      外网面板地址: http://119.23.209.135:8888/7d2e5682
      内网面板地址: http://172.18.0.2:8888/7d2e5682
      ```
-
+     
      ![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223358.png)
 
 ## 三、问题
@@ -76,7 +77,7 @@
 
      解决方法：
 
-     1.   关闭并禁止自启动 `vsftpd` 
+     1.   关闭并禁止自启动 `vsftpd`
      2.   更改映射端口
      3.   修改 `vsftpd` 配置端口
 
@@ -103,10 +104,10 @@
      ```bash
      # step4 原命令
      wget -o i.sh https://download.bt.cn/install/install_6.0.sh && sh i.sh
-     
+
      # 错误位置
      -o -> -O
-     
+
      # 区别
      -o,  --output-file=FILE    将日志信息写入 FILE
      -O,  --output-document=FILE    将文档写入 FILE
@@ -197,4 +198,3 @@ cat /www/server/data/*.err
 
 
 [^1]: 系统兼容性顺序：Centos7.x > Debian10 > Ubuntu 20.04 > Cenots8.x > Ubuntu 18.04 > 其它系统
-

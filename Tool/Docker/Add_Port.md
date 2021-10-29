@@ -61,7 +61,7 @@ docker run -it -d --name [container-name] -p 8088:80 [image-name]
      systemctl stop docker
      ```
 
-3.   进到/var/lib/docker/containers 目录下找到与 Id 相同的目录
+3.   进入/var/lib/docker/containers 目录下找到与 Id 相同的目录
 
      ```
      cd /var/lib/docker/containers/容器ID

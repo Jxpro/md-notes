@@ -8,7 +8,7 @@
     npm install picgo -g
     ```
 
--   正确安装：
+-   正确安装
 
     ![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223421.png)
 
@@ -23,7 +23,7 @@
 
 1.   进入Typora安装的picgo.exe目录
 
-     ```
+     ```bash
      cd C:\Users\username\AppData\Roaming\Typora\picgo\win64\
      ```
 
@@ -40,24 +40,41 @@
 
      ```bash
      # 设置配置文件
+     # 按上下键找到gitee，回车
      ./picgo set uploader  
-     
-     1.按上下键找到gitee，回车    
-     2.repo: 用户名/仓库名 （ 注意不是整个https地址！！！）    
-     3.token: 刚才生成的token
-     4.path: 路径，图片存储于 reponame/${path} 下    
-     5.custompath: 用于配置path 示例：path：blog/$customPath,$customPath为占位符
-     6.customURL: 不用填，保持默认，回车 （ 不能乱填 ） 
-     
-     # customPath选择年(year)，则实际的path值为blog/2019
-     # customPath选择年季(yearQuarter)，则实际的path值为blog/2019/summer
-     # customPath选择年月(yearMonth)，则实际的path值为blog/2019/01
-     
-     #使用配置好的文件（配置文件在~/.picgo/config.json）
-     picgo use uploader
+     ```
+     可选项说明：
+
+     -   **repo**：用户名/仓库名，注意不是整个https地址！！！
+
+         -   **错误**示范：repo : https://gitee.com/username/reponame
+
+         -   **正确**示范：repo : username/reponame
+
+     -   **token**：刚才生成的token
+
+     -   **path**：路径，图片存储于 reponame/${path} 下    
+
+     -   **custompath**：用于配置path，customPath为占位符
+
+         示例：path：blog/${customPath}
+
+         -   customPath选择年[^1]，则实际的path值为blog/2021
+
+         -   customPath选择年季[^2]，则实际的path值为blog/2021/summer
+
+         -   customPath选择年月[^3]，则实际的path值为blog/2021/01
+
+     -   **customURL**: 不用填，保持默认（ 不能乱填 ） 
+
+4.   配置完后使用Gitee仓库
+
+     ```   
+     # 使用配置好的文件（配置文件在~/.picgo/config.json）
+     ./picgo use uploader
      ```
 
-4.   配置图片路径名称参数
+5.   配置图片路径名称参数
 
      ```json
      // 打开 ~/.picgo/config.json
@@ -68,7 +85,11 @@
      //  "prefixFormat":"YYYY/MM/DD/",   不能加这条，修改路径会导致图片无法显示
      	} 
      ```
-     
-5.   打开Typora，验证图片上传，查看是否成功
+
+6.   打开Typora，验证图片上传，查看是否成功
 
      ![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223429.png)
+
+[^1]: year
+[^2]: yearQuarter
+[^3]: yearMonth
