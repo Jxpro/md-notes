@@ -11,4 +11,4 @@
 | B    | 向前移动到以空格分隔的字符串头部 |
 | gE   | 向前移动到以空格分隔的字符串尾部 |
 
-![vi-vim-cheat-sheet-sch1](../../../../xin/Desktop/vi-vim-cheat-sheet-sch1.gif)
+![vi-vim](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223300.gif)

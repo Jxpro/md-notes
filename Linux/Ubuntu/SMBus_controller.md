@@ -5,11 +5,11 @@
      2.   Ubuntu，with Linux （recovery mode）
      3.   root
 
-![img](https://images2018.cnblogs.com/blog/968490/201805/968490-20180502193157278-143230685.png)
+![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223153.png)
 
-![img](https://images2018.cnblogs.com/blog/968490/201805/968490-20180502195134430-2141250438.png)
+![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223159.png)
 
-![img](https://images2018.cnblogs.com/blog/968490/201805/968490-20180502195143720-259003692.png)
+![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223236.png)
 
 2.   查找报错的模块
 

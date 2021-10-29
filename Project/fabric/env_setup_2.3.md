@@ -119,7 +119,7 @@ docker ps -a --format "table {{.Command}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"
 
 ## ==八. 看到这个就成功了！！！==
 
-![image-20211027212746573](../../../../../xin/Desktop/image-20211027212746573.png)
+![sucess](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223321.png)
 
 ------
 

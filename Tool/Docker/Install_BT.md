@@ -62,7 +62,7 @@
      内网面板地址: http://172.18.0.2:8888/7d2e5682
      ```
 
-     ![image-20211029003149634](../../Archieve/assets/img/Install_BT/image-20211029003149634.png)
+     ![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223358.png)
 
 ## 三、问题
 
