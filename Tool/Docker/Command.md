@@ -1,24 +1,26 @@
 ## 常用命令
 
-| 命令                                        | 作用                                       |
-| ------------------------------------------- | ------------------------------------------ |
-| docker search xxx                           | **搜索**镜像                               |
-| docker pull xxx                             | **下载**镜像                               |
-| docker start 容器id                         | **启动**容器                               |
-| docker restart 容器id                       | **重启**容器                               |
-| docker stop 容器id                          | **停止**当前正在运行的容器                 |
-| docker kill 容器id                          | **强制停止**当前运行的容器                 |
-| docker run -d --name tomcat01 tomcat        | 新建容器并以后台运行，并**命名**           |
-| docker run -d -p 主机端口:容器内端口 tomcat | 新建容器并以后台运行，并**映射端口**       |
-| docker run -d -v 主机目录:容器内目录 tomcat | 新建容器并以后台运行，并**挂载目录**       |
-| docker run -it tomcat /bin/bash             | 以**交互模式新建**容器并使用bash作为伪终端 |
-| docker exec -it 容器名称或id /bin/bash      | 以**交互模式进入**容器并使用bash作为伪终端 |
-| docker run -it --rm tomcat /bin/bash        | 交互模式**临时**新建容器                   |
-| docker rm -f (docker ps -aq)                | **删除容器**                               |
-| docker rmi -f (docker images -aq)           | **删除镜像**                               |
-| docker inspect id                           | 查看容器的**元数据**                       |
-| exit                                        | 退出并关闭容器                             |
-| ctrl +P +Q                                  | 退出但并关闭容器                           |
+| 命令                                        | 作用                                         |
+| ------------------------------------------- | -------------------------------------------- |
+| docker search xxx                           | **搜索**镜像                                 |
+| docker pull xxx                             | **下载**镜像                                 |
+| docker start 容器id                         | **启动**容器                                 |
+| docker restart 容器id                       | **重启**容器                                 |
+| docker stop 容器id                          | **停止**当前正在运行的容器                   |
+| docker kill 容器id                          | **强制停止**当前运行的容器                   |
+| docker run -d --name tomcat01 tomcat        | 新建容器并以后台运行，并**命名**             |
+| docker run -d -p 主机端口:容器内端口 tomcat | 新建容器并以后台运行，并**映射端口**         |
+| docker run -d -v 主机目录:容器内目录 tomcat | 新建容器并以后台运行，并**挂载目录**         |
+| docker run -it tomcat /bin/bash             | 以**交互模式新建**容器并使用bash作为伪终端   |
+| docker run -it -d tomcat /bin/bash          | 以交互模式新建容器并 exit 退出后**保持运行** |
+| docker exec -it 容器ID/名称 /bin/bash       | 以交互模式**进入**容器并使用bash作为伪终端   |
+| docker run -it --rm tomcat /bin/bash        | 交互模式**临时**新建容器                     |
+| docker rm -f (docker ps -aq)                | **删除容器**                                 |
+| docker rmi -f (docker images -aq)           | **删除镜像**                                 |
+| docker inspect 容器ID/名称                  | 查看容器的**元数据**                         |
+| docker port 容器ID/名称                     | 查看容器的**映射端口**                       |
+| exit                                        | 退出并关闭容器 ( -d 可以保持运行 )           |
+| ctrl +P +Q                                  | 退出但并关闭容器                             |
 
 ## run 命令
 

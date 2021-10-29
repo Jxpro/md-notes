@@ -9,14 +9,12 @@
 
 ## 二、步骤
 
-1.   宝塔面板对centos7**兼容性**最好 ，且 centos8 的docker镜像下载不了 `step3` 的 `screen`
-
-     具体演示见 **问题 (1)**
+1.   宝塔面板对centos7**兼容性[^1]**最好 ，且 centos8 的docker镜像下载不了 `step3` 的 `screen`
 
      ```bash
      docker pull centos:centos7.9.2009
      ```
-
+     
 2.   创建一个命名为`centos`容器并进入，命名为`btpanel`
 
      将宿主机的`20，21，80，443，888，8888`这五个**端口映射**到`docker`容器中去
@@ -29,10 +27,10 @@
 
      ```bash
      # 没有启动 vsftpd 服务
-     docker run -it --name btpanel -p 20:20 -p 21:21 -p 80:80 -p 443:443 -p 888:888 -p 8888:8888 --privileged=true -v /home/www:/www centos:centos7.9.2009 /bin/bash
+     docker run -it -d --name btpanel -p 20:20 -p 21:21 -p 80:80 -p 443:443 -p 888:888 -p 8888:8888 --privileged=true -v /home/www:/www centos:centos7.9.2009 /bin/bash
      
      # 启动了的话改变一下映射端口或者关一下 vsftpd 服务
-     docker run -it --name btpanel -p 20:20 -p 210:21 -p 80:80 -p 443:443 -p 888:888 -p 8888:8888 --privileged=true -v /home/www:/www centos:centos7.9.2009 /bin/bash
+     docker run -it ---name btpanel -p 20:20 -p 210:21 -p 80:80 -p 443:443 -p 3306:3-p 888:888 -p 8888:8888 --privileged=true -v /home/www:/www centos:centos7.9.2009 /bin/bash
      ```
 
 3.   由于docker中是一个**纯净版本**，我们首先需要给他升级并且安装必要的软件
@@ -64,7 +62,7 @@
      内网面板地址: http://172.18.0.2:8888/7d2e5682
      ```
 
-     ![image-20211029003149634](D:\TASK\Language\Notes\Archieve\assets\img\image-20211029003149634.png)
+     ![image-20211029003149634](../../Archieve/assets/img/Install_BT/image-20211029003149634.png)
 
 ## 三、问题
 
@@ -195,4 +193,8 @@ cat /www/server/data/*.err
 站点日志
 /www/wwwlogs
 ```
+
+
+
+[^1]: 系统兼容性顺序：Centos7.x > Debian10 > Ubuntu 20.04 > Cenots8.x > Ubuntu 18.04 > 其它系统
 

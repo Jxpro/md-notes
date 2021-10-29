@@ -38,8 +38,14 @@
 
 4.   重新生成引导文件，如果不进行该操作直接重启还是会报错
 
-     `update-initramfs  -u  -k  all`
+     ```bash
+     update-initramfs  -u  -k  all
+     ```
 
 5.   重启
 
-     `reboot`
+     ```bash
+     reboot
+     ```
+     
+     

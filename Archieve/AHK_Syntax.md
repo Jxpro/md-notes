@@ -37,5 +37,5 @@ project
 
 ## Tips
 
-1.   `%Clipboard%` 不能直接传给字符串函数
+1.   `%Clipboard%`不能直接传给字符串函数
 

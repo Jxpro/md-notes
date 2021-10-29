@@ -52,17 +52,17 @@
 >
 >   
 >
->   `yum update` 和`yum upgrade` 的功能是一样的，都是将package更新至软件源中的最新版
+>   `yum update`和`yum upgrade`的功能是一样的，都是将package更新至软件源中的最新版
 >
->   区别是 `yum upgrade` 会删除旧版本的package，而 `yum update` 则会保留
+>   区别是`yum upgrade`会删除旧版本的package，而`yum update`则会保留
 >
 >   ~~因此如果软件依赖旧版本的package，最好是使用 yum update，确保不会出现兼容问题~~
 
-个人认为最好 `yum update` 后 **指定package名称**
+个人认为最好`yum update`后 **指定package名称**
 
 **避免升级系统内核的方法**：
 
-直接修改配置文件 `/etc/yum.conf`，在 [main] 配置添加配置项
+直接修改配置文件`/etc/yum.conf`，在 [main] 配置添加配置项
 
 ```bash
 exclude=kernel*
@@ -93,7 +93,17 @@ exclude=centos-release*
      wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo
      ```
 
-4.   清理缓存 `yum clean all`
+4.   清理缓存
 
-5.   重新生成缓存 `yum makecache`
+     ```bash
+     yum clean all
+     ```
+
+5.   重新生成缓存
+
+     ```bash
+     yum makecache
+     ```
+
+     
 
