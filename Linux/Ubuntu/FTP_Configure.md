@@ -33,6 +33,9 @@ FTP的工作方式的C/S模式(客户端/服务器模式)，采用TCP面向连�
 ## 二、安装
 
 ```bash
+# 系统版本
+# Ubuntu 18.04.6 LTS (GNU/Linux 4.15.0-48-generic x86_64)
+
 apt update
 apt install vsftpd
 vsftpd -v

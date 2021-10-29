@@ -1,4 +1,14 @@
-## 1. 安装 Git 和 Curl
+## 一、软硬件版本
+
+|      名称      |                          版本                           |
+| :------------: | :-----------------------------------------------------: |
+|    系统版本    | Ubuntu 18.04.6 LTS (GNU/Linux 4.15.0-48-generic x86_64) |
+|     Fabric     |                          2.3.3                          |
+|       go       |                  go1.17.2 linux/amd64                   |
+|     docker     |                        20.10.10                         |
+| docker-compose |                 1.29.2, build 5becea4c                  |
+
+## 二. 安装 Git 和 Curl
 
 ```bash
 apt update
@@ -6,7 +16,7 @@ apt install git
 apt install curl
 ```
 
-## 2. 安装 Golang
+## 三. 安装 Golang
 
 ```bash
 apt install libtool libltdl-dev
@@ -22,10 +32,12 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOPATH/src/github.com/hyperledger/fabric/scripts/fabric-samples/bin
 
 source ~/.profile
+
 go version
+# go version go1.17.2 linux/amd64
 ```
 
-## 3. 安装 Docker
+## 四. 安装 Docker
 
 ```bash
 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
@@ -40,7 +52,7 @@ systemctl daemon-reload
 systemctl restart docker
 ```
 
-## 4. 安装 Docker-Compose
+## 五. 安装 Docker-Compose
 
 ```bash
 apt install python-pip
@@ -48,10 +60,15 @@ apt install python-pip
 curl -L "https://get.daocloud.io/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
 chmod +x /usr/local/bin/docker-compose
+
 docker-compose version
+# docker-compose version 1.29.2, build 5becea4c
+# docker-py version: 5.0.0
+# CPython version: 3.7.10
+# OpenSSL version: OpenSSL 1.1.0l  10 Sep 2019
 ```
 
- ## 5. 安装 Hyperledger fabric
+ ## 六. 安装 Hyperledger fabric
 
 ```bash
 cd ~
@@ -90,7 +107,7 @@ cd fabric-samples/test-network
 ./network.sh up 
 ```
 
-## 6. 查看运行的fabric容器
+## 七. 查看运行的fabric容器
 
 ```bash
 docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Status}}"
@@ -100,7 +117,7 @@ docker ps -a --format "table {{.Image}}\t{{.Command}}\t{{.Names}}\t{{.Status}}"
 docker ps -a --format "table {{.Command}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"
 ```
 
-## ==7. 看到这个就成功了！！！==
+## ==八. 看到这个就成功了！！！==
 
 ![image-20211027212746573](D:\TASK\Language\Notes\Archieve\assets\img\image-20211027212746573.png)
 
