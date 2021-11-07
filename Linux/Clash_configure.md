@@ -26,22 +26,23 @@ chmod +x clash
 ## 三、设置系统代理
 
 ```bash
-# 根据需要时开启系统代理，重启会失效
+# 根据需要时开启系统代理，仅对当前终端有效
 export http_proxy=http://127.0.0.1:7890
 export https_proxy=https://127.0.0.1:7890
-# 使用socks5协议，通过curl可以获取更多内容，但是wget会出错
-#export http_proxy=socks5://127.0.0.1:7890
-#export https_proxy=socks5://127.0.0.1:7890
 
-# 关闭系统代理unset http_proxy
-unset http_proxy
-unset https_proxy
-
-# 直接配置profile，永久设置代理，不建议，取消时需要重启
+# 直接配置profile，永久设置代理
 vim ~/.profile
 export http_proxy=http://127.0.0.1:7890
 export https_proxy=https://127.0.0.1:7890
 source ~/.profile
+
+# 使用socks5协议，通过curl可以一次获取更多内容，但是wget会出错
+#export http_proxy=socks5://127.0.0.1:7890
+#export https_proxy=socks5://127.0.0.1:7890
+
+# 关闭系统代理，source ~/.profile无法取消
+unset http_proxy
+unset https_proxy
 ```
 
 ## 四、配置为服务，并开机自启
