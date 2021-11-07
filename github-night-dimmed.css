@@ -2123,7 +2123,7 @@ blockquote {
     border-radius: .25em;
     border-left-width: 4px !important;
     border-left: .25em solid #45A9F9 !important;
-    padding: 0 1em;
+    padding: 0 1em !important;
 }
 
 blockquote p {
