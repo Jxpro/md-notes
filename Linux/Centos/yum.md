@@ -77,7 +77,7 @@ exclude=centos-release*
      cd /etc/yum.repos.d/
      ```
 
-2.   备份原来的yum镜像源，如果出现错误可以恢复原配置
+2.   **备份**原来的yum镜像源，如果出现错误可以恢复原配置
 
      ```bash
      cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak

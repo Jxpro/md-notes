@@ -1,6 +1,6 @@
 ## [Sublime Text 4113 下载](https://download.sublimetext.com/sublime_text_build_4113_x64_setup.exe)
 
-==破解激活 ：==   
+**破解激活**：   
 
 ```
 2021年7月14日 最新更新
@@ -15,7 +15,7 @@ C3 C6 01 00 C3 替换为 C3 C6 01 01 C3
 
 ## [Sublime Text 4121下载](https://download.sublimetext.com/sublime_text_build_4121_x64_setup.exe)
 
-==破解激活 ：==
+**破解激活**：
 
 ```
 暂无

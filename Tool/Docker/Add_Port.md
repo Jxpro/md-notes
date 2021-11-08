@@ -1,10 +1,8 @@
 # docker容器添加对外映射端口
 
-参考文章：[docker容器添加对外映射端口](https://www.cnblogs.com/zhumengke/articles/13525837.html)
-
 ## 一、背景
 
-一般在运行容器时，我们都会通过参数 -p（使用大写的-P参数则会随机选择宿主机的一个端口进行映射）来指定宿主机和容器端口的映射，例如
+一般在运行容器时，我们都会通过参数`-p`（使用大写的`-P`参数则会随机选择宿主机的一个端口进行映射）来指定宿主机和容器**端口的映射**，例如
 
 ```
 docker run -it -d --name [container-name] -p 8088:80 [image-name]
@@ -21,7 +19,7 @@ docker run -it -d --name [container-name] -p 8088:80 [image-name]
 
 在运行容器时指定映射端口运行后，如果想要添加新的端口映射，可以使用以下两种方式：
 
-## 二、方法一：重新制作镜像
+## 二、方法一：**重新制作镜像**
 
 将现有的容器打包成镜像，然后在使用新的镜像运行容器时重新指定要映射的端口
 
@@ -45,7 +43,7 @@ docker run -it -d --name [container-name] -p 8088:80 [image-name]
      docker run -it -d --name container-name -p p1:p1 -p p2:p2 new-image-name
      ```
 
-## 三、方法二：修改配置文件
+## 三、方法二：**修改配置文件**
 
 修改要端口映射的容器的配置文件
 
@@ -71,7 +69,7 @@ docker run -it -d --name [container-name] -p 8088:80 [image-name]
 
      ![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223332.png)
 
-5.   修改hostconfig.json，在PortBindings后加上要绑定的端口，添加端口绑定：
+5.   修改`hostconfig.json`，在`PortBindings`后加上要**绑定的端口**，添加端口绑定：
 
      ```bash
      # 表示绑定端口 3306
@@ -80,7 +78,7 @@ docker run -it -d --name [container-name] -p 8088:80 [image-name]
 
      ![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223343.png)
 
-6.   修改config.v2.json在ExposedPorts后加上要暴露的端口
+6.   修改`config.v2.json`在`ExposedPorts`后加上要**暴露的端口**
 
      ```bash
      # 表示暴露端口 3306
@@ -104,3 +102,7 @@ netstat -an |grep 3306
 ```
 
 如果有进程存在则表示有映射
+
+## 五、参考文章
+
+-   [docker容器添加对外映射端口](https://www.cnblogs.com/zhumengke/articles/13525837.html)

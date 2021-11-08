@@ -6,13 +6,13 @@ FTP的工作方式的C/S模式(客户端/服务器模式)，采用TCP面向连�
 
 ### 1.2  两种模式:从服务器角度
 
-+   主动(PORT style): 服务器主动连接
++   **主动(PORT style)**: 服务器主动连接
 
     命令(控制) :客户端:随机port -服务器: 21/tcp
 
     数据:客户端:随机port <--服务器: 20/tcp
 
-+   被动(PASV style): 客户端主动连接
++   **被动(PASV style)**: 客户端主动连接
 
     命令(控制) :客户端:随机port ---服务器: 21/tcp
 
@@ -67,7 +67,7 @@ systemctl restart vsftpd
 
 ### 1.3 配置虚拟用户模式
 
-==默认缺少db_load，且测试环境安全性要求不高，暂时不采用==
+默认缺少`db_load`，且测试环境安全性要求不高，**暂时不采用**
 
 参考文章：
 
@@ -80,7 +80,7 @@ systemctl restart vsftpd
 
 ## 三、Q & A
 
-1.   ==Ubuntu下root用户不能ftp登陆==
+1.   **Ubuntu下root用户不能ftp登陆**
 
      一般情况下,由于种种原因ftp是不让root用户远程登陆；但只要你修改以个文件就可以登陆了：注释掉 /etc/ftpusers 中的root，最后重启 vsftpd ( service vsftpd restart ).
 
@@ -109,7 +109,7 @@ systemctl restart vsftpd
      allow_writeable_chroot=YES
      ```
 
-3.   ==550 Permission denied==
+3.   **550 Permission denied**
 
      因为vsftpd.conf配置文件后修改后未重启服务
 
