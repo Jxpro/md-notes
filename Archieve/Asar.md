@@ -14,6 +14,7 @@
 
      ```bash
      npm install asar -g
+     
      asar -V
      ```
      
@@ -21,24 +22,24 @@
 
      -   打包一个文件或目录:
 
-     ```bash
-     asar pack ./ app.asar
-     ```
+         ```bash
+         asar pack ./ app.asar
+         ```
      
      -   解压一个 asar 文件:
      
-     ```bash
-     asar extract app.asar ./
-     ```
+         ```bash
+         asar extract app.asar ./
+         ```
      
      -   列出一个 asar 文件中的内容:
      
-     ```bash
-     asar list app.asar
-     ```
+         ```bash
+         asar list app.asar
+         ```
 
      -   从 asar 文件中解压指定的文件:
 
-     ```bash
-     asar extract-file {{asar 文件}} {{文件}}
-     ```
+         ```bash
+         asar extract-file {{asar 文件}} {{文件}}
+         ```

@@ -38,7 +38,9 @@ FTP的工作方式的C/S模式(客户端/服务器模式)，采用TCP面向连�
 
 apt update
 apt install vsftpd
-vsftpd -v
+
+$ vsftpd -v
+vsftpd: version 3.0.3
 ```
 
 ### 1.1 vsftpd允许三种认证模式登录FTP服务器：
@@ -86,7 +88,7 @@ systemctl restart vsftpd
 
 2.   前 vsftpd.conf 配置:
 
-     ```
+     ```bash
      listen=NO
      listen_ipv6=YES
      anonymous_enable=NO
@@ -113,10 +115,11 @@ systemctl restart vsftpd
 
      因为vsftpd.conf配置文件后修改后未重启服务
 
-     ```
+     ```bash
      # 以下命令无法重新加载配置文件
      systemctl enable vsftpd
      systemctl start vsftpd
+     
      # 需要执行以下命令
      systemctl restart vsftpd
      #或者

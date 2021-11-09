@@ -83,6 +83,6 @@ docker rmi -f $(docker images -aq)
 
 docker rm 容器id   				#删除指定的容器，强制删除: rm -rf
 docker rm -f $(docker ps -aq)  	 #删除所有的容器
-docker ps -a -q|xargs docker rm  #删除所有的容器
+docker ps -aq|xargs docker rm  #删除所有的容器
 ```
 

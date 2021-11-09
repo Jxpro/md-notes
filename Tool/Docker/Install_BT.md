@@ -40,7 +40,7 @@
      ```bash
      # centos 7
      yum update -y && yum install initscripts screen wget -y
-
+     
      # centos 8 下报错
      # No match for argument: screen
      # Error: Unable to find a match: screen
@@ -141,6 +141,7 @@
 /etc/init.d/bt restart
 # 卸载
 /etc/init.d/bt stop && chkconfig --del bt && rm -f /etc/init.d/bt && rm -rf /www/server/panel
+
 # 查看当前面板端口
 cat /www/server/panel/data/port.pl
 # 修改面板端口，如要改成8881（centos 6 系统）
@@ -148,7 +149,6 @@ echo '8881' > /www/server/panel/data/port.pl && /etc/init.d/bt restart
 iptables -I INPUT -p tcp -m state --state NEW -m tcp --dport 8881 -j ACCEPT
 service iptables save
 service iptables restart
-
 # 修改面板端口，如要改成8881（centos 7 系统）
 echo '8881' > /www/server/panel/data/port.pl && /etc/init.d/bt restart
 firewall-cmd --permanent --zone=public --add-port=8881/tcp
@@ -194,7 +194,5 @@ cat /www/server/data/*.err
 站点日志
 /www/wwwlogs
 ```
-
-
 
 [^1]: 系统兼容性顺序：Centos7.x > Debian10 > Ubuntu 20.04 > Cenots8.x > Ubuntu 18.04 > 其它系统

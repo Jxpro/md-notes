@@ -6,14 +6,15 @@
 
 ## 二、配置clash
 
--   命令执行过程（仅供参考,请按本地设置稍作调整）
-
 ```bash
 gunzip clash-linux-amd64-v1.7.1.gz
+
 mkdir /opt/clash
+
 mv clash-linux-amd64-v1.7.1 /opt/clash/clash
 
 cd /opt/clash/
+
 chmod +x clash
 # 上传或下载订阅文件并命名为config.yaml
 # 上传或下载Country.mmdb 
@@ -47,13 +48,13 @@ unset https_proxy
 
 ## 四、配置为服务，并开机自启
 
-1.   创建service文件
+创建service文件
 
 ```bash
 vim /etc/systemd/system/clash.service
 ```
 
-2.   填入以下内容**(注意修改clash文件夹路径)**
+填入以下内容**(注意修改clash文件夹路径)**
 
 ```bash
 [Unit]
@@ -69,57 +70,57 @@ Restart=on-failure
 WantedBy=multi-user.target
 ```
 
-3.   重新加载systemctl daemon
+重新加载systemctl daemon
 
-```
+```bash
 systemctl daemon-reload
 ```
 
-4.   启动Clash
+启动Clash
 
-```
+```bash
 systemctl start clash.service
 ```
 
-5.   设置Clash开机自启动
+设置Clash开机自启动
 
-```
+```bash
 systemctl enable clash.service
 ```
 
 ## 五、测试验证
 
--   通过curl命令访问www.google.com.hk，响应正常
+通过curl命令访问www.google.com.hk，响应正常
 
--   ```bash
-    curl www.google.com.hk
-    ```
+```bash
+ curl www.google.com.hk
+```
 
-![image-20211104221817997](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/04-221819.png)
+![image-20211104221817997](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/09-150138.png)
 
 ## 六、配置定时更新订阅
 
--   Clash For Linux 到目前为止没有自动订阅方式，我们做一个计划任务实现更新`config.yaml`
--   用Cron执行计划任务
+Clash For Linux 到目前为止没有自动订阅方式，我们做一个计划任务实现更新`config.yaml`
 
-```text
-[root@localhost ~]# crontab -e
+用Cron执行计划任务
+
+```bash
+crontab -e
 ```
 
--   填入以下内容
+填入以下内容
 
-```text
+```bash
 29 6    * * *   root    pgrep clash | xargs kill -s 9 
 30 6    * * *   root    mv /opt/clash/config.yaml /opt/clash/configbackup.yaml 
 31 6    * * *   root    wget -P /opt/clash/ -O config.yaml [你的订阅链接]
 32 6    * * *   root    nohup /opt/clash/clash -d /opt/clash/
 ```
 
--   按Esc和:wq保存退出
--   重启crontab，使配置生效
+保存退出，并重启crontab，使配置生效
 
-```text
-[root@localhost ~]# systemctl restart crond.service
+```bash
+systemctl restart crond.service
 ```
 
 ## 七、参考链接

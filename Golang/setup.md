@@ -7,11 +7,11 @@ Go 语言开发包
 ## 二、测试安装
 
 ```bash
-# 任意目录下输入go version
-go version go1.15.2 darwin/amd64
+$ go version
+go version go1.17.3 windows/amd64
 
 # 查看环境配置
-go env
+$ go env
 set GO111MODULE=
 set GOARCH=amd64
 ...
@@ -56,7 +56,7 @@ GOPATH
 
 ## 五、 第一个Golang程序
 
--   文件位置：D:\TASK\Program\Go\src\helloworld\app.go
+文件位置：D:\TASK\Program\Go\src\helloworld\app.go
 
 ```go
 package main
@@ -68,14 +68,14 @@ func main() {
 }
 ```
 
--   编译运行
+编译运行
 
 ```bash
-D:/TASK/Program/Go/src/helloworld > go run .\app.go
+$ go run .\app.go
 hello world
 
-D:/TASK/Program/Go/src/helloworld > go build .\app.go
-D:/TASK/Program/Go/src/helloworld > .\app.exe
+$ go build .\app.go
+$ .\app.exe
 hello world
 ```
 
@@ -89,9 +89,9 @@ hello world
 
 1.   报错详情
 
-```bash
-go.mod file not found in current directory or any parent directory; see 'go help modules'
-```
+     ```bash
+     go.mod file not found in current directory or any parent directory; see 'go help modules'
+     ```
 
 2.   原因分析
 
@@ -114,21 +114,21 @@ go.mod file not found in current directory or any parent directory; see 'go help
 
 1.   报错详情
 
-```go
-Error running 'go build awesomeProject (1)': Cannot run program "C:\Users\erbin\AppData\Local\Temp\___go_build_awesomeProject__1_.exe" (in directory "G:\Language Proctice\Goworks\src\awesomeProject"): CreateProcess error=216, 该版本的 %1 与你运行的 Windows 版本不兼容。请查看计算机的系统信息，然后联系软件发布者。
-```
+     ```bash
+     Error running 'go build awesomeProject (1)': Cannot run program "C:\Users\erbin\AppData\Local\Temp\___go_build_awesomeProject__1_.exe" (in directory "G:\Language Proctice\Goworks\src\awesomeProject"): CreateProcess error=216, 该版本的 %1 与你运行的 Windows 版本不兼容。请查看计算机的系统信息，然后联系软件发布者。
+     ```
 
-```go
-// 此时的代码为
-package awesomeProject
-
-import "fmt"
-
-func main(){
+     ```go
+     // 此时的代码为
+     package awesomeProject
      
-	fmt.Println("Hello World!")
-}
-```
+     import "fmt"
+     
+     func main(){
+          
+     	fmt.Println("Hello World!")
+     }
+     ```
 
 2.   原因分析
 
@@ -137,16 +137,15 @@ func main(){
 3.   解决办法
 
      将main函数所在的包名改为main，改之后如下：
-
-```go
-// 代码成功运行
-package main
-
-import "fmt"
-
-func main(){
      
-	fmt.Println("Hello World!")
-}
-```
-
+     ```go
+     // 代码成功运行
+     package main
+     
+     import "fmt"
+     
+     func main(){
+          
+     	fmt.Println("Hello World!")
+     }
+     ```

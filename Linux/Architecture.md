@@ -9,13 +9,13 @@
 -   `uname -r`
 
 ```bash
-cat /proc/version
+$ cat /proc/version
 Linux version 4.15.0-161-generic (buildd@lcy01-amd64-012) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) #169-Ubuntu SMP Fri Oct 15 13:41:54 UTC 2021
 
-uname -a
+$ uname -a
 Linux iZwz91577x7sn2pgjejf5kZ 4.15.0-161-generic #169-Ubuntu SMP Fri Oct 15 13:41:54 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
 
-uname -r
+$ uname -r
 4.15.0-161-generic
 ```
 
@@ -25,14 +25,14 @@ uname -r
 -   `cat /etc/issue`
 
 ```bash
-lsb_release -a
+$ lsb_release -a
 LSB Version:	core-9.20170808ubuntu1-noarch:security-9.20170808ubuntu1-noarch
 Distributor ID:	Ubuntu
 Description:	Ubuntu 18.04.6 LTS
 Release:	18.04
 Codename:	bionic
 
-cat /etc/issue
+$ cat /etc/issue
 Ubuntu 18.04.6 LTS \n \l
 ```
 
@@ -41,12 +41,12 @@ Ubuntu 18.04.6 LTS \n \l
 -   `getconf LONG_BIT`
 -   `file /bin/ls`
 
-```python
-getconf LONG_BIT
+```bash
+$ getconf LONG_BIT
 64
 
-file /bin/ls
-/bin/ls: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=9567f9a28e66f4d7ec4baf31cfbf68d0410f0ae6, stripped
+$ file /bin/ls
+/bin/ls: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/l, for GNU/Linux 3.2.0, BuildID[sha1]=9567f9a28e66f4d7ec4baf31cfbf68d0410f0ae6, stripped
 ```
 
 ## 4、直接查看系统的架构
@@ -55,15 +55,15 @@ file /bin/ls
 -   `arch`
 -   `file /lib/systemd/systemd`
 
-```python
-dpkg --print-architecture
+```bash
+$ dpkg --print-architecture
 amd64
 
-arch
+$ arch
 x86_64
 
-file /lib/systemd/systemd
-/lib/systemd/systemd: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=230acb059171dc7c19b9318d5ef5feb2c6f4e568, stripped
+$ file /lib/systemd/systemd
+/lib/systemd/systemd: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/l, for GNU/Linux 3.2.0, BuildID[sha1]=cb01338bc2dce40f2dec56c8a2c89a7dac28d512, stripped
 ```
 
 [关于CPU架构是x86、x86_64、amd64的叫法区别](https://blog.csdn.net/wf19930209/article/details/79536506)
@@ -74,9 +74,10 @@ file /lib/systemd/systemd
 
 1、使用`cat /etc/os-release`命令也可以获取到 Ubuntu 代号
 
-```python
+```bash
 cat /etc/os-release
 
+# 输出
 NAME="Ubuntu"
 VERSION="18.04.6 LTS (Bionic Beaver)"
 ID=ubuntu

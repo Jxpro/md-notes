@@ -71,39 +71,37 @@ exclude=centos-release*
 
 ## 三、切换软件源
 
-1.   CentOS 7的镜像源文件的目录默认都在该路径下：/etc/yum.repos.d/
+CentOS 7的镜像源文件的目录默认都在该路径下：/etc/yum.repos.d/
 
-     ```bash
-     cd /etc/yum.repos.d/
-     ```
+```bash
+cd /etc/yum.repos.d/
+```
 
-2.   **备份**原来的yum镜像源，如果出现错误可以恢复原配置
+**备份**原来的yum镜像源，如果出现错误可以恢复原配置
 
-     ```bash
-     cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
-     ```
+```bash
+cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
+```
 
-3.   下载国内镜像源并重命名为 CentOS-Base.repo，将其作为当前系统的镜像源
+下载国内镜像源并重命名为 CentOS-Base.repo，将其作为当前系统的镜像源
 
-     ```bash
-     # 阿里云镜像站
-     wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
-     
-     # 网易镜像站
-     wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo
-     ```
+```bash
+# 阿里云镜像站
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 
-4.   清理缓存
+# 网易镜像站
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo
+```
 
-     ```bash
-     yum clean all
-     ```
+清理缓存
 
-5.   重新生成缓存
+```bash
+yum clean all
+```
 
-     ```bash
-     yum makecache
-     ```
+重新生成缓存
 
-     
+```bash
+yum makecache
+```
 

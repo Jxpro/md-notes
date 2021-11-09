@@ -23,7 +23,7 @@ docker run -it -d --name [container-name] -p 8088:80 [image-name]
 
 将现有的容器打包成镜像，然后在使用新的镜像运行容器时重新指定要映射的端口
 
-大概过程如下：
+过程如下：
 
 1.   停止现有容器
 
@@ -47,7 +47,9 @@ docker run -it -d --name [container-name] -p 8088:80 [image-name]
 
 修改要端口映射的容器的配置文件
 
-3.   停止现有容器
+过程如下：
+
+1.   停止现有容器
 
     ```bash
     docker stop 容器ID
