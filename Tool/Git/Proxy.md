@@ -1,3 +1,5 @@
+# Git设置代理
+
 ```bash
 # 为 git 设置全局代理
 git config --global https.proxy http://127.0.0.1:1080

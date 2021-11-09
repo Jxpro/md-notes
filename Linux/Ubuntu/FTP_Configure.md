@@ -1,3 +1,5 @@
+# Ubuntu下配置FTP
+
 ## 一、FTP工作原理
 
 ### 1.1  FTP工作原理介绍
@@ -80,7 +82,7 @@ systemctl restart vsftpd
 
 此时应该能够使用之前创建的jokerxin登录FTP服务器，现在可以上传和下载文件到您的内容。这些文件将保存在ftpuser用户的主目录中（/home/ftpuser）。配置文件已禁用匿名使用，因此登录的唯一方法是使用服务器上的工作帐户。
 
-## 三、Q & A
+## 三、问题
 
 1.   **Ubuntu下root用户不能ftp登陆**
 

@@ -1,3 +1,5 @@
+# Linux下配置clash
+
 ## 一、下载 [Clash](https://github.com/Dreamacro/clash/releases)
 
 -   下载时需注意服务器位数是64还是32位，本文档中使用的64位
@@ -123,7 +125,7 @@ crontab -e
 systemctl restart crond.service
 ```
 
-## 七、参考链接
+## 七、参考文章
 
 -   [Linux下安装&配置Clash以实现代理上网](https://zhuanlan.zhihu.com/p/369344633)
 -   [Clash-Linux-折腾笔记](https://github.com/yuanlam/Clash-Linux#enjoy)

@@ -1,3 +1,5 @@
+# Linux常用指令
+
 ## 一、tar & gzip
 
 1.   基础概念
@@ -74,59 +76,59 @@
 
 ## 二、systemctl
 
-1.   查询服务是否开机启动
+查询服务是否开机启动
 
-     ```bash
-     systemctl is-enabled xxx.service
-     ```
+```bash
+systemctl is-enabled xxx.service
+```
 
-2.   **开机运行**服务 
+**开机运行**服务 
 
-     ```bash
-     systemctl enable xxx.service
-     ```
+```bash
+systemctl enable xxx.service
+```
 
-3.   取消开机运行
+取消开机运行
 
-     ```bash
-     systemctl disable xxx.service
-     ```
+```bash
+systemctl disable xxx.service
+```
 
-4.   **启动服务**
+**启动服务**
 
-     ```bash
-     systemctl start xxx.service
-     ```
+```bash
+systemctl start xxx.service
+```
 
-5.   **停止服务**
+**停止服务**
 
-     ```bash
-     systemctl stop xxx.service
-     ```
+```bash
+systemctl stop xxx.service
+```
 
-6.   **重启服务**
+**重启服务**
 
-     ```bash
-     systemctl restart xxx.service
-     ```
+```bash
+systemctl restart xxx.service
+```
 
-7.   重新加载服务配置文件
+重新加载服务配置文件
 
-     ```bash
-     systemctl reload xxx.service
-     ```
+```bash
+systemctl reload xxx.service
+```
 
-8.   **查询**服务运行状态
+**查询**服务运行状态
 
-     ```bash
-     systemctl status xxx.service
-     ```
+```bash
+systemctl status xxx.service
+```
 
-9.   显示启动失败的服务
+显示启动失败的服务
 
-     ```bash
-     systemctl --failed
-     ```
+```bash
+systemctl --failed
+```
 
 ## 三、su 和 sudo
 

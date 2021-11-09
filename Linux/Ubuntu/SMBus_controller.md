@@ -1,6 +1,7 @@
-**Ubuntu18.04 64位**
+# VMware 下 安装 Ubuntu 报 SMBus 错误
 
 如果能进入终端则切换到root用户，如果不能则在VMware进入界面时按下shift进入GNU GRUB界面，依次选择：
+
 1.   Advanced options for Ubuntu
 2.   Ubuntu，with Linux （recovery mode）
 3.   root

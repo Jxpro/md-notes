@@ -1,3 +1,5 @@
+# Nodejs升级方法
+
 ## 方法一： 用n模块升级nodejs（Linux）
 
 注意：此方法**仅适用于Linux**，Windows请使用其他方法

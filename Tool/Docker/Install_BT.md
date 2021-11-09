@@ -7,63 +7,63 @@
 | 系统版本 | Ubuntu 18.04.6 LTS (GNU/Linux 4.15.0-48-generic x86_64) |
 |  docker  |                        20.10.10                         |
 
-## 二、步骤
+## 二、安装
 
-1.   宝塔面板对centos7**兼容性[^1]**最好 ，且 centos8 的docker镜像下载不了 `step3` 的 `screen`
+拉取镜像，宝塔对centos7**兼容性[^1]**最好 ，且centos8的docker镜像下载不了`step3`的`screen
 
-     ```bash
-     docker pull centos:centos7.9.2009
-     ```
+```bash
+docker pull centos:centos7.9.2009
+```
 
-2.   创建一个命名为`centos`容器并进入，命名为`btpanel`
+创建一个命名为`centos`容器并进入，命名为`btpanel`
 
-     将宿主机的`20，21，80，443，888，8888`这五个**端口映射**到`docker`容器中去
+>   将宿主机的`20，21，80，443，888，8888`这五个**端口映射**到`docker`容器中去
+>
+>   并将宿主机的`/home/www`**文件夹挂载**到`docker`容器的`/www`上去
+>
+>   *(注意：文件目录如果不存在。宿主机和容器会自己创建，无需手动创建)*
+>
+>   `privileged`表示在运行容器的时候，给容器加特权，设置容器有写文件的**权限**
 
-     并将宿主机的`/home/www`**文件夹挂载**到`docker`容器的`/www`上去
+```bash
+# 没有启动 vsftpd 服务
+docker run -it --name btpanel -p 20:20 -p 21:21 -p 80:80 -p 443:443 -p 888:888 -p 3306:3306 -p 8888:8888 --privileged=true -v /home/www:/www centos:centos7.9.2009 /bin/bash
 
-     *(注意：文件目录如果不存在。宿主机和容器会自己创建，无需手动创建)*
+# 启动了的话改变一下映射端口或者关一下 vsftpd 服务
+docker run -it --name btpanel -p 20:20 -p 210:21 -p 80:80 -p 443:443 -p 888:888 -p 3306:3306 -p 8888:8888 --privileged=true -v /home/www:/www centos:centos7.9.2009 /bin/bash
+```
 
-     `privileged`表示在运行容器的时候，给容器加特权，设置容器有写文件的**权限**
+由于docker中是一个**纯净版本**，我们首先需要给他升级并且安装必要的软件
 
-     ```bash
-     # 没有启动 vsftpd 服务
-     docker run -it --name btpanel -p 20:20 -p 21:21 -p 80:80 -p 443:443 -p 888:888 -p 3306:3306 -p 8888:8888 --privileged=true -v /home/www:/www centos:centos7.9.2009 /bin/bash
+这里使用`yum update -y`会升级系统和内核，但是因为是纯净版本，所以升级很快
 
-     # 启动了的话改变一下映射端口或者关一下 vsftpd 服务
-     docker run -it --name btpanel -p 20:20 -p 210:21 -p 80:80 -p 443:443 -p 888:888 -p 3306:3306 -p 8888:8888 --privileged=true -v /home/www:/www centos:centos7.9.2009 /bin/bash
-     ```
+```bash
+# centos 7
+yum update -y && yum install initscripts screen wget -y
 
-3.   由于docker中是一个**纯净版本**，我们首先需要给他升级并且安装必要的软件
+# centos 8 下报错
+# No match for argument: screen
+# Error: Unable to find a match: screen
+# 所以centos 8下暂时无法安装screen包，但不影响宝塔安装
+yum update -y && yum install initscripts wget -y
+```
 
-     这里使用 `yum update -y` 会升级系统和内核，但是因为是纯净版本，所以升级很快
+执行`Centos`宝塔面板的安装命令，期间会有一个安装确认，输入`y`
 
-     ```bash
-     # centos 7
-     yum update -y && yum install initscripts screen wget -y
-     
-     # centos 8 下报错
-     # No match for argument: screen
-     # Error: Unable to find a match: screen
-     # 所以centos 8下暂时无法安装screen包，但不影响宝塔安装
-     yum update -y && yum install initscripts wget -y
-     ```
+```bash
+wget -O i.sh http://download.bt.cn/install/install_6.0.sh && sh i.sh
+```
 
-4.   执行宝塔面板 `Centos` 安装命令，期间会有一个安装确认，输入`y`
+安装完成
 
-     ```bash
-     wget -O i.sh http://download.bt.cn/install/install_6.0.sh && sh i.sh
-     ```
+```text
+外网面板地址: http://119.23.209.135:8888/7d2e5682
+内网面板地址: http://172.18.0.2:8888/7d2e5682
+```
 
-5.   安装成功 ！
+![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223358.png)
 
-     Tips：**删除镜像**后记得删除`/home/www`目录
-     
-     ```text
-     外网面板地址: http://119.23.209.135:8888/7d2e5682
-     内网面板地址: http://172.18.0.2:8888/7d2e5682
-     ```
-     
-     ![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223358.png)
+Tips：**删除镜像**后记得删除`/home/www`目录
 
 ## 三、问题
 

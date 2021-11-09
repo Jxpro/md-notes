@@ -72,7 +72,7 @@ $ file /lib/systemd/systemd
 
 [参考](https://zhuanlan.zhihu.com/p/83166352)
 
-1、使用`cat /etc/os-release`命令也可以获取到 Ubuntu 代号
+使用`cat /etc/os-release`命令也可以获取到 Ubuntu 代号
 
 ```bash
 cat /etc/os-release
