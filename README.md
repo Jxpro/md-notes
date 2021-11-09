@@ -6,11 +6,11 @@
 
 ## Theme of typora
 
--   My typora css file [github-night-dimmed.css](https://github.com/Jxpro/MD_Repo/blob/main/github-night-dimmed.css) is **modified** by myself based on [Github-Night](https://theme.typora.io/theme/Github-Night/) in **official** theme website
+-   My typora css file [github-night-dimmed.css](https://github.com/Jxpro/MD-Repo/blob/main/github-night-dimmed.css) is **modified** by myself based on [Github-Night](https://theme.typora.io/theme/Github-Night/) in **official** theme website
 
-## Command in Codeblock
+## Command in code block
 
 There is a blank line between each command without `$`, except in the following cases:
 
 -   If the commands are strongly related, there will be no blank lines between them
--   If this command has critical output, it will be preceded by `$`, and displays the output
+-   If this command has critical output, it will be preceded by `$`, and displays the main output
