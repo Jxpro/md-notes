@@ -4,10 +4,10 @@
 
 首先`fork`项目[github-readme-stats](https://github.com/anuraghazra/github-readme-stats)到自己的GitHub下，然后修改`/vercel.json`文件才能部署成功，不然会提示部署错误，需要付费升级Pro计划
 
+>   -   修改`maxDuration`为1~10，推荐修改为10
+>   -   `destination`用于设置`Vercel`域名重定向的url
+
 ```json
-// 修改maxDuration为1~10，推荐修改为10
-// redirects下的destination用于Vercel默认域名的重定向url
-// 可修改为自己的项目地址，也可保留不改
 {
   "functions": {
     "api/*.js": {

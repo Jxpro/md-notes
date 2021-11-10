@@ -76,16 +76,14 @@ cd C:\Users\username\AppData\Roaming\Typora\picgo\win64\
 ./picgo use uploader
 ```
 
-配置图片路径名称参数
+打开 ~/.picgo/config.json，结尾追加以下参数，用于配置图片路径重命名参数
+
+>   `"prefixFormat":"YYYY/MM/DD/"`这条不能加，修改路径会导致图片无法显示
 
 ```json
-// 打开 ~/.picgo/config.json
-// 结尾追加以下参数
-// 不好用，别加，加了会路径错误，图片显示不出来
 "picgo-plugin-super-prefix": {
     "fileFormat": "YYYY-MM-DD-HHmmss"
-//  "prefixFormat":"YYYY/MM/DD/",   不能加这条，修改路径会导致图片无法显示
-	} 
+} 
 ```
 
 打开Typora，验证图片上传，查看是否成功
