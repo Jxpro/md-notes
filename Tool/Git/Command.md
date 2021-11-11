@@ -58,10 +58,28 @@
 
 4.   然后执行 `git rebase --continue` ，完成此次 log 的`rebase`
 
-5.   这样**本地修改**就完成了，可用 `git log` 查看一下
+5.   这样**本地修改**就完成了，可用 `git log` 查看一下，且发现`commit`的时间没有变化
 
 6.   最后 `push` 到远程仓库，加上 `-f` **强制推送**：
 
      ```bash
      git push origin main -f
      ```
+
+7.   但是在`GitHub`上查看会发现`commit`的时间发生了变化
+
+8.   为此可执行以下指令来恢复时间戳：
+
+     ```bash
+     git rebase -i --root --committer-date-is-author-date
+     ```
+
+     -   必须加上`-i --root`，不然`--committer-date-is-author-date`会重置rebase的更改
+     -   `-i --root`弹出的窗口直接关闭，不用选择任何一项`edit`，然后等待rebase完成即可
+
+9.   最后再次`push` 到远程仓库，加上 `-f` **强制推送**：
+
+     ```bash
+     git push origin main -f
+     ```
+
