@@ -17,6 +17,9 @@ $ go env
 set GO111MODULE=
 set GOARCH=amd64
 ...
+# 配置文件目录
+GOENV=C:\Users\xin\AppData\Roaming\go\env
+...
 ```
 
 ## 三、修改相关配置
