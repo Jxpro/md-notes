@@ -26,7 +26,7 @@ GOENV=C:\Users\xin\AppData\Roaming\go\env
 
 ```bash
 # 设置GOPROXY，将Go Module下载请求重定向到GOPROXY指向的缓存库
-go env -w GO111MODULE=on
+go env -w GO111MODULE=on (auto)
 go env -w GOPROXY=https://goproxy.cn,direct
 
 # Go 1.13设置了默认的GOSUMDB=sum.golang.org
