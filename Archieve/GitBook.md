@@ -71,7 +71,16 @@ GitBook version: 3.2.3
 构建静态网站：`gitbook build`
 创建后，找到_book文件夹下的index.html，双击即可在浏览器预览
 
-## 六、参考文章
+## 六、导出PDF
+
+1.   首先安装Calibre插件，下载链接：[calibre release (3.48.0) (calibre-ebook.com)](https://download.calibre-ebook.com/3.48.0/)
+
+     最好安装这个版本，新版本会有问题
+
+2.   将ebook-convert.exe配置到系统变量Path中，否则会失败，该文件在Calibre安装目录下
+3.   在所有的一切都准备好之后就可以运行`gitbook pdf`，输出`pdf`了
+
+## 七、参考文章
 
 -   [Gitbook教程（小白入坑gitbook全过程）](https://www.jianshu.com/p/0388d8bb49a7)
 -   [GitBook 使用教程](https://www.jianshu.com/p/421cc442f06c)
