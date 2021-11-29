@@ -63,7 +63,7 @@ body {
 }
 
 #write {
-    max-width: 860px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 20px 30px 160px;
 }
@@ -71,13 +71,10 @@ body {
 
 /* 人物背景图片（右下角显示） */
 
-
-@media only screen and (min-width: 180px){
-    content {
-        background: url(./dyzj/bg.gif) no-repeat;
-        background-size : 12%;
-        background-position: 97% 100%;
-    }
+content {
+    background: url(./dyzj/bg.gif) no-repeat;
+    background-size : 12%;
+    background-position: 98% 98%;
 }
 
 
