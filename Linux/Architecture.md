@@ -2,6 +2,8 @@
 
 查看linux系统是**哪种架构**：`AMD`、`ARM`、`x86`、`x86_64`、`pcc`
 
+[TOC]
+
 ## 1、查看内核版本
 
 -   `cat /proc/version`
