@@ -1,5 +1,7 @@
 # Nodejs升级方法
 
+[TOC]
+
 ## 方法一： 用n模块升级nodejs（Linux）
 
 注意：此方法**仅适用于Linux**，Windows请使用其他方法
@@ -90,9 +92,9 @@ nvm uninstall 14.18.1
 >   -   `nvm root [path]`： 设置 nvm 存储node.js不同版本的目录 ,如果未设置，将使用当前目录。
 >       -`nvm version`： 显示当前运行的nvm版本，可以简写为`nvm v`
 
-## 三、官网下载覆盖安装
+## 方法三：官网下载覆盖安装
 
-下载：[最新版](https://nodejs.org/en/download/) | [旧版](https://nodejs.org/en/download/releases/)
+下载：[最新版](https://nodejs.org/en/download/) | [历史版本](https://nodejs.org/en/download/releases/)
 
 **注意问题**：之前使用`npm install npm -g`升级过`npm`的话，`npm`会保持之前的版本不变（及时版本比较旧），需要执行``npm uninstall npm -g`卸载之前安装的版本，才会变成`nodejs`自带的`npm`版本
 
