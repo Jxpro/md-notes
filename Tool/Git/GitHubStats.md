@@ -1,5 +1,7 @@
 # 在自己的Vercel服务器部署GitHub Stats
 
+[TOC]
+
 ## 一、Fork 项目仓库
 
 首先`fork`项目[github-readme-stats](https://github.com/anuraghazra/github-readme-stats)到自己的GitHub下，然后修改`/vercel.json`文件才能部署成功，不然会提示部署错误，需要付费升级Pro计划
@@ -77,15 +79,12 @@
 ## 六、自定义装X小技巧
 
 -   修改`/src/calculateRank.js`下`Line 89`代码：
-
     ```javascript
     return { level, score: normalizedScore };
     // 修改此处可改变stats-card显示的评级(level)和空余部分(score)
     return { level:"S++", score: 4.6 };
     ```
-
 -   修改`/src/cards/stats-card.js`下`totalIssues`，`totalPRs`
-
     ```javascript
      const STATS = {
         stars: {
@@ -117,9 +116,7 @@
         },
       };
     ```
-
 -   修改`/src/common/utils.js`下`cache_second`代码：
-
     ```javascript
     const CONSTANTS = {
       THIRTY_MINUTES: 1800,
@@ -128,7 +125,5 @@
       ONE_DAY: 86400,
     };
     ```
-
     可用于快速展示修改后的效果，但是修改满意后建议改回原来较大的数值
-    
     不然每次访问都需要重新查询，构造图片，会影响效果
