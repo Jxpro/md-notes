@@ -152,12 +152,31 @@ body {
 
 /* link */
 #write a:not([role="menuitem"]) {
-  color: var(--link-color) !important;
+  border-bottom:2px solid var(--link-color);
+  padding: 0 3px;
+  transition: .3s;
+  color: var(--text-color1);
   text-decoration: none;
 }
 
 #write a:not([role="menuitem"]):hover {
-  color: var(--link-color) !important;
+  border-radius:6px;
+  border-bottom:2px solid transparent;
+  background-color:var(--link-color);
+  color:var(--bg-color5);
+  cursor:pointer;
+}
+
+#write a.md-toc-inner {
+  border-bottom: none;
+  color:var(--link-color);
+}
+
+#write a.md-toc-inner:hover {
+  border-radius:0px;
+  border-bottom: none;
+  color:var(--link-color);
+  background-color: inherit;
   text-decoration: underline;
 }
 
