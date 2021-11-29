@@ -1,6 +1,6 @@
 # [Typora的Emoji指令](https://www.cnblogs.com/zhaoruiqing/articles/12870209.html)
 
--   **typora下推荐使用github.css主题进行阅读**
+[TOC]
 
 ## People
 

@@ -1,5 +1,7 @@
 # docker容器添加对外映射端口
 
+[TOC]
+
 ## 一、背景
 
 一般在运行容器时，我们都会通过参数`-p`（使用大写的`-P`参数则会随机选择宿主机的一个端口进行映射）来指定宿主机和容器**端口的映射**，例如
@@ -26,19 +28,14 @@ docker run -it -d --name [container-name] -p 8088:80 [image-name]
 过程如下：
 
 1.   停止现有容器
-
      ```bash
      docker stop container-name
      ```
-
 2.   将容器commit成为一个镜像
-
      ```bash
      docker commit container-name new-image-name
      ```
-
 3.   用新镜像运行容器
-
      ```bash
      docker run -it -d --name container-name -p p1:p1 -p p2:p2 new-image-name
      ```
@@ -50,47 +47,32 @@ docker run -it -d --name [container-name] -p 8088:80 [image-name]
 过程如下：
 
 1.   停止现有容器
-
     ```bash
     docker stop 容器ID
     ```
-    
 2.   停止docker服务，**必须先停止，不然修改不生效** 
-
      ```bash
      systemctl stop docker
      ```
-
 3.   进入/var/lib/docker/containers 目录下找到与 Id 相同的目录
-
      ```
      cd /var/lib/docker/containers/容器ID
      ```
-
 4.   修改 hostconfig.json 和 config.v2.json文件：
-
      ![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223332.png)
-
 5.   修改`hostconfig.json`，在`PortBindings`后加上要**绑定的端口**，添加端口绑定：
-
      ```bash
      # 表示绑定端口 3306
      "3306/tcp": [{"HostIp": "","HostPort": "3306"}]
      ```
-
      ![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223343.png)
-
 6.   修改`config.v2.json`在`ExposedPorts`后加上要**暴露的端口**
-
      ```bash
      # 表示暴露端口 3306
      "3306/tcp":{}
      ```
-
      ![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223349.png)
-
 7.   改完之后保存启动docker，查看添加的端口是否已映射绑定上
-
     ```
     systemctl start docker
     ```

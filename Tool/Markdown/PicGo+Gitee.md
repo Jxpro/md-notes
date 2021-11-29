@@ -1,5 +1,7 @@
 # typora下配置图床
 
+[TOC]
+
 ## 一、安装PicGo-Core
 
 **错误**安装：
