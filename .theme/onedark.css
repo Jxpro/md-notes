@@ -101,10 +101,6 @@
   --node-fill: var(--bg-color2);
   /* implicit border color in export menu of setting */
   --border-color: var(--menu-divider-color);
-
-  /*Modified by myself*/
-  --titlebefore-color-dyzj: #00c4b6; /* 各级标题点缀颜色（绿色） */
-  --focus-color-dyzj: #ff5d52; /* 点击某些元素（如标题）显示的颜色（偏红） */
 }
 
 /* font */
@@ -206,24 +202,29 @@ body {
 }
 
 /*风车图标 */
-/*h2::before {
+h2::before {
     content: '\e689' !important;
     color: #00c4b6;
     font-family: "iconfont";
-}*/
+}
 
 /* h2标题前缀旋转动画 */
-/*@-moz-keyframes avatar_turn_around{from{-webkit-transform:rotate(0);-moz-transform:rotate(0);-o-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg)}}@-webkit-keyframes avatar_turn_around{from{-webkit-transform:rotate(0);-moz-transform:rotate(0);-o-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg)}}@-o-keyframes avatar_turn_around{from{-webkit-transform:rotate(0);-moz-transform:rotate(0);-o-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes avatar_turn_around{from{-webkit-transform:rotate(0);-moz-transform:rotate(0);-o-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg)}}
+@-moz-keyframes avatar_turn_around{from{-webkit-transform:rotate(0);-moz-transform:rotate(0);-o-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg)}}@-webkit-keyframes avatar_turn_around{from{-webkit-transform:rotate(0);-moz-transform:rotate(0);-o-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg)}}@-o-keyframes avatar_turn_around{from{-webkit-transform:rotate(0);-moz-transform:rotate(0);-o-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes avatar_turn_around{from{-webkit-transform:rotate(0);-moz-transform:rotate(0);-o-transform:rotate(0);-ms-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-o-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg)}}
 h2:before {
     display: inline-block;
-    -webkit-animation: avatar_turn_around 1s linear infinite;
-    -moz-animation: avatar_turn_around 1s linear infinite;
-    -o-animation: avatar_turn_around 1s linear infinite;
-    -ms-animation: avatar_turn_around 1s linear infinite;
-    animation: avatar_turn_around 1s linear infinite;
-    font-size: 34px;
-    margin-left: -29px;
-}*/
+    -webkit-animation: avatar_turn_around 2s linear infinite;
+    -moz-animation: avatar_turn_around 2s linear infinite;
+    -o-animation: avatar_turn_around 2s linear infinite;
+    -ms-animation: avatar_turn_around 2s linear infinite;
+    animation: avatar_turn_around 2s linear infinite;
+    /*font-size: 1em;*/
+    margin-left: -1.2em;
+    margin-right: .2em;
+}
+
+#write>h2.md-focus:before {
+    color: var(--code-purple-color);
+}
 
 /* #write h2:before {
   content: "\00A7  ";
