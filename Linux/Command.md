@@ -1,5 +1,7 @@
 # Linux常用指令
 
+[TOC]
+
 ## 一、tar & gzip
 
 1.   基础概念
@@ -53,26 +55,16 @@
      **常用参数：**
 
      -   -c  将结果写到标准输出，原文件保持不变
-
      -   -d 解压缩
-
      -   -r 递归式地查找指定目录并压缩其中的所有文件或者是解压缩
-
      -   -t 测试，检查压缩文件是否完整
-
      -   -v 对每一个压缩和解压的文件，显示文件名和压缩比
-
      -   -l 列出每个压缩文件的如下项目：
-
-         compressed size：压缩文件的长度
-
-         uncompressed size：压缩前文件的长度
-
-         ratio：压缩率（如果未知则为0.0%）
-
-         uncompressed_name：压缩前的文件名
-         
-         Tips：对于非gzip 格式的文件，压缩前文件长度显示为 -1，例如由compress压缩的 .Z文件。
+         -   compressed size：压缩文件的长度
+         -   uncompressed size：压缩前文件的长度
+         -   ratio：压缩率（如果未知则为0.0%）
+         -   uncompressed_name：压缩前的文件名
+             Tips：对于非gzip 格式的文件，压缩前文件长度显示为 -1，例如由compress压缩的 .Z文件。
 
 ## 二、systemctl
 
@@ -147,7 +139,6 @@ systemctl --failed
      格式为两种：
 
      -   su - username （-l为login，即登陆的简写）
-
      -   su username 
 
      如果不指定用户名，默认即为root，所以切换到root的身份的命令即为：su [-] [root]
@@ -155,7 +146,6 @@ systemctl --failed
      `su username`与`su - username`的不同之处如下：
 
      -   su - username 切换用户后，**同时切换到新用户的工作环境中**。
-
      -   su username 切换用户后，**不改变原用户的工作目录，及其他环境变量目录**。
 
 ## 四、sed命令
@@ -165,14 +155,11 @@ systemctl --failed
 ### sed命令格式
 
 -   命令格式
-
     ```bash
     sed [options] 'command' file(s)
     sed [options] -f scriptfile file(s)
     ```
-
--   选项 
-
+-   选项
     ```bash
     -e<script>或--expression=<script>：以选项中的指定的script来处理输入的文本文件；
     -f<script文件>或--file=<script文件>：以选项中指定的script文件来处理输入的文本文件；
@@ -180,9 +167,7 @@ systemctl --failed
     -n或--quiet或——silent：仅显示script处理后的结果；
     -V或--version：显示版本信息。
     ```
-
--   命令 
-
+-   命令
     ```bash
     a\ 在当前行下面插入文本。
     i\ 在当前行上面插入文本。
@@ -210,9 +195,7 @@ systemctl --failed
     = 打印当前行号码。  
     # 把注释扩展到下一个换行符以前。
     ```
-
--   参数 
-
+-   参数
     文件：指定待处理的文本文件列表。
 
 ### sed替换标记 
@@ -248,5 +231,4 @@ x\{m,n\} 重复字符x，至少m次，不多于n次，如：/0\{5,10\}/匹配5~1
 ### sed用法实例 
 
 -   [Linux之sed命令详解](https://www.linuxprobe.com/linux-sed-command.html)
-
 -   [sed命令](https://man.linuxde.net/sed)
