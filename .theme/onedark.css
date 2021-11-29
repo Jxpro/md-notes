@@ -151,7 +151,7 @@ body {
 
 /* text selection background color */
 .in-text-selection {
-  background-color: --select-text-bg-color;
+  background-color: var(--select-text-bg-color);
 }
 
 /* link */
@@ -183,7 +183,7 @@ body {
   font-size: 2.5em;
   padding-bottom: 0.5em;
   border-bottom: 3px double var(--text-color5);
-  
+
 }
 
 /* #write h1:before {
@@ -198,7 +198,7 @@ body {
 
 /*风车图标 */
 /*h2::before {
-    content: '\e689' !important;  
+    content: '\e689' !important;
     color: #00c4b6;
     font-family: "iconfont";
 }*/
