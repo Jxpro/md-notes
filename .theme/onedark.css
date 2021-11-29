@@ -154,7 +154,8 @@ body {
 #write a:not([role="menuitem"]) {
   border-bottom:2px solid var(--link-color);
   padding: 0 3px;
-  transition: .3s;
+  transition-property: all, padding;
+  transition-duration: .3s, 0s;
   color: var(--text-color1);
   text-decoration: none;
 }
@@ -165,6 +166,14 @@ body {
   background-color:var(--link-color);
   color:var(--bg-color5);
   cursor:pointer;
+}
+
+#write .md-link.md-expand a:not([role="menuitem"]) {
+  padding: 0px;
+  border-radius:0px;
+  border-bottom:2px solid var(--link-color);
+  color: var(--text-color1);
+  background-color: inherit;
 }
 
 #write a.md-toc-inner {
