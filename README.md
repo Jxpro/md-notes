@@ -6,9 +6,9 @@
 
 ## Theme of typora
 
--   My typora css file [github-night-dimmed.css](https://github.com/Jxpro/MD-Repo/blob/main/github-night-dimmed.css) is **modified** by myself based on [Github-Night](https://theme.typora.io/theme/Github-Night/) in **official** theme website
--   Another css file [onedark.css](https://github.com/Jxpro/MD-Repo/blob/main/onedark.css) is s **modified** by myself based on [OneDark](https://theme.typora.io/theme/OneDark/) in **official** theme website
--   Another css file [dyzj.css](https://github.com/Jxpro/MD-Repo/blob/main/dyzj.css) is s **modified** by myself based on [dyzj](https://theme.typora.io/theme/dyzj/) in **official** theme website
+-   My typora css file [github-night-dimmed.css](https://github.com/Jxpro/MD-Repo/blob/main/.theme/github-night-dimmed.css) is **modified** by myself based on [Github-Night](https://theme.typora.io/theme/Github-Night/) in **official** theme website
+-   Another css file [onedark.css](https://github.com/Jxpro/MD-Repo/blob/main/.theme/onedark.css) is s **modified** by myself based on [OneDark](https://theme.typora.io/theme/OneDark/) in **official** theme website
+-   Another css file [dyzj.css](https://github.com/Jxpro/MD-Repo/blob/main/.theme/dyzj.css) is s **modified** by myself based on [dyzj](https://theme.typora.io/theme/dyzj/) in **official** theme website
 
 ## Command in code block
 
