@@ -1,8 +1,10 @@
 # iTunes升级ipad报错
 
+[TOC]
+
 ## 一、跳过备份直接更新
 
-### Windows：
+### Windows
 
 确保**iTunes已关闭**，进入`terminal`，输入以下指令
 
@@ -12,7 +14,7 @@
 "%CommonProgramFiles%\Apple\Apple Application Support\defaults.exe" write com.apple.iTunes AutomaticDeviceBackupsDisabled -bool true
 ```
 
-### MacOS：
+### MacOS
 
 确保**iTunes已关闭**，打开`terminal`，输入以下指令
 
