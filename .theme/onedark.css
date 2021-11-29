@@ -180,10 +180,19 @@ body {
 }
 
 #write h1 {
+  text-align: center;
   font-size: 2.5em;
   padding-bottom: 0.5em;
-  border-bottom: 3px double var(--text-color5);
+}
 
+/* 一级大标题下划线（为固定长度） */
+#write h1:after {
+    content: '';
+    display: block;
+    margin: 0.3em auto 0;
+    width: 150px;
+    height: 2px;
+    border-bottom: 3px double var(--text-color5);
 }
 
 /* #write h1:before {
