@@ -1,5 +1,7 @@
 # pretty_errors 自定义错误信息
 
+[TOC]
+
 这是一个用于美化python异常输出的模块，效果如下：
 
 ![example](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/2021-11-26-181020.png)

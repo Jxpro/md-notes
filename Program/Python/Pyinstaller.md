@@ -1,5 +1,7 @@
 # Python程序打包成.exe
 
+[TOC]
+
 >   为了让脚本在他人机器上顺利执行，你首先要帮他安装python解释器，如果你import了一些库比如pandas，那这个也需要安装，甚至相关的依赖也需要安装。这个时间成本显然是很大的，这部分工作也很枯燥，甚至会影响工作积极性，因此花一点时间，学会如何将python脚本打包为.exe文件，无需再安装各种开发环境和依赖库，是一件一劳永逸的事情。
 >
 >   现在，主流的工具有Pyinstaller、cz_Freeze、py2exe，本文只介绍Pyinstaller的使用。
@@ -20,8 +22,6 @@ $ pyinstaller --version
 即使我们的项目只使用的一个requests包，但是可能我们还安装了其他n个包，但是他不管，因为包和包只有依赖关系的。比如我们只装了一个requests包，但是requests包会顺带装了一些其他依赖的小包，所以为了安全，只能将所有第三方包+python解释器一起打包。
 
 ## 三、pyinstaller打包exe
-
-### 基本命令：
 
 ```bash
 # 打包exe
@@ -61,7 +61,5 @@ Pyinstaller -F -i xx.ico app.py
 解决办法：
 
 1.   Pyinstaller会从本地的环境路径下找需要的模块，例如python的包都放在site-packages目录下，因此，Pyinstalled可以直接从该目录下获取需要的模块。如果本地也缺少该模块，先通过pip命令安装。例如：`pip install requests`
-
 2.   如果你需要的模块不在site-packages，而在你指定的目录下，那打包时你可以通过-p DIR参数指定，其中DIR为你需要的模块路径：`pyinstaller -F -w -p DIR app.py`
-
 3.   有时候并不是找不到模块，而是代码中有些模块是隐含导入的，这样的话就需要指出这些模块，才能正确的打包，可以在命令行打包时使用参数`--hidden-import MODULENAME`指定模块名，或者可以在打包后生成的`app.spec`文件中修改，该文件中有个参数`hiddenimports=[]`，配置为：`hiddenimports=['cython','sklearn','sklearn.ensemble',...]`，然后再运行以下命令 `pyinstaller app.spec`

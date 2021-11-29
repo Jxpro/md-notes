@@ -1,5 +1,7 @@
 # PEP 8: do not use bare 'exept'
 
+[TOC]
+
 ## 错误描述
 
 ![image-20211112222512429](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/12-222513.png)

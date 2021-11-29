@@ -1,5 +1,7 @@
 # Python脚本实现校园网自动登录
 
+[TOC]
+
 ## 一、代码模板
 
 ```python
@@ -46,8 +48,9 @@ response = requests.post(url, headers=requestHeaders, data=formData)
 方法2：将`.py`改成`.pyw` (这个其实就是使用脚本解析程序pythonw.exe)
 
 跟 python.exe 比较起来，pythonw.exe 有以下的不同：
-1）执行时不会弹出控制台窗口（也叫 `DOS` 窗口）
-2）所有向原有的 `stdout` 和 `stderr` 的输出都无效
-3）所有从原有的 `stdin` 的读取都只会得到 `EOF`
+
+1.   执行时不会弹出控制台窗口（也叫 `DOS` 窗口）
+2.   所有向原有的 `stdout` 和 `stderr` 的输出都无效
+3.   所有从原有的 `stdin` 的读取都只会得到 `EOF`
 
 注：唯独视窗版 Python 有 .pyw 格式。
