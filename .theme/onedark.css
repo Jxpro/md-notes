@@ -282,12 +282,28 @@ ol {
 
 /* blockquote */
 blockquote {
-  border-radius: .25em;
-  border-left: 4px solid #45A9F9;
-  padding: 4px 15px;
+  position:relative;
+  border-left: 5px solid #5fa7e4;
+  border-radius: 3px;
+  padding: 10px 15px;
   color: var(--text-color1);
   background-color: var(--bg-color5);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+blockquote>* {
+  margin-left: 2rem !important;
+}
+
+blockquote::before {
+  content: '\e613';
+  font-family: "iconfont";
+  color: #5fa7e4;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: large;
+  font-weight: 600;
 }
 
 blockquote blockquote {
