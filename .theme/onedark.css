@@ -101,6 +101,8 @@
   --node-fill: var(--bg-color2);
   /* implicit border color in export menu of setting */
   --border-color: var(--menu-divider-color);
+
+  --ulol-color: #81accf;
 }
 
 /* font */
@@ -2155,4 +2157,67 @@ strong{
     /*darkcyan*/
     /*tan*/
     /*indianred*/
+}
+
+#write ul li, #write ol li, #write .ul .li, #write .ol .li {
+  list-style-type: none;
+}
+#write ul>li:not(.tab):before, #write .ul>.li:not(.tab):before {
+  margin-left: -22px;
+  margin-top: 10px;
+  width: .62em;
+  height: .62em;
+  border: .1em solid var(--ulol-color); /* #81d8cf */
+  border-radius: .31em;
+  background: 0 0;
+  content: '';
+  line-height: .42em;
+}
+#write ol li:before, #write ul li:before, #write .ol .li:before, #write .ul .li:before {
+  position: absolute;
+  background: var(--ulol-color); /* #81d8cf */
+  color: #fff;
+  cursor: pointer;
+  -webkit-transition: all .3s ease-out;
+  -moz-transition: all .3s ease-out;
+  -o-transition: all .3s ease-out;
+  -ms-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+}
+#write ol li:first-child, #write .ol .li:first-child { /* https://www.w3school.com.cn/cssref/pr_gen_counter-increment.asp */
+  counter-reset: li;
+}
+#write ol li:hover:before, #write ul li:hover:before, #write .ol .li:hover:before, #write .ul .li:hover:before {
+  -webkit-transform:rotate(360deg);
+  -moz-transform:rotate(360deg);
+  -o-transform:rotate(360deg);
+  -ms-transform:rotate(360deg);
+  transform:rotate(360deg);
+}
+#write ul>li:not(.tab):hover:before, #write .ul>.li:not(.tab):hover:before{
+  border-color: var(--code-purple-color);
+}
+#write ol>li:before, #write .ol>.li:before {
+  margin-top: 6px;
+  margin-left: -25px;
+  width: 1.65em;
+  height: 1.65em;
+  border-radius: 0.825em;
+  content: counter(li);
+  counter-increment: li;
+  text-align: center;
+  font-size: .65em;
+  line-height: 1.7em;
+}
+
+/* 列表子项上下间隔调整 */
+#write ul li *, #write ol li *, #write .ul .li *, #write .ol .li * {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+/* 列表上下间隔调整 */
+#write ul li, #write ol li, #write .ul .li, #write .ol .li {
+  margin-top: 7px;
+  margin-bottom: 7px;
 }
