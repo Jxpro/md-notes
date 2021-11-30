@@ -2195,7 +2195,7 @@ strong{
   transform:rotate(360deg);
 }
 #write ul>li:not(.tab):hover:before, #write .ul>.li:not(.tab):hover:before{
-  border-color: var(--code-purple-color);
+  border-color: var(--code-orange-color);
 }
 #write ol>li:before, #write .ol>.li:before {
   margin-top: 6px;
