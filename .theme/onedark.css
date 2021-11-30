@@ -298,8 +298,9 @@ blockquote {
   border-radius: 3px;
   padding: 10px 15px;
   color: var(--text-color1);
-  background-color: var(--bg-color5);
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  background-color: #81accf0f;
+  /* background-color: var(--bg-color5); */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 blockquote>* {
