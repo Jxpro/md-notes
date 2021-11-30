@@ -373,6 +373,10 @@ table tr td:last-child {
   border-right-width: 0px;
 }
 
+table tbody tr:hover {
+  background-color: var(--hover-bg-color1);
+}
+
 /* table edit panel */
 .ty-table-edit {
   background-color: var(--bg-color3);
@@ -1218,6 +1222,14 @@ code {
 
 .CodeMirror.cm-s-typora-default div.CodeMirror-cursor {
   border-left: 3px solid var(--code-cursor-color);
+}
+
+/* 选中行高亮 */
+.md-fences:not(.md-focus) .CodeMirror-code>*:hover {
+  background-color: var(--hover-bg-color1);
+}
+.md-fences.md-focus .CodeMirror-code>div.CodeMirror-activeline {
+  background-color: var(--hover-bg-color1);
 }
 
 /* highlight */
