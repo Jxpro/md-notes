@@ -1,4 +1,4 @@
-# typora下配置图床
+# Typora下配置图床
 
 [TOC]
 
