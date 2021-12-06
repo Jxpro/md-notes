@@ -12,7 +12,7 @@
 
 ## Command in code block
 
-There is a blank line between each command without `$`, except in the following cases:
+There is a blank line between each **shell command** without `$`, except in the following cases:
 
 -   If the commands are strongly related, there will be no blank lines between them
 -   If this command has critical output, it will be preceded by `$`, and displays the main output
