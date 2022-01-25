@@ -57,8 +57,12 @@ conda config --set auto_activate_base false
 # 修改base环境Python版本,测试无效
 conda install python=3.6
 
-conda create -n py3 python=3.6
-conda create -n p python=2
+# 创建py2和py3环境
+conda create -n py3 python=3.7
+conda create -n py2 python=2
+
+# 清楚多余的包
+conda clean -y --all
 ```
 
 ## 五、安装过程报错
