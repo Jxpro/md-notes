@@ -54,7 +54,7 @@
 >
 >   以上说法是经网友测试**可能是错误的**
 >
->   
+>
 >
 >   `yum update`和`yum upgrade`的功能是一样的，都是将package更新至软件源中的最新版
 >
@@ -68,7 +68,7 @@
 
 直接修改配置文件`/etc/yum.conf`，在 [main] 配置添加配置项
 
-```bash
+```shell
 exclude=kernel*
 exclude=centos-release*
 ```
@@ -77,19 +77,19 @@ exclude=centos-release*
 
 CentOS 7的镜像源文件的目录默认都在该路径下：/etc/yum.repos.d/
 
-```bash
+```shell
 cd /etc/yum.repos.d/
 ```
 
 **备份**原来的yum镜像源，如果出现错误可以恢复原配置
 
-```bash
+```shell
 cp /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak
 ```
 
 下载国内镜像源并重命名为 CentOS-Base.repo，将其作为当前系统的镜像源
 
-```bash
+```shell
 # 阿里云镜像站
 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 
@@ -99,13 +99,12 @@ wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-B
 
 清理缓存
 
-```bash
+```shell
 yum clean all
 ```
 
 重新生成缓存
 
-```bash
+```shell
 yum makecache
 ```
-

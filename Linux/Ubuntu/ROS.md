@@ -18,13 +18,13 @@
 
 ### 2.2 添加ROS软件源
 
-```bash
+```shell
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 ```
 
 ### 2.3 添加密钥
 
-```bash
+```shell
 curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
 ```
 
@@ -32,13 +32,13 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo ap
 
 更新软件索引：
 
-```bash
+```shell
 sudo apt update
 ```
 
 安装`Desktop-Full`版本（约五到十分钟）：
 
-```bash
+```shell
 sudo apt install ros-melodic-desktop-full
 ```
 
@@ -46,25 +46,25 @@ sudo apt install ros-melodic-desktop-full
 
 修改`.bashrc`：
 
-```bash
+```shell
 echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
 ```
 
 重启终端或使用`source`命令重新加载：
 
-```bash
+```shell
 source ~/.bashrc
 ```
 
 ### 2.7 安装相关依赖
 
-```bash
+```shell
 sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
 ```
 
 ### 2.8 初始化rosdep
 
-```bash
+```shell
 sudo rosdep init
 rosdep update
 ```

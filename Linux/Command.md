@@ -28,7 +28,7 @@
 
           gzip是GNU组织开发的一个压缩程序
 
-          .gz结尾的文件就是gzip压缩的结果，与gzip相对的解压程序是gunzip。 
+          .gz结尾的文件就是gzip压缩的结果，与gzip相对的解压程序是gunzip。
 
           **-z 参数令 tar 使用来调用 gzip**
 
@@ -48,7 +48,7 @@
 
      gunzip 也能识别扩展名为 .tgz 和 .taz 的文件，并将其分别当作 .tar.gz 和  .tar.Z  的缩写。
 
-     gunzip 目前能够解压由 gzip, zip, compress, compress -H 以及 pack产生的文件。 
+     gunzip 目前能够解压由 gzip, zip, compress, compress -H 以及 pack产生的文件。
 
      对输入格式的检测是自动的。
 
@@ -70,55 +70,55 @@
 
 查询服务是否开机启动
 
-```bash
+```shell
 systemctl is-enabled xxx.service
 ```
 
-**开机运行**服务 
+**开机运行**服务
 
-```bash
+```shell
 systemctl enable xxx.service
 ```
 
 取消开机运行
 
-```bash
+```shell
 systemctl disable xxx.service
 ```
 
 **启动服务**
 
-```bash
+```shell
 systemctl start xxx.service
 ```
 
 **停止服务**
 
-```bash
+```shell
 systemctl stop xxx.service
 ```
 
 **重启服务**
 
-```bash
+```shell
 systemctl restart xxx.service
 ```
 
 重新加载服务配置文件
 
-```bash
+```shell
 systemctl reload xxx.service
 ```
 
 **查询**服务运行状态
 
-```bash
+```shell
 systemctl status xxx.service
 ```
 
 显示启动失败的服务
 
-```bash
+```shell
 systemctl --failed
 ```
 
@@ -139,7 +139,7 @@ systemctl --failed
      格式为两种：
 
      -   su - username （-l为login，即登陆的简写）
-     -   su username 
+     -   su username
 
      如果不指定用户名，默认即为root，所以切换到root的身份的命令即为：su [-] [root]
 
@@ -155,12 +155,12 @@ systemctl --failed
 ### sed命令格式
 
 -   命令格式
-    ```bash
+    ```shell
     sed [options] 'command' file(s)
     sed [options] -f scriptfile file(s)
     ```
 -   选项
-    ```bash
+    ```shell
     -e<script>或--expression=<script>：以选项中的指定的script来处理输入的文本文件；
     -f<script文件>或--file=<script文件>：以选项中指定的script文件来处理输入的文本文件；
     -h或--help：显示帮助；
@@ -168,7 +168,7 @@ systemctl --failed
     -V或--version：显示版本信息。
     ```
 -   命令
-    ```bash
+    ```shell
     a\ 在当前行下面插入文本。
     i\ 在当前行上面插入文本。
     c\ 把选定的行改为新的文本。
@@ -189,35 +189,35 @@ systemctl --failed
     r file 从file中读行。
     t label if分支，从最后一行开始，条件一旦满足或者T，t命令，将导致分支到带有标号的命令处，或者到脚本的末尾。
     T label 错误分支，从最后一行开始，一旦发生错误或者T，t命令，将导致分支到带有标号的命令处，或者到脚本的末尾。
-    w file 写并追加模板块到file末尾。  
-    W file 写并追加模板块的第一行到file末尾。  
-    ! 表示后面的命令对所有没有被选定的行发生作用。  
-    = 打印当前行号码。  
+    w file 写并追加模板块到file末尾。
+    W file 写并追加模板块的第一行到file末尾。
+    ! 表示后面的命令对所有没有被选定的行发生作用。
+    = 打印当前行号码。
     # 把注释扩展到下一个换行符以前。
     ```
 -   参数
     文件：指定待处理的文本文件列表。
 
-### sed替换标记 
+### sed替换标记
 
-```bash
-g 表示行内全面替换。  
-p 表示打印行。  
-w 表示把行写入一个文件。  
-x 表示互换模板块中的文本和缓冲区中的文本。  
+```shell
+g 表示行内全面替换。
+p 表示打印行。
+w 表示把行写入一个文件。
+x 表示互换模板块中的文本和缓冲区中的文本。
 y 表示把一个字符翻译为另外的字符（但是不用于正则表达式）
 \1 子串匹配标记
 & 已匹配字符串标记
 ```
 
-### sed元字符集 
+### sed元字符集
 
-```bash
+```shell
 ^ 匹配行开始，如：/^sed/匹配所有以sed开头的行。
 $ 匹配行结束，如：/sed$/匹配所有以sed结尾的行。
 . 匹配一个非换行符的任意字符，如：/s.d/匹配s后接一个任意字符，最后是d。
 * 匹配0个或多个字符，如：/*sed/匹配所有模板是一个或多个空格后紧跟sed的行。
-[] 匹配一个指定范围内的字符，如/[ss]ed/匹配sed和Sed。  
+[] 匹配一个指定范围内的字符，如/[ss]ed/匹配sed和Sed。
 [^] 匹配一个不在指定范围内的字符，如：/[^A-RT-Z]ed/匹配不包含A-R和T-Z的一个字母开头，紧跟ed的行。
 \(..\) 匹配子串，保存匹配的字符，如s/\(love\)able/\1rs，loveable被替换成lovers。
 & 保存搜索字符用来替换其他字符，如s/love/**&**/，love这成**love**。
@@ -228,7 +228,7 @@ x\{m,\} 重复字符x，至少m次，如：/0\{5,\}/匹配至少有5个0的行�
 x\{m,n\} 重复字符x，至少m次，不多于n次，如：/0\{5,10\}/匹配5~10个0的行。
 ```
 
-### sed用法实例 
+### sed用法实例
 
 -   [Linux之sed命令详解](https://www.linuxprobe.com/linux-sed-command.html)
 -   [sed命令](https://man.linuxde.net/sed)

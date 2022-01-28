@@ -24,7 +24,7 @@
 
 ### 3.1 安装 GitBook-CLI
 
-```bash
+```shell
 npm install gitbook-cli -g
 npm config set registry https://registry.npm.taobao.org
 ```
@@ -35,7 +35,7 @@ npm config set registry https://registry.npm.taobao.org
 
 ~~执行以下命令更新`graceful-fs`库，不然会提示错误或一直阻塞在`Installing GitBook 3.2.3`~~
 
-```bash
+```shell
 # 将graceful-fs更新到latest版，即最新版
 npm install graceful-fs@latest --save
 # 以上命令无效
@@ -55,7 +55,7 @@ npm install graceful-fs@latest --save
 
 执行以下指令查看gitbook版本，程序会自动安装gitbook，且时间会很久
 
-```bash
+```shell
 $ gitbook -V
 CLI version: 2.3.2
 # 首次运行会提示：

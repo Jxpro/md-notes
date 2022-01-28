@@ -2,13 +2,13 @@
 
 ## 一、下载安装脚本
 
-```bash
+```shell
 wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2021.11-Linux-x86_64.sh
 ```
 
 ## 二、执行安装脚本
 
-```bash
+```shell
 sh Anaconda3-2021.11-Linux-x86_64.sh
 ```
 
@@ -38,19 +38,19 @@ custom_channels:
 
 清除索引缓存：
 
-```bash
+```shell
 conda clean -i
 ```
 
 修改pip镜像：
 
-```bash
+```shell
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 ## 四、修改环境
 
-```bash
+```shell
 # 关闭自动激活base环境
 conda config --set auto_activate_base false
 

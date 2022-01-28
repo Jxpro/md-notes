@@ -13,7 +13,7 @@
 
 拉取镜像，宝塔对centos7**兼容性[^1]**最好 ，且centos8的docker镜像下载不了`step3`的`screen
 
-```bash
+```shell
 docker pull centos:centos7.9.2009
 ```
 
@@ -27,7 +27,7 @@ docker pull centos:centos7.9.2009
 >
 >   `privileged`表示在运行容器的时候，给容器加特权，设置容器有写文件的**权限**
 
-```bash
+```shell
 # 没有启动 vsftpd 服务
 docker run -it --name btpanel -p 20:20 -p 21:21 -p 80:80 -p 443:443 -p 888:888 -p 3306:3306 -p 8888:8888 --privileged=true -v /home/www:/www centos:centos7.9.2009 /bin/bash
 
@@ -39,7 +39,7 @@ docker run -it --name btpanel -p 20:20 -p 210:21 -p 80:80 -p 443:443 -p 888:888 
 
 这里使用`yum update -y`会升级系统和内核，但是因为是纯净版本，所以升级很快
 
-```bash
+```shell
 # centos 7
 yum update -y && yum install initscripts screen wget -y
 
@@ -52,7 +52,7 @@ yum update -y && yum install initscripts wget -y
 
 执行`Centos`宝塔面板的安装命令，期间会有一个安装确认，输入`y`
 
-```bash
+```shell
 wget -O i.sh http://download.bt.cn/install/install_6.0.sh && sh i.sh
 ```
 
@@ -71,7 +71,7 @@ Tips：**删除镜像**后记得删除`/home/www`目录
 
 1.   Step2 出现错误
 
-     ```bash
+     ```shell
      docker: Error response from daemon: driver failed programming external connectivity on endpoint btpanel (daaeec405d1d7b088754e6a7fe621f9c584a10a5df294e241aa574317b757716): Error starting userland proxy: listen tcp4 0.0.0.0:21: bind: address already in use.
      ```
 
@@ -87,7 +87,7 @@ Tips：**删除镜像**后记得删除`/home/www`目录
 
      注意: **5.x系列**Linux面板从2020年1月1日起终止维护，与技术支持，请考虑安装全新的7.x版本 宝塔官网: https://www.bt.cn
 
-     ```bash
+     ```shell
      wget -O i.sh http://download.bt.cn/install/install.sh && sh i.sh
      修改为
      wget -O i.sh http://download.bt.cn/install/install_6.0.sh && sh i.sh
@@ -95,7 +95,7 @@ Tips：**删除镜像**后记得删除`/home/www`目录
 
 3.   Setp4 运行出现错误
 
-     ```bash
+     ```shell
      install.sh: line 1: --2021-10-28: command not found
      install.sh: line 2: syntax error near unexpected token `('
      install.sh: line 2: `Resolving download.bt.cn (download.bt.cn)... 116.10.184.143, 240e:a5:4200:89::143'
@@ -103,7 +103,7 @@ Tips：**删除镜像**后记得删除`/home/www`目录
 
      原因：参考文章：[wget命令详解](https://www.cnblogs.com/sx66/p/11887022.html)
 
-     ```bash
+     ```shell
      # step4 原命令
      wget -o i.sh https://download.bt.cn/install/install_6.0.sh && sh i.sh
 
@@ -117,11 +117,11 @@ Tips：**删除镜像**后记得删除`/home/www`目录
 
 4.   <span style="color:crimson">Error: DBUS_ERROR: Failed to connect to socket /run/dbus/system_bus_socket: No such file or directory</span>
 
-     ```bash
+     ```shell
      确定两点：
      1. dbus是否启动？如果没启动，则：
      /etc/init.d/dbus start
-     
+
      2. dbus启动了，守护进程dbus-daemon是否启动？如果没启动，则：
      dbus-daemon --system
      ```
@@ -132,7 +132,7 @@ Tips：**删除镜像**后记得删除`/home/www`目录
 
 参考文章：[宝塔linux面板重启、重置等命令](https://www.xp8.net/server/392.html)
 
-```bash
+```shell
 # 查看默认入口和账号密码
 /etc/init.d/bt default
 # 停止

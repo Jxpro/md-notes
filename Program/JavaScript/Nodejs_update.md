@@ -8,21 +8,21 @@
 
 安装
 
-```bash
+```shell
 # 全局安装
 npm install -g n
 ```
 
 查看本地安装的所有版本，有可选参数available，显示所有可下载的版本
 
-```bash
+```shell
 # 查看版本
 nvm list available
 ```
 
 切换版本
 
-```bash
+```shell
 # 升级到最新稳定版
 n stable
 
@@ -35,13 +35,13 @@ n 7.10.0
 
 删除指定版本
 
-```bash
+```shell
 n rm 7.10.0
 ```
 
 用指定的版本执行脚本
 
-```bash
+```shell
 n use 7.10.0 app.js
 ```
 
@@ -51,7 +51,7 @@ n use 7.10.0 app.js
 
 下载对应版本nodejs
 
-```bash
+```shell
 $ nvm use 16
 Now using node v16.9.1 (npm v7.21.1)
 
@@ -66,13 +66,13 @@ $ nvm install node
 
 切换版本
 
-```bash
+```shell
 nvm use 14.18.1
 ```
 
 删除指定版本
 
-```bash
+```shell
 nvm uninstall 14.18.1
 ```
 
@@ -98,7 +98,7 @@ nvm uninstall 14.18.1
 
 **注意问题**：之前使用`npm install npm -g`升级过`npm`的话，`npm`会保持之前的版本不变（及时版本比较旧），需要执行``npm uninstall npm -g`卸载之前安装的版本，才会变成`nodejs`自带的`npm`版本
 
-```bash
+```shell
 # 当前nodejs版本，默认npm版本为8.1.0
 $ node -v
 v16.13.0
@@ -114,6 +114,3 @@ $ npm uninstall npm -g
 $ npm -v
 8.1.0
 ```
-
-
-

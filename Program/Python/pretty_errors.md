@@ -8,7 +8,7 @@
 
 ## 一、安装
 
-```bash
+```shell
 pip install pretty_errors
 ```
 
@@ -22,7 +22,7 @@ import pretty_errors
 
 如果要避免重复引入，可在终端输入如下命令：
 
-```bash
+```shell
 python -m pretty_errors
 ```
 

@@ -4,15 +4,15 @@
 
 ## 一、下载安装
 
-``````bash
+``````shell
 wget http://download.redis.io/redis-stable.tar.gz
-tar -xzf redis-stable.tar.gz 
+tar -xzf redis-stable.tar.gz
 cd redis-stable/
 make
 ...
 ``````
 
-```bash
+```shell
 # 以下命令将Redis常用命令加入/usr/local/bin
 make install
 
@@ -30,7 +30,7 @@ make[1]: Leaving directory '/root/redis-stable/src'
 
 ## 二、测试安装
 
-```bash
+```shell
 make test
 
 # 输出摘录
@@ -78,29 +78,29 @@ make[1]: Leaving directory '/root/redis-stable/src'
 
 如下所示：
 
-```bash
-root@iZwz91577x7sn2pgjejf5kZ:~# redis-server 
+```shell
+root@iZwz91577x7sn2pgjejf5kZ:~# redis-server
 20060:C 02 Dec 2021 18:32:07.848 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
 20060:C 02 Dec 2021 18:32:07.850 # Redis version=6.2.6, bits=64, commit=00000000, modified=0, pid=20060, just started
 20060:C 02 Dec 2021 18:32:07.850 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
 20060:M 02 Dec 2021 18:32:07.869 * monotonic clock: POSIX clock_gettime
-                _._                                                  
-           _.-``__ ''-._                                             
+                _._
+           _.-``__ ''-._
       _.-``    `.  `_.  ''-._           Redis 6.2.6 (00000000/0) 64 bit
-  .-`` .-```.  ```\/    _.,_ ''-._                                  
+  .-`` .-```.  ```\/    _.,_ ''-._
  (    '      ,       .-`  | `,    )     Running in standalone mode
  |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
  |    `-._   `._    /     _.-'    |     PID: 20060
-  `-._    `-._  `-./  _.-'    _.-'                                   
- |`-._`-._    `-.__.-'    _.-'_.-'|                                  
- |    `-._`-._        _.-'_.-'    |           https://redis.io       
-  `-._    `-._`-.__.-'_.-'    _.-'                                   
- |`-._`-._    `-.__.-'    _.-'_.-'|                                  
- |    `-._`-._        _.-'_.-'    |                                  
-  `-._    `-._`-.__.-'_.-'    _.-'                                   
-      `-._    `-.__.-'    _.-'                                       
-          `-._        _.-'                                           
-              `-.__.-'                                               
+  `-._    `-._  `-./  _.-'    _.-'
+ |`-._`-._    `-.__.-'    _.-'_.-'|
+ |    `-._`-._        _.-'_.-'    |           https://redis.io
+  `-._    `-._`-.__.-'_.-'    _.-'
+ |`-._`-._    `-.__.-'    _.-'_.-'|
+ |    `-._`-._        _.-'_.-'    |
+  `-._    `-._`-.__.-'_.-'    _.-'
+      `-._    `-.__.-'    _.-'
+          `-._        _.-'
+              `-.__.-'
 
 20060:M 02 Dec 2021 18:32:07.892 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
 20060:M 02 Dec 2021 18:32:07.893 # Server initialized
@@ -118,29 +118,29 @@ root@iZwz91577x7sn2pgjejf5kZ:~# redis-server
 
 **最终效果**（暂时仍采用默认配置）如下所示：
 
-```bash
-root@iZwz91577x7sn2pgjejf5kZ:~# redis-server 
+```shell
+root@iZwz91577x7sn2pgjejf5kZ:~# redis-server
 26080:C 02 Dec 2021 18:41:40.215 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
 26080:C 02 Dec 2021 18:41:40.215 # Redis version=6.2.6, bits=64, commit=00000000, modified=0, pid=26080, just started
 26080:C 02 Dec 2021 18:41:40.215 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
 26080:M 02 Dec 2021 18:41:40.215 * monotonic clock: POSIX clock_gettime
-                _._                                                  
-           _.-``__ ''-._                                             
+                _._
+           _.-``__ ''-._
       _.-``    `.  `_.  ''-._           Redis 6.2.6 (00000000/0) 64 bit
-  .-`` .-```.  ```\/    _.,_ ''-._                                  
+  .-`` .-```.  ```\/    _.,_ ''-._
  (    '      ,       .-`  | `,    )     Running in standalone mode
  |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
  |    `-._   `._    /     _.-'    |     PID: 26080
-  `-._    `-._  `-./  _.-'    _.-'                                   
- |`-._`-._    `-.__.-'    _.-'_.-'|                                  
- |    `-._`-._        _.-'_.-'    |           https://redis.io       
-  `-._    `-._`-.__.-'_.-'    _.-'                                   
- |`-._`-._    `-.__.-'    _.-'_.-'|                                  
- |    `-._`-._        _.-'_.-'    |                                  
-  `-._    `-._`-.__.-'_.-'    _.-'                                   
-      `-._    `-.__.-'    _.-'                                       
-          `-._        _.-'                                           
-              `-.__.-'                                               
+  `-._    `-._  `-./  _.-'    _.-'
+ |`-._`-._    `-.__.-'    _.-'_.-'|
+ |    `-._`-._        _.-'_.-'    |           https://redis.io
+  `-._    `-._`-.__.-'_.-'    _.-'
+ |`-._`-._    `-.__.-'    _.-'_.-'|
+ |    `-._`-._        _.-'_.-'    |
+  `-._    `-._`-.__.-'_.-'    _.-'
+      `-._    `-.__.-'    _.-'
+          `-._        _.-'
+              `-.__.-'
 
 26080:M 02 Dec 2021 18:41:40.217 # Server initialized
 26080:M 02 Dec 2021 18:41:40.217 * Loading RDB produced by version 6.2.6
@@ -150,4 +150,3 @@ root@iZwz91577x7sn2pgjejf5kZ:~# redis-server
 26080:M 02 Dec 2021 18:41:40.217 * DB loaded from disk: 0.000 seconds
 26080:M 02 Dec 2021 18:41:40.217 * Ready to accept connections
 ```
-
