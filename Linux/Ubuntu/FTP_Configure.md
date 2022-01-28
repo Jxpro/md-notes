@@ -31,7 +31,7 @@ FTP的工作方式的C/S模式(客户端/服务器模式)，采用TCP面向连�
 
 ## 二、安装
 
-```bash
+```shell
 # 系统版本
 # Ubuntu 18.04.6 LTS (GNU/Linux 4.15.0-48-generic x86_64)
 
@@ -50,7 +50,7 @@ vsftpd: version 3.0.3
 
 ### 1.2 配置本地用户模式
 
-```bash
+```shell
 #备份配置文件
 cp /etc/vsftpd.conf /etc/vsftpd.conf.bak
 
@@ -87,7 +87,7 @@ systemctl restart vsftpd
 
 2.   前 vsftpd.conf 配置:
 
-     ```bash
+     ```shell
      listen=NO
      listen_ipv6=YES
      anonymous_enable=NO
@@ -114,11 +114,11 @@ systemctl restart vsftpd
 
      因为vsftpd.conf配置文件后修改后未重启服务
 
-     ```bash
+     ```shell
      # 以下命令无法重新加载配置文件
      systemctl enable vsftpd
      systemctl start vsftpd
-     
+
      # 需要执行以下命令
      systemctl restart vsftpd
      #或者

@@ -6,7 +6,7 @@
 
 **错误**安装：
 
-```bash
+```shell
 # 不能如下通过**npm**安装
 # 因为npm安装以后没有exe文件，无法通过typora运行PicGo
 npm install picgo -g
@@ -27,25 +27,25 @@ npm install picgo -g
 
 进入Typora安装的picgo.exe目录
 
-```bash
+```shell
 cd C:\Users\username\AppData\Roaming\Typora\picgo\win64\
 ```
 
 安装相关插件
 
-```bash
+```shell
 # 用于格式化图片名称，防止重复
 .\picgo install super-prefix
-# PicGo Gitee图床插件 
+# PicGo Gitee图床插件
 .\picgo install gitee-uploader
 ```
 
 通过`CLI`配置`Gitee`仓库
 
-```bash
+```shell
 # 设置配置文件
 # 按上下键找到gitee，回车
-./picgo set uploader  
+./picgo set uploader
 ```
 >   可选项说明：
 >
@@ -57,7 +57,7 @@ cd C:\Users\username\AppData\Roaming\Typora\picgo\win64\
 >
 >   -   **token**：刚才生成的token
 >
->   -   **path**：路径，图片存储于 reponame/${path} 下    
+>   -   **path**：路径，图片存储于 reponame/${path} 下
 >
 >   -   **custompath**：用于配置path，customPath为占位符
 >
@@ -69,7 +69,7 @@ cd C:\Users\username\AppData\Roaming\Typora\picgo\win64\
 >
 >       -   customPath选择年月[^3]，则实际的path值为blog/2021/01
 >
->   -   **customURL**: 不用填，保持默认（ 不能乱填 ） 
+>   -   **customURL**: 不用填，保持默认（ 不能乱填 ）
 
 配置完后使用Gitee仓库
 
@@ -85,7 +85,7 @@ cd C:\Users\username\AppData\Roaming\Typora\picgo\win64\
 ```json
 "picgo-plugin-super-prefix": {
     "fileFormat": "YYYY-MM-DD-HHmmss"
-} 
+}
 ```
 
 打开Typora，验证图片上传，查看是否成功

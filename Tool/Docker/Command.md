@@ -28,7 +28,7 @@
 
 ## run 命令
 
-```bash
+```shell
 docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 
 # 示例一
@@ -60,7 +60,7 @@ OPTIONS说明：
 
 ## ps --format
 
-```bash
+```shell
 Valid placeholders:
 .ID - Container ID.
 .Image - Image ID.
@@ -72,7 +72,7 @@ Valid placeholders:
 .Size - Container disk size.
 .Names - Container names.
 .Labels - All labels assigned to the container.
-.Label - Value of a specific label for this container. 
+.Label - Value of a specific label for this container.
 .Mounts - Names of the volumes mounted in this container.
 
 # example
@@ -81,7 +81,7 @@ docker ps -a --format "table {{.ID}}\t{{.Command}}\t{{.Names}}\t{{.Status}}"
 
 ## rm & rmi
 
-```bash
+```shell
 docker rm -f $(docker ps -aq)
 docker rmi -f $(docker images -aq)
 
@@ -89,4 +89,3 @@ docker rm 容器id   				#删除指定的容器，强制删除: rm -rf
 docker rm -f $(docker ps -aq)  	 #删除所有的容器
 docker ps -aq|xargs docker rm  #删除所有的容器
 ```
-

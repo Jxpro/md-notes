@@ -28,15 +28,15 @@ docker run -it -d --name [container-name] -p 8088:80 [image-name]
 过程如下：
 
 1.   停止现有容器
-     ```bash
+     ```shell
      docker stop container-name
      ```
 2.   将容器commit成为一个镜像
-     ```bash
+     ```shell
      docker commit container-name new-image-name
      ```
 3.   用新镜像运行容器
-     ```bash
+     ```shell
      docker run -it -d --name container-name -p p1:p1 -p p2:p2 new-image-name
      ```
 
@@ -47,11 +47,11 @@ docker run -it -d --name [container-name] -p 8088:80 [image-name]
 过程如下：
 
 1.   停止现有容器
-    ```bash
+    ```shell
     docker stop 容器ID
     ```
-2.   停止docker服务，**必须先停止，不然修改不生效** 
-     ```bash
+2.   停止docker服务，**必须先停止，不然修改不生效**
+     ```shell
      systemctl stop docker
      ```
 3.   进入/var/lib/docker/containers 目录下找到与 Id 相同的目录
@@ -61,13 +61,13 @@ docker run -it -d --name [container-name] -p 8088:80 [image-name]
 4.   修改 hostconfig.json 和 config.v2.json文件：
      ![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223332.png)
 5.   修改`hostconfig.json`，在`PortBindings`后加上要**绑定的端口**，添加端口绑定：
-     ```bash
+     ```shell
      # 表示绑定端口 3306
      "3306/tcp": [{"HostIp": "","HostPort": "3306"}]
      ```
      ![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223343.png)
 6.   修改`config.v2.json`在`ExposedPorts`后加上要**暴露的端口**
-     ```bash
+     ```shell
      # 表示暴露端口 3306
      "3306/tcp":{}
      ```

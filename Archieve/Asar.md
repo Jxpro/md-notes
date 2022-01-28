@@ -16,7 +16,7 @@
 
 全局环境安装asar
 
-```bash
+```shell
 npm install asar -g
 
 asar -V
@@ -26,24 +26,24 @@ asar -V
 
 -   打包一个文件或目录:
 
-    ```bash
+    ```shell
     asar pack ./ app.asar
     ```
 
 -   解压一个 asar 文件:
 
-    ```bash
+    ```shell
     asar extract app.asar ./
     ```
 
 -   列出一个 asar 文件中的内容:
 
-    ```bash
+    ```shell
     asar list app.asar
     ```
 
 -   从 asar 文件中解压指定的文件:
 
-    ```bash
+    ```shell
     asar extract-file {{asar 文件}} {{文件}}
     ```

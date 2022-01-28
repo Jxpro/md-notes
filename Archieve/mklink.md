@@ -1,6 +1,6 @@
 # Windows下mklink用法
 
-```bash
+```shell
 MKLINK [[/D] | [/H] | [/J]] Link Target
 
         /D      创建目录符号链接。默认为文件
@@ -11,4 +11,3 @@ MKLINK [[/D] | [/H] | [/J]] Link Target
         Target  指定新链接引用的路径
                 (相对或绝对)。
 ```
-

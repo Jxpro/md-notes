@@ -8,7 +8,7 @@
 
 ## 一、安装pyinstaller
 
-```bash
+```shell
 pip install pyinstaller
 
 $ pyinstaller --version
@@ -23,18 +23,18 @@ $ pyinstaller --version
 
 ## 三、pyinstaller打包exe
 
-```bash
+```shell
 # 打包exe
 Pyinstaller -F app.py
 
 # 取消控制台输出
-Pyinstaller -F -w app.py 
+Pyinstaller -F -w app.py
 
 # 指定模块目录
 pyinstaller -F -p DIR app.py
 
 # 指定exe图标打包
-Pyinstaller -F -i xx.ico app.py 
+Pyinstaller -F -i xx.ico app.py
 ```
 
 执行上面命令，将看到详细的生成过程。当生成完成后，将会在此 app 目录下看到多了一个 dist 目录，并在该目录下看到有一个 app.exe 文件，这就是使用 PyInstaller 工具生成的 EXE 程序。

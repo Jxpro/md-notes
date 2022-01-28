@@ -2,7 +2,7 @@
 
 打开`CMD`（`Terminal`不行），输入以下指令，查看电脑连接过的WiFi名称
 
-```bash
+```shell
 netsh wlan show profiles
 ```
 
@@ -10,7 +10,7 @@ netsh wlan show profiles
 
 输入以下指令，查看该WiFi名称的详细信息，如下图所示：
 
-```bash
+```shell
 netsh wlan show profiles WiFi名称 key=clear
 ```
 

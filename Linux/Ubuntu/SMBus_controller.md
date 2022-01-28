@@ -14,7 +14,7 @@
 
 查找报错的模块
 
-```bash
+```shell
 # 对只读文件修改
 mount -o remount,rw /
 
@@ -27,7 +27,7 @@ lsmod | grep piix4
 
 禁用报错的模块
 
-```bash
+```shell
 vi + /etc/modprobe.d/blacklist.conf
 
 //用vi打开并跳转到最后一行
@@ -39,13 +39,12 @@ blacklist i2c_piix4
 
 重新生成引导文件，如果不进行该操作直接重启还是会报错
 
-```bash
+```shell
 update-initramfs  -u  -k  all
 ```
 
 重启
 
-```bash
+```shell
 reboot
 ```
-

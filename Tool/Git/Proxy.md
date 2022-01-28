@@ -1,6 +1,6 @@
 # Git设置代理
 
-```bash
+```shell
 # 为 git 设置全局代理
 git config --global https.proxy http://127.0.0.1:7890
 git config --global https.proxy https://127.0.0.1:7890
@@ -13,4 +13,3 @@ git config --global --unset https.proxy
 git config --global --get http.proxy
 git config --global --get https.proxy
 ```
-

@@ -10,7 +10,7 @@
 
 破解工具：[typora Cracker](https://github.com/Mas0nShi/typoraCracker.git) | [备用地址](https://github.com/Jxpro/MD-Repo/raw/main/typoraCracker-master.zip)
 
-```bash
+```shell
 > python typora.py --help
 usage: typora.py [-h] [-u] [-f] asarPath dirPath
 
@@ -32,7 +32,7 @@ If you have any questions, please contact [ MasonShi@88.com ]
 
 **解压并解密**`app.asar`文件：
 
-```bash
+```shell
 $ python typora.py {installRoot}/Typora/resources/app.asar workstation/outfile/
 ...
 ```
@@ -41,14 +41,14 @@ $ python typora.py {installRoot}/Typora/resources/app.asar workstation/outfile/
 
 重新**加密并打包**文件：
 
-```bash
+```shell
 $ python typora.py -u workstation/outfile/dec_app workstation/outappasar
 ...
 ```
 
 生成合格的**许可证**：
 
-```bash
+```shell
 $ node example/keygen.js
 LMCHMW-4DGF5Z-T4PP4Z-S6343H
 ```
@@ -73,13 +73,13 @@ LMCHMW-4DGF5Z-T4PP4Z-S6343H
 
 执行下面命令时：
 
-```bash
+```shell
 $ python typora.py -u workstation/outfile/dec_app workstation/outappasar
 ```
 
 报错：
 
-```bash
+```shell
 2021-12-04 14:35:46.711 | ERROR    | __main__:packWenc:103 - plz input Directory for app.asar
 Traceback (most recent call last):
   File "typora.py", line 151, in <module>
@@ -97,7 +97,7 @@ NotADirectoryError
 
 执行下面命令时：
 
-```bash
+```shell
 $ python typora.py {installRoot}/Typora/resources/app.asar workstation/outfile/
 ```
 
@@ -105,7 +105,7 @@ $ python typora.py {installRoot}/Typora/resources/app.asar workstation/outfile/
 
 指定安装目录下的app.asar输出如下：
 
-```bash
+```shell
 $ python typora.py "C:/Program Files/Typora/resources/app.asar" "workstation/outfile/"
 2021-12-04 14:37:22.030 | INFO     | __main__:extractWdec:56 - extract asar file: C:/Program Files/Typora/resources/app.asar
 2021-12-04 14:37:22.093 | SUCCESS  | __main__:extractWdec:59 - extract ended.
@@ -127,7 +127,7 @@ $ python typora.py "C:/Program Files/Typora/resources/app.asar" "workstation/out
 
 指定当前目录下的app.asar文件输出如下：
 
-```bash
+```shell
 $ python typora.py "./app.asar" "workstation/outfile/local"
 2021-12-04 14:37:36.323 | INFO     | __main__:extractWdec:56 - extract asar file: ./app.asar
 Couldn't copy file .\main.node, no extracted directory

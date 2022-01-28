@@ -10,7 +10,7 @@
 -   `uname -a`
 -   `uname -r`
 
-```bash
+```shell
 $ cat /proc/version
 Linux version 4.15.0-161-generic (buildd@lcy01-amd64-012) (gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04)) #169-Ubuntu SMP Fri Oct 15 13:41:54 UTC 2021
 
@@ -26,7 +26,7 @@ $ uname -r
 -   `lsb_release -a`
 -   `cat /etc/issue`
 
-```bash
+```shell
 $ lsb_release -a
 LSB Version:	core-9.20170808ubuntu1-noarch:security-9.20170808ubuntu1-noarch
 Distributor ID:	Ubuntu
@@ -43,7 +43,7 @@ Ubuntu 18.04.6 LTS \n \l
 -   `getconf LONG_BIT`
 -   `file /bin/ls`
 
-```bash
+```shell
 $ getconf LONG_BIT
 64
 
@@ -57,7 +57,7 @@ $ file /bin/ls
 -   `arch`
 -   `file /lib/systemd/systemd`
 
-```bash
+```shell
 $ dpkg --print-architecture
 amd64
 
@@ -76,7 +76,7 @@ $ file /lib/systemd/systemd
 
 使用`cat /etc/os-release`命令也可以获取到 Ubuntu 代号
 
-```bash
+```shell
 cat /etc/os-release
 
 # 输出
@@ -103,4 +103,3 @@ UBUNTU_CODENAME=bionic
 -   x86_64是一种64位的指令集，x86_64是x86指令的超集，在x86上可以运行的程序，在x86_64上也可以运行，`x86_64`是AMD发明的，也叫`AMD64`
 
 现在用的intel/amd的桌面级CPU基本上都是x86_64，与之相对的`arm`、`pcc`等都不是`x86_64`
-
