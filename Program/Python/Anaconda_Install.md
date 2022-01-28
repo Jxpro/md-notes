@@ -2,13 +2,13 @@
 
 ## 一、下载安装脚本
 
-```shell
+```bash
 wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2021.11-Linux-x86_64.sh
 ```
 
 ## 二、执行安装脚本
 
-```shell
+```bash
 sh Anaconda3-2021.11-Linux-x86_64.sh
 ```
 
@@ -38,19 +38,19 @@ custom_channels:
 
 清除索引缓存：
 
-```shell
+```bash
 conda clean -i
 ```
 
 修改pip镜像：
 
-```shell
+```bash
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 ## 四、修改环境
 
-```shell
+```bash
 # 关闭自动激活base环境
 conda config --set auto_activate_base false
 
@@ -69,7 +69,7 @@ conda clean -y --all
 
 报错内容：Anaconda3-2021.11-Linux-x86_64.sh: Syntax error: "(" unexpected (expecting ")")
 
-报错原因：兼容性问题，因为linux将sh默认指向了dash，而不是bash 
+报错原因：兼容性问题，因为linux将sh默认指向了dash，而不是bash
 
 解决方法：在root下面执行`dpkg-reconfigure dash`,选择no
 
