@@ -4,13 +4,13 @@
 
 ## 一、使用官方安装脚本自动安装 （仅适用于公网环境）
 
-```shell
+```bash
 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 ```
 
 ## 二、安装校验
 
-```shell
+```bash
 root@iZwz91577x7sn2pgjejf5kZ:~# docker version
 Client: Docker Engine - Community
  Version:           20.10.12
@@ -44,7 +44,7 @@ Server: Docker Engine - Community
 
 ## 三、配置镜像加速器
 
-```shell
+```bash
 mkdir -p /etc/docker
 
 tee /etc/docker/daemon.json <<-'EOF'
@@ -56,4 +56,3 @@ EOF
 systemctl daemon-reload
 systemctl restart docker
 ```
-
