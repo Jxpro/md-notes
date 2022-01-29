@@ -371,7 +371,11 @@ if __name__ == "__main__":
 
 ```
 
-## 九、示例代码（Python）
+## 九、分布式多机通信
+
+**暂未实践**，最全参考博客：[ROS分布式多机通信完整教程](https://blog.csdn.net/hehedadaq/article/details/82898307)
+
+## 十、示例代码（Python）
 
 ### velocity_publisher.py
 
