@@ -10,6 +10,8 @@
 |      rosdistro       |            melodic            |
 |      rosversion      |            1.14.12            |
 
+参考学习视频：[古月·ROS入门21讲](https://www.bilibili.com/video/BV1zt411G7Vn)
+
 ## 二、安装ROS
 
 ### 2.1 配置软件仓库
@@ -123,7 +125,13 @@ source ~/catkin_ws/devel/setup.bash
 
 >   同一个工作空间下,不允许存在同名功能包；但不同工作空间下,允许存在同名功能包
 
-## 五、程序控制海龟示例
+## 五、ROS的两种通信机制
+
+![image-20220129232603881](https://gitee.com/jxprog/PicBed/raw/master/md/2022/01/2022-01-29-232605.png)
+
+![image-20220129232628750](https://gitee.com/jxprog/PicBed/raw/master/md/2022/01/2022-01-29-232630.png)
+
+## 六、topic控制海龟示例
 
 创建功能包：
 
@@ -265,7 +273,7 @@ sudo apt-get install python-rosinstall
 sudo pip install -U rosinstall
 ```
 
-## 六、自定义topic消息格式
+## 七、自定义topic消息格式
 
 先在对应功能包下，新建msg文件夹，文件名**不可随意更改！！！**
 
@@ -319,3 +327,281 @@ catkin_package(
 
 -   `.h`文件位于`ws_name/devel/include/pkg_name/`
 -   `.py`文件位于`ws_name/devel/lib/python2.7/dist-packages/pkg_name/msg`
+
+## 八、service控制海龟示例
+
+创建功能包：
+
+```shell
+$ catkin_create_pkg learning_service roscpp rospy std_msgs geometry_msgs turtlesim
+```
+
+### Python实现
+
+代码：
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# 该例程将请求/spawn服务，服务数据类型turtlesim::Spawn
+
+import sys
+import rospy
+from turtlesim.srv import Spawn
+
+def turtle_spawn():
+	# ROS节点初始化
+    rospy.init_node('turtle_spawn')
+
+	# 发现/spawn服务后，创建一个服务客户端，连接名为/spawn的service
+    rospy.wait_for_service('/spawn')
+    try:
+        add_turtle = rospy.ServiceProxy('/spawn', Spawn)
+
+		# 请求服务调用，输入请求数据
+        response = add_turtle(2.0, 2.0, 0.0, "turtle2")
+        return response.name
+    except rospy.ServiceException, e:
+        print "Service call failed: %s"%e
+
+if __name__ == "__main__":
+	#服务调用并显示调用结果
+    print "Spwan turtle successfully [name:%s]" %(turtle_spawn())
+
+```
+
+## 九、示例代码（Python）
+
+### velocity_publisher.py
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+########################################################################
+####          Copyright 2020 GuYueHome (www.guyuehome.com).          ###
+########################################################################
+
+# 该例程将发布turtle1/cmd_vel话题，消息类型geometry_msgs::Twist
+
+import rospy
+from geometry_msgs.msg import Twist
+
+def velocity_publisher():
+	# ROS节点初始化
+    rospy.init_node('velocity_publisher', anonymous=True)
+
+	# 创建一个Publisher，发布名为/turtle1/cmd_vel的topic，消息类型为geometry_msgs::Twist，队列长度10
+    turtle_vel_pub = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
+
+	#设置循环的频率
+    rate = rospy.Rate(10) 
+
+    while not rospy.is_shutdown():
+		# 初始化geometry_msgs::Twist类型的消息
+        vel_msg = Twist()
+        vel_msg.linear.x = 0.5
+        vel_msg.angular.z = 0.2
+
+		# 发布消息
+        turtle_vel_pub.publish(vel_msg)
+    	rospy.loginfo("Publsh turtle velocity command[%0.2f m/s, %0.2f rad/s]", 
+				vel_msg.linear.x, vel_msg.angular.z)
+
+		# 按照循环频率延时
+        rate.sleep()
+
+if __name__ == '__main__':
+    try:
+        velocity_publisher()
+    except rospy.ROSInterruptException:
+        pass
+
+```
+
+### pose_subscriber.py：
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+########################################################################
+####          Copyright 2020 GuYueHome (www.guyuehome.com).          ###
+########################################################################
+
+# 该例程将订阅/turtle1/pose话题，消息类型turtlesim::Pose
+
+import rospy
+from turtlesim.msg import Pose
+
+def poseCallback(msg):
+    rospy.loginfo("Turtle pose: x:%0.6f, y:%0.6f", msg.x, msg.y)
+
+def pose_subscriber():
+	# ROS节点初始化
+    rospy.init_node('pose_subscriber', anonymous=True)
+
+	# 创建一个Subscriber，订阅名为/turtle1/pose的topic，注册回调函数poseCallback
+    rospy.Subscriber("/turtle1/pose", Pose, poseCallback)
+
+	# 循环等待回调函数
+    rospy.spin()
+
+if __name__ == '__main__':
+    pose_subscriber()
+	
+```
+
+### turtle_spawn_client.py：
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+########################################################################
+####          Copyright 2020 GuYueHome (www.guyuehome.com).          ###
+########################################################################
+
+# 该例程将请求/spawn服务，服务数据类型turtlesim::Spawn
+
+import sys
+import rospy
+from turtlesim.srv import Spawn
+
+def turtle_spawn():
+	# ROS节点初始化
+    rospy.init_node('turtle_spawn')
+
+	# 发现/spawn服务后，创建一个服务客户端，连接名为/spawn的service
+    rospy.wait_for_service('/spawn')
+    try:
+        add_turtle = rospy.ServiceProxy('/spawn', Spawn)
+
+		# 请求服务调用，输入请求数据
+        response = add_turtle(2.0, 2.0, 0.0, "turtle2")
+        return response.name
+    except rospy.ServiceException, e:
+        print "Service call failed: %s"%e
+
+if __name__ == "__main__":
+	#服务调用并显示调用结果
+    print "Spwan turtle successfully [name:%s]" %(turtle_spawn())
+
+```
+
+### turtle_command_server.py：
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+########################################################################
+####          Copyright 2020 GuYueHome (www.guyuehome.com).          ###
+########################################################################
+
+# 该例程将执行/turtle_command服务，服务数据类型std_srvs/Trigger
+
+import rospy
+import thread,time
+from geometry_msgs.msg import Twist
+from std_srvs.srv import Trigger, TriggerResponse
+
+pubCommand = False;
+turtle_vel_pub = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
+
+def command_thread():	
+	while True:
+		if pubCommand:
+			vel_msg = Twist()
+			vel_msg.linear.x = 0.5
+			vel_msg.angular.z = 0.2
+			turtle_vel_pub.publish(vel_msg)
+			
+		time.sleep(0.1)
+
+def commandCallback(req):
+	global pubCommand
+	pubCommand = bool(1-pubCommand)
+
+	# 显示请求数据
+	rospy.loginfo("Publish turtle velocity command![%d]", pubCommand)
+
+	# 反馈数据
+	return TriggerResponse(1, "Change turtle command state!")
+
+def turtle_command_server():
+	# ROS节点初始化
+    rospy.init_node('turtle_command_server')
+
+	# 创建一个名为/turtle_command的server，注册回调函数commandCallback
+    s = rospy.Service('/turtle_command', Trigger, commandCallback)
+
+	# 循环等待回调函数
+    print "Ready to receive turtle command."
+
+    thread.start_new_thread(command_thread, ())
+    rospy.spin()
+
+if __name__ == "__main__":
+    turtle_command_server()
+
+```
+
+### parameter_config.py
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+########################################################################
+####          Copyright 2020 GuYueHome (www.guyuehome.com).          ###
+########################################################################
+
+# 该例程设置/读取海龟例程中的参数
+
+import sys
+import rospy
+from std_srvs.srv import Empty
+
+def parameter_config():
+	# ROS节点初始化
+    rospy.init_node('parameter_config', anonymous=True)
+
+	# 读取背景颜色参数
+    red   = rospy.get_param('/background_r')
+    green = rospy.get_param('/background_g')
+    blue  = rospy.get_param('/background_b')
+
+    rospy.loginfo("Get Backgroud Color[%d, %d, %d]", red, green, blue)
+
+	# 设置背景颜色参数
+    rospy.set_param("/background_r", 255);
+    rospy.set_param("/background_g", 255);
+    rospy.set_param("/background_b", 255);
+
+    rospy.loginfo("Set Backgroud Color[255, 255, 255]");
+
+	# 读取背景颜色参数
+    red   = rospy.get_param('/background_r')
+    green = rospy.get_param('/background_g')
+    blue  = rospy.get_param('/background_b')
+
+    rospy.loginfo("Get Backgroud Color[%d, %d, %d]", red, green, blue)
+
+	# 发现/spawn服务后，创建一个服务客户端，连接名为/spawn的service
+    rospy.wait_for_service('/clear')
+    try:
+        clear_background = rospy.ServiceProxy('/clear', Empty)
+
+		# 请求服务调用，输入请求数据
+        response = clear_background()
+        return response
+    except rospy.ServiceException, e:
+        print "Service call failed: %s"%e
+
+if __name__ == "__main__":
+    parameter_config()
+
+```
+
