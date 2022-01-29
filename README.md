@@ -1,7 +1,7 @@
 # Introduction
 
 -   The repo was set up to backup my markdown notes written by typora
-
+-   It includes things like `Linux`, `Docker`, `Blockchain`, `ROS`, `Golang`, `JavaScript`, `Python` and so on
 -   If you have any questions, please feel free to contact me
 
 ## Theme of typora
