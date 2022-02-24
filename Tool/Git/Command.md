@@ -46,7 +46,7 @@
      ```shell
      # 回溯到近三次的信息
      git rebase -i HEAD~3
-
+     
      # 回溯到根信息
      git rebase -i --root
      ```
@@ -56,7 +56,7 @@
 5.   这样**本地修改**就完成了，可用 `git log` 查看一下，且发现`commit`的时间没有变化
 6.   最后 `push` 到远程仓库，加上 `-f` **强制推送**：
      ```shell
-     git push origin main -f
+     git push -f origin main 
      ```
 7.   但是在`GitHub`上查看会发现`commit`的时间发生了变化
 8.   为此可执行以下指令来恢复时间戳：
@@ -67,7 +67,7 @@
      -   `-i --root`弹出的窗口直接关闭，不用选择任何一项`edit`，然后等待rebase完成即可
 9.   最后再次`push` 到远程仓库，加上 `-f` **强制推送**：
      ```shell
-     git push origin main -f
+     git push -f origin main
      ```
 
 ### 3.3 rebase 过程报错
