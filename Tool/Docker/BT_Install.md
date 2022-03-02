@@ -25,6 +25,8 @@ docker pull centos:centos7.9.2009
 >
 >   *(注意：文件目录如果不存在。宿主机和容器会自己创建，无需手动创建)*
 >
+>   *(注意：如果报错没有权限还是自己手动创建一下)*
+>
 >   `privileged`表示在运行容器的时候，给容器加特权，设置容器有写文件的**权限**
 
 ```shell
@@ -121,7 +123,7 @@ Tips：**删除镜像**后记得删除`/home/www`目录
      确定两点：
      1. dbus是否启动？如果没启动，则：
      /etc/init.d/dbus start
-
+     
      2. dbus启动了，守护进程dbus-daemon是否启动？如果没启动，则：
      dbus-daemon --system
      ```
