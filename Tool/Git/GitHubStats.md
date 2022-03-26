@@ -30,43 +30,43 @@
 
 进入[Vercel官网](https://vercel.com/)，使用GitHub进行注册
 
-![image-20211110210002084](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/10-210003.png)
+![image-20211110210002084](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/10-210003.png)
 
 ## 三、导入项目
 
 找到`Import Git Repository`准备导入仓库
 
-![image-20211110211010068](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/10-211432.png)
+![image-20211110211010068](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/10-211432.png)
 
 点击`Add GitHub Org or Account`，选择`Install`授权访问仓库
 
-![image-20211110211211926](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/10-211444.png)
+![image-20211110211211926](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/10-211444.png)
 
 点击`Import`导入项目
 
-![image-20211110211348767](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/10-211349.png)
+![image-20211110211348767](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/10-211349.png)
 
 ## 四、部署项目
 
 在GitHub里[生成](https://github.com/settings/tokens)的`token`令牌，生成令牌时`Select scopes`可全部留空
 
-![image-20211110212440495](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/10-212441.png)
+![image-20211110212440495](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/10-212441.png)
 
 回到`Vercel`部署项目，选择不创建团队，点击跳过
 
-![image-20211110211647546](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/10-211648.png)
+![image-20211110211647546](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/10-211648.png)
 
 项目名称可自定义，其他内容保持不变
 
-![image-20211110212251577](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/10-212252.png)
+![image-20211110212251577](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/10-212252.png)
 
 添加名为`PAT_1`的环境变量，`Value`为刚才生成的`Token`
 
-![image-20211110212537611](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/10-212539.png)
+![image-20211110212537611](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/10-212539.png)
 
 点击`deploy`，等待约一分钟即可完成
 
-![image-20211110213352494](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/10-213354.png)
+![image-20211110213352494](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/10-213354.png)
 
 ## 五、调用API
 

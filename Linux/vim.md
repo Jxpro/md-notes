@@ -15,4 +15,4 @@
 | B    | 向前移动到以空格分隔的字符串头部 |
 | gE   | 向前移动到以空格分隔的字符串尾部 |
 
-![vi-vim](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223300.gif)
+![vi-vim](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/10/29-223300.gif)

@@ -65,7 +65,7 @@ wget -O i.sh http://download.bt.cn/install/install_6.0.sh && sh i.sh
 内网面板地址: http://172.18.0.2:8888/7d2e5682
 ```
 
-![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223358.png)
+![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/10/29-223358.png)
 
 Tips：**删除镜像**后记得删除`/home/www`目录
 
@@ -123,7 +123,7 @@ Tips：**删除镜像**后记得删除`/home/www`目录
      确定两点：
      1. dbus是否启动？如果没启动，则：
      /etc/init.d/dbus start
-     
+
      2. dbus启动了，守护进程dbus-daemon是否启动？如果没启动，则：
      dbus-daemon --system
      ```

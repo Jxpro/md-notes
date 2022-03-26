@@ -14,7 +14,7 @@ npm install picgo -g
 
 **正确**安装：
 
-![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223421.png)
+![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/10/29-223421.png)
 
 ## 二、准备Gitee仓库
 
@@ -90,7 +90,7 @@ cd C:\Users\username\AppData\Roaming\Typora\picgo\win64\
 
 打开Typora，验证图片上传，查看是否成功
 
-![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223429.png)
+![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/10/29-223429.png)
 
 [^1]: year
 [^2]: yearQuarter

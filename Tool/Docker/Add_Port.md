@@ -59,19 +59,19 @@ docker run -it -d --name [container-name] -p 8088:80 [image-name]
      cd /var/lib/docker/containers/容器ID
      ```
 4.   修改 hostconfig.json 和 config.v2.json文件：
-     ![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223332.png)
+     ![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/10/29-223332.png)
 5.   修改`hostconfig.json`，在`PortBindings`后加上要**绑定的端口**，添加端口绑定：
      ```shell
      # 表示绑定端口 3306
      "3306/tcp": [{"HostIp": "","HostPort": "3306"}]
      ```
-     ![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223343.png)
+     ![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/10/29-223343.png)
 6.   修改`config.v2.json`在`ExposedPorts`后加上要**暴露的端口**
      ```shell
      # 表示暴露端口 3306
      "3306/tcp":{}
      ```
-     ![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223349.png)
+     ![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/10/29-223349.png)
 7.   改完之后保存启动docker，查看添加的端口是否已映射绑定上
     ```
     systemctl start docker

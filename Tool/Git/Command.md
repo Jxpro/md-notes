@@ -30,7 +30,7 @@
 
 -   参考文章：[git pull 和 git fetch的区别](https://www.zhihu.com/question/38305012)
 -   图片说明：
-![image-20211101144612683](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/01-144615.png)
+![image-20211101144612683](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/01-144615.png)
 
 ## 三、修改历史commit信息
 
@@ -46,7 +46,7 @@
      ```shell
      # 回溯到近三次的信息
      git rebase -i HEAD~3
-     
+
      # 回溯到根信息
      git rebase -i --root
      ```
@@ -56,7 +56,7 @@
 5.   这样**本地修改**就完成了，可用 `git log` 查看一下，且发现`commit`的时间没有变化
 6.   最后 `push` 到远程仓库，加上 `-f` **强制推送**：
      ```shell
-     git push -f origin main 
+     git push -f origin main
      ```
 7.   但是在`GitHub`上查看会发现`commit`的时间发生了变化
 8.   为此可执行以下指令来恢复时间戳：
@@ -150,13 +150,13 @@ git status
 
 **核心命令**：`git fsck --lost-found`,他会通过一些神奇的方式把历史操作过的文件以某种算法算出来加到`.git/lost-found`文件夹里，输出的记录就像下面这个样子。
 
-![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/2021-11-30-132836.jpg)
+![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/2021-11-30-132836.jpg)
 
 >   我们可以看到这里有`blob、commit、tree`类型的数据，还有`tag`等类型的。他们是什么含义呢？
 >
 >   来，我们都是大神当然要学学**git底层存储方式**，如下图：
 >
->   ![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/2021-11-30-133209.jpg)
+>   ![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/2021-11-30-133209.jpg)
 >
 >   -   `commit`数据结构在每次提交之后都会生成一个，当我们进行`commit`之后，首先会创建一个`commit`组件，之后创建一个`tree`组件，把所有的文件信息都储存在里面,每个`blob`代表一个文件，都可以在`tree`里找到
 >   -   `blob`组件并不会对文件信息进行存储，而是只对文件的内容进行记录，文件信息存储在tree里
@@ -173,7 +173,7 @@ git status
 
 如果你发现执行`git fsck --lost-found`的输出也找不到你想要的，那么只能祭出终极命令来输出近期修改的文件了，如下：
 
-![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/2021-11-30-133627.jpg)
+![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/2021-11-30-133627.jpg)
 
 -   这里用`find .git/objects -type f | xargs ls -lt | sed 3q`这个命令，他的含义是查找`.git/objects`文件夹下的普通文件 按照时间排序后 打印在终端里 sed 3q 是打印3行 sed 100q 是打印100行，随你喜欢。
 -   `git cat-file -t 7f5965523d2b9e850b39eb46e8e0f7c5755f6719` 就能看见文件类型（`objects/`后面的所有`hex`放在`-t`后面）

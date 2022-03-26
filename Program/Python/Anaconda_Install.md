@@ -73,4 +73,4 @@ conda clean -y --all
 
 解决方法：在root下面执行`dpkg-reconfigure dash`,选择no
 
-![img](https://gitee.com/jxprog/PicBed/raw/master/md/2022/01/2022-01-18-212418)
+![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2022/01/2022-01-18-212418)
