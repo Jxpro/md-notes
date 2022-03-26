@@ -1,6 +1,8 @@
 {
   "picBed": {
-    "current": "gitee",
+    "current": "githubPlus",
+    "uploader": "githubPlus",
+    "transformer": "path",
     "gitee": {
       "repo": "repo",
       "branch": "master",
@@ -9,17 +11,34 @@
       "customPath": "yearMonth",
       "customUrl": ""
     },
-    "uploader": "gitee",
-    "transformer": "path"
+    "githubPlus": {
+      "repo": "repo",
+      "branch": "master",
+      "token": "token",
+      "path": "md/new",
+      "customUrl": "",
+      "origin": "github"
+    },
+    "github": {
+      "repo": "repo",
+      "branch": "master",
+      "token": "token",
+      "path": "md/new",
+      "customUrl": ""
+    }
   },
   "picgoPlugins": {
     "picgo-plugin-gitee-uploader": true,
+    "picgo-plugin-github-plus": true,
     "picgo-plugin-super-prefix": true
   },
   "picgo-plugin-gitee-uploader": {
-    "lastSync": "2021-10-29 10:34:30"
+    "lastSync": "2022-03-26 11:26:21"
+  },
+  "picgo-plugin-github-plus": {
+    "lastSync": "2022-03-26 01:04:12"
   },
   "picgo-plugin-super-prefix": {
-    "fileFormat": "DD-HHmmss"
+    "fileFormat": "YYYY-MM-DD-HHmmss"
   }
 }
