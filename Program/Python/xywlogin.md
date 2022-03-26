@@ -40,7 +40,7 @@ response = requests.post(url, headers=requestHeaders, data=formData)
 
 ## 二、设置开机自启
 
-![image-20211110160130238](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/10-160131.png)
+![image-20211110160130238](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/10-160131.png)
 
 ## 三、运行时隐藏DOS窗口
 

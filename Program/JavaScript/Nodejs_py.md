@@ -22,14 +22,14 @@
 # support.py
 # -*- coding: utf-8 -*-
 import sys
-print("进程 " +sys.argv[1] +" 执行。") 
+print("进程 " +sys.argv[1] +" 执行。")
 ```
 
 ```javascript
 // master.js
 const fs = require('fs');
 const child_process = require('child_process');
- 
+
 for(var i=0; i<3; i++) {
 //创建三个子进程
     var workerProcess = child_process.exec('python support.py '+i, function (error, stdout, stderr) {
@@ -41,14 +41,14 @@ for(var i=0; i<3; i++) {
         console.log('stdout: ' + stdout);
         console.log('stderr: ' + stderr);
     });
- 
+
     workerProcess.on('exit', function (code) {
         console.log('子进程已退出，退出码 '+code);
     });
 }
 ```
 
-![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/11-175407)
+![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/11-175407)
 
 ### 2、spawn()方法
 
@@ -58,32 +58,32 @@ for(var i=0; i<3; i++) {
 # support.py
 # -*- coding: utf-8 -*-
 import sys
-print("进程 " +sys.argv[1] +" 执行。") 
+print("进程 " +sys.argv[1] +" 执行。")
 ```
 
 ```javascript
 // master.js
 const fs = require('fs');
 const child_process = require('child_process');
- 
+
 for(var i=0; i<3; i++) {
    var workerProcess = child_process.spawn('python', ['support.py', i]);
- 
+
    workerProcess.stdout.on('data', function (data) {
       console.log('stdout: ' + data);
    });
- 
+
    workerProcess.stderr.on('data', function (data) {
       console.log('stderr: ' + data);
    });
- 
+
    workerProcess.on('close', function (code) {
       console.log('子进程已退出，退出码 '+code);
    });
 }
 ```
 
-![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/11-175413)
+![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/11-175413)
 
 ### 3、fork()方法
 
@@ -99,17 +99,17 @@ console.log("进程 " + process.argv[2] + " 执行。" );
 // master.js
 const fs = require('fs');
 const child_process = require('child_process');
- 
+
 for(var i=0; i<3; i++) {
-   var worker_process = child_process.fork("support.js", [i]);    
- 
+   var worker_process = child_process.fork("support.js", [i]);
+
    worker_process.on('close', function (code) {
       console.log('子进程已退出，退出码 ' + code);
    });
 }
 ```
 
-![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/11-175421)
+![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/11-175421)
 
 ## node调用python
 

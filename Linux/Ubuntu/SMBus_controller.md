@@ -6,11 +6,11 @@
 2.   Ubuntu，with Linux （recovery mode）
 3.   root
 
-![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223153.png)
+![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/10/29-223153.png)
 
-![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223159.png)
+![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/10/29-223159.png)
 
-![img](https://gitee.com/jxprog/PicBed/raw/master/md/2021/10/29-223236.png)
+![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/10/29-223236.png)
 
 查找报错的模块
 

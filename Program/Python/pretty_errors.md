@@ -4,7 +4,7 @@
 
 这是一个用于美化python异常输出的模块，效果如下：
 
-![example](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/2021-11-26-181020.png)
+![example](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/2021-11-26-181020.png)
 
 ## 一、安装
 

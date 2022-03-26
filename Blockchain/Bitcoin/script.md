@@ -41,7 +41,7 @@
 >   在比特币没有余额概念，只有分散到区块链里的UTXO
 
 随着钱从一个地址被移动到另一个地址的同时**形成了一条所有权链**，像这样：
-![own_chain](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/07-150721.jpeg!wl)
+![own_chain](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/07-150721.jpeg!wl)
 
 ## 三、比特币脚本（Script）及虚拟机（BVM）
 
@@ -58,7 +58,7 @@
 为了验证解锁脚本的有效性，**比特币虚拟机（BVM）**被引入比特币节点。BVM 将锁定脚本连接在解锁脚本的后面，从而形成完整的执行脚本。这个完整的脚本会被 BVM 执行。当执行完毕后，如果栈顶元素的布尔值为 `true`（即数值非零），则认为脚本执行成功，反之其他情况则认为脚本执行失败。
 
 最为常见类型的比特币交易脚本（支付到公钥哈希：**P2PKH（Pay-to-Public-Key-Hash）**）如下：
-![script](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/07-151439.jpeg!wl)
+![script](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/07-151439.jpeg!wl)
 
 ## 四、简单交易脚步举例
 
@@ -84,7 +84,7 @@ OP_3
 
 -   接着，BVM 开始从头执行完整的脚本，具体的步骤如图所示：
 
-![BVM执行过程](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/07-154148)
+![BVM执行过程](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/07-154148)
 
 最终结束时留在栈顶上的唯一值为 `true`，这说明整个脚本执行成功。如果使用任何不是 `3` 的值作为解锁脚本，则整个脚本的执行结果必然为 `false`，意味着无法成功解锁。
 
@@ -97,16 +97,16 @@ OP_3
 脚本语言通过**从左至右**地处理每个项目的方式执行脚本，下面用两个图说明下常见类型的比特币交易脚本验证执行过程：
 
 -   下图为**解锁脚本**运行过程（主要是**入栈**）
-    ![script_run1](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/07-151430.jpeg!wl)
+    ![script_run1](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/07-151430.jpeg!wl)
 -   下图为**锁定脚本**运行过程（主要是**出栈**)，最后的结果为真，说明交易有效。
-    ![script_run2](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/07-151455.jpeg!wl)
+    ![script_run2](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/07-151455.jpeg!wl)
 
 ## 六、交易分析
 
 ### 6.1 交易结构
 
 比特币的交易被设计为可以纳入**多个输入和输出**
-![交易结构](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/07-151808.jpeg!wl)
+![交易结构](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/07-151808.jpeg!wl)
 
 >   交易的锁定时间定义了能被加到区块链里的最早的交易时间。在大多数交易里，它被设置成0，用来表示**立即执行**。
 >   如果锁定时间不是0并且小于5亿，就被视为**区块高度**，意指在这个指定的区块高度之前，该交易不会被包含在区块链里。
@@ -117,17 +117,17 @@ OP_3
 ### 6.2 交易输入结构
 
 刚刚我们提过输入需要提供一个解锁脚本，现在来看看一个交易的输入结构：
-![输入结构](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/07-152040.jpeg!wl)
+![输入结构](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/07-152040.jpeg!wl)
 
 我们结合整个交易的结构里看输入结构就是这样子：
-![输入结构1](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/07-152048.jpeg!wl)
+![输入结构1](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/07-152048.jpeg!wl)
 
 ### 6.3 交易输出结构
 
 刚刚我们提过输出是指向一个解锁脚本，具体交易的输出结构为：
-![交易输出结构](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/07-150709.jpeg!wl)
+![交易输出结构](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/07-150709.jpeg!wl)
 我们结合整个交易的结构里看输出结构就是这样子：
-![交易输出结构1](https://gitee.com/jxprog/PicBed/raw/master/md/2021/11/07-152102.jpeg!wl)
+![交易输出结构1](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/07-152102.jpeg!wl)
 
 ## 七、智能合约雏形
 
