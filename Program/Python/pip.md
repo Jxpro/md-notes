@@ -30,7 +30,7 @@ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 配置文件内容：
 
-```bash
+```ini
 [global]
 index-url=http://mirrors.aliyun.com/pypi/simple/
 [install]
