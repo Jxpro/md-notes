@@ -40,35 +40,36 @@
 
 ### 3.2 修改历史的 log
 
-如果要修改**历史**的版本信息(非最新一条),会稍稍麻烦一点,不过也可以搞定,这里用到的方法就是 `git`命令的[重写历史](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E5%86%99%E5%8E%86%E5%8F%B2)功能
+如果要修改**历史**的版本信息(非最新一条)，这里用到的方法就是 `git`命令的[重写历史](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E5%86%99%E5%8E%86%E5%8F%B2)功能
 
-1.   执行 git 命令
+1.   执行`git`命令
      ```shell
      # 回溯到近三次的信息
      git rebase -i HEAD~3
-
+     
      # 回溯到根信息
      git rebase -i --root
      ```
-2.   找到要修改要的日志,那么修改的日志为，将`pick` 修改为`edit`, 然后 `:wq` 退出
-3.   执行 `git commit --amend` ，修改完成后 `:wq`  退出
-4.   然后执行 `git rebase --continue` ，完成此次 log 的`rebase`
-5.   这样**本地修改**就完成了，可用 `git log` 查看一下，且发现`commit`的时间没有变化
-6.   最后 `push` 到远程仓库，加上 `-f` **强制推送**：
+2.   找到要修改要的`log`，将其`pick` 修改为`edit`, 然后 `:wq` 退出
+3.   然后修改对应的提交消息，修改完成后 `:wq`  退出
+4.   执行 `git commit --amend`重新提交
+5.   然后执行 `git rebase --continue` ，完成此次`log`的`rebase`
+6.   这样**本地修改**就完成了，可用 `git log` 查看一下，且发现`commit`的时间没有变化
+7.   最后 `push` 到远程仓库，加上 `-f` **强制推送**
      ```shell
      git push -f origin main
      ```
-7.   但是在`GitHub`上查看会发现`commit`的时间发生了变化
-8.   为此可执行以下指令来恢复时间戳：
+8.   但是在`GitHub`上查看会发现`commit`的时间发生了变化
+9.   为此可执行以下指令来恢复时间戳
      ```shell
      git rebase -i --root --committer-date-is-author-date
      ```
-     -   必须加上`-i --root`，不然`--committer-date-is-author-date`会重置rebase的更改
-     -   `-i --root`弹出的窗口直接关闭，不用选择任何一项`edit`，然后等待rebase完成即可
-9.   最后再次`push` 到远程仓库，加上 `-f` **强制推送**：
-     ```shell
-     git push -f origin main
-     ```
+     -   必须加上`-i --root`或`-i HEAD~3`，不然`--committer-date-is-author-date`会重置`rebase`的更改
+     -   `-i --root`弹出的窗口直接关闭，不用选择任何一项`edit`，然后等待`rebase`完成即可
+10.   最后再次`push` 到远程仓库，加上 `-f` **强制推送**
+      ```shell
+      git push -f origin main
+      ```
 
 ### 3.3 rebase 过程报错
 
