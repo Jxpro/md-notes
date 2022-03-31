@@ -71,7 +71,50 @@
       git push -f origin main
       ```
 
-### 3.3 rebase 过程报错
+### 3.3 修改提交作者或邮箱
+
+由于电脑配置`git`的账号填错了邮箱或用户名，导致`github`的提交记录提交错误，为了将之前的提交用户信息都恢复至正确的账号上, 所以需要修改本地的git用户信息
+
+1.   首先修改`user.name`和`user.email`
+
+     ```shell
+     $ git config user.name 'xxx'
+     $ git config user.email xxx@xx.com
+     ```
+
+2.   查询之前的提交记录
+
+     ```shell
+     # 查询到近三次的信息
+     git rebase -i HEAD~3
+     
+     # 查询到根信息
+     git rebase -i --root
+     ```
+
+3.   找到要修改要的日志，将其`pick` 修改为`edit`, 然后 `:wq` 退出
+
+4.   执行 `git commit --amend --reset-author`重新提交并重置作者
+
+5.   然后执行 `git rebase --continue` ，完成此次`log`的`rebase`
+
+6.   但此时提交的时间戳也被改变，使用`--committer-date-is-author-date`也会将时间戳变为`reset-author`后提交的时间，**即使是reset的用户名和之前的用户名一致**
+
+7.   为此，我们需要在`Step 4`使用`git commit --amend`时加上`--date="commit_time"`来指定时间戳，或者在`reset-author`以后再进行一次`rebase`来修改时间戳，其基本格式如下
+
+     ```shell
+     --date="Thu, 31 Mar 2022 00:54:24 +0800"
+     ```
+
+8.   同样，要使``GitHub`上的时间戳也发生改变，需要在`--date`后再次使用`--committer-date-is-author-date`
+
+9.   最后再次`push` 到远程仓库，加上 `-f` **强制推送**
+
+     ```shell
+     git push -f origin main
+     ```
+
+### 3.4 rebase 过程报错
 
 **error：The following untracked working tree files would be overwritten by merge**
 
