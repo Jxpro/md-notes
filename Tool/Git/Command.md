@@ -26,7 +26,7 @@
 
 ## 二、pull与fetch区别
 
-`pull`根据不同的配置，可等于`fetch + merge`或`fetch + rebase`：
+`pull`根据不同的配置，可等于`fetch + merge`或`fetch + rebase`。
 
 -   参考文章：[git pull 和 git fetch的区别](https://www.zhihu.com/question/38305012)
 -   图片说明：
@@ -36,11 +36,11 @@
 
 ### 3.1 修改最新的 log
 
-如果只修改**最新**一条提交信息的 log  内容,直接使用命令 `git commit --amend`  就可以完成修改啦, 可以直接参考 git 文档,也就是下面的 重写历史 功能,比较简单
+如果只修改**最新**一条提交信息的`log`内容，直接使用命令 `git commit --amend`  就可以完成修改啦，可以直接参考 git 文档，也就是下面的重写历史功能，比较简单。
 
 ### 3.2 修改历史的 log
 
-如果要修改**历史**的版本信息(非最新一条)，这里用到的方法就是 `git`命令的[重写历史](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E5%86%99%E5%8E%86%E5%8F%B2)功能
+如果要修改**历史**的版本信息(非最新一条)，这里用到的方法就是 `git`命令的[重写历史](https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E9%87%8D%E5%86%99%E5%8E%86%E5%8F%B2)功能：
 
 1.   执行`git`命令
      ```shell
@@ -73,7 +73,7 @@
 
 ### 3.3 修改提交作者或邮箱
 
-由于电脑配置`git`的账号填错了邮箱或用户名，导致`github`的提交记录提交错误，为了将之前的提交用户信息都恢复至正确的账号上, 所以需要修改本地的git用户信息
+由于电脑配置`git`的账号填错了邮箱或用户名，导致`github`的提交记录提交错误，为了将之前的提交用户信息都恢复至正确的账号上，所以需要修改本地的git用户信息：
 
 1.   首先修改`user.name`和`user.email`
 
@@ -130,7 +130,7 @@
 
 git clean 从你的工作目录中删除所有**没有 tracked ，没有被管理**过的文件。删除了找回很麻烦，甚至很难找回来了，所以一定要**慎用**!!!
 
->   **git clean 和 git reset --hard 结合使用。**
+>   **git clean 和 git reset --hard 结合使用**
 >
 >   clean 影响没有被 track 过的文件（清除未被 add 或被 commit 的本地修改）
 >
@@ -184,7 +184,7 @@ git status
 
 ### 5.1 恢复曾今提交过的记录
 
-可以直接根据`git reflog`返回的结果，用`git reset --hard commit_id`回退到对应这个版本
+可以直接根据`git reflog`返回的结果，用`git reset --hard commit_id`回退到对应这个版本。
 
 >   但是我们如果只是想把此提交给找回来，恢复他，那还是不要用`reset`的方式，可以用`git cherry-pick commitid`单独取一个commit到当前分支或者用`merge`来做合并。
 
@@ -192,7 +192,7 @@ git status
 
 如果你的代码文件没有`commit`过，就被手贱或者`clean`**删除**掉了或者也是被`reset --hard`的时候搞没了。这就**不仅仅**是用一个`git reflog`命令就可以简单找回来的，但只要你以前有做过`add`的操作把他放到过暂存区，我们就可以把他找回来。什么？你连add都没有操作过那就只能**开始准备新一轮的面试**了！！！
 
-**核心命令**：`git fsck --lost-found`,他会通过一些神奇的方式把历史操作过的文件以某种算法算出来加到`.git/lost-found`文件夹里，输出的记录就像下面这个样子。
+**核心命令**：`git fsck --lost-found`,他会通过一些神奇的方式把历史操作过的文件以某种算法算出来加到`.git/lost-found`文件夹里，输出的记录就像下面这个样子：
 
 ![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/2021-11-30-132836.jpg)
 
@@ -219,7 +219,7 @@ git status
 
 ![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/11/2021-11-30-133627.jpg)
 
--   这里用`find .git/objects -type f | xargs ls -lt | sed 3q`这个命令，他的含义是查找`.git/objects`文件夹下的普通文件 按照时间排序后 打印在终端里 sed 3q 是打印3行 sed 100q 是打印100行，随你喜欢。
+-   这里用`find .git/objects -type f | xargs ls -lt | sed 3q`这个命令，他的含义是查找`.git/objects`文件夹下的普通文件 按照时间排序后 打印在终端里 sed 3q 是打印3行 sed 100q 是打印100行，随你喜欢
 -   `git cat-file -t 7f5965523d2b9e850b39eb46e8e0f7c5755f6719` 就能看见文件类型（`objects/`后面的所有`hex`放在`-t`后面）
 -   `git cat-file -p id`就能看见文件内容，是不是很爽，你再用高超的`linux`技巧操作一下，就可以批量打印出全部文件的类型啦
 
@@ -248,7 +248,7 @@ git status
 
 2.   命令执行后，仓库根目录下增加了一个文件和一个目录：`.gitmodules`和`repo`文件夹
 
-3.   `.gitmodules`文件内容如下
+3.   `.gitmodules`文件内容如下：
 
      ```ini
      [submodule "repo"]
@@ -284,3 +284,75 @@ git status
 -   如子模块项目托管在如`Gitee`等其他平台上，`GitHub`无法生成跳转链接，字体保持灰色
 
 ![image-20220408001608682](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/new/2022-04-08-001610.png)
+
+## 七、从历史记录中删除文件
+
+当我们不小心通过`git add .`加入了一个**很大的资源文件或者不宜公开的文件**，并`commit`产生了历史记录，还`push`到了远程仓库，这个时候我们想要删除他们，可以借助下面两个命令。
+
+参考文章：
+
+[官方文档](https://git-scm.com/docs/git-filter-branch)
+
+[核弹级的git指令 git filter-branch](http://shaoguangleo.github.io/2018/02/01/git-filter-branch/)
+
+### 7.1 引言 git rm
+
+-   `git rm file_path`删除暂存区和分支上的文件，同时工作区也不需要，即**删除所有**。
+-   `git rm --cached file_path`删除暂存区或分支上的文件，但工作区需要使用，只是不希望被版本控制，适用于已经被`git add`，但是又需要**撤销**的情况。
+
+### 7.2 关键 git filter-branch
+
+如果想要**通过脚本的方式**改写大量提交的话，例如全局修改你的邮箱地址或从每一个提交中移除一个文件，就可以使用 `filter-branch`，它能**改写历史中大量的提交**，除非你的项目还没有公开并且其他人没有基于要改写的工作的提交做的工作，否则你不应当使用它，但是有时它非常的有用。
+
+```
+git filter-branch [--setup <command>] [--subdirectory-filter <directory>]
+	[--env-filter <命令>] [--tree-filter <命令>]
+	[--index-filter <command>] [--parent-filter <command>]
+	[--msg-filter <命令>] [--commit-filter <命令>]
+	[--tag-name-filter <command>] [--prune-empty]
+	[--original <命名空间>] [-d <目录>] [-f |  - 力量]
+	[--state-branch <branch>] [--] [<rev-list options>…]
+```
+
+### 7.3 具体步骤
+
+1.   使用`git filter-branch`重写历史记录，使用`git rm --cached`将其**从缓存中删除**，且由于它何时加入历史对我们来说并不重要，所以我们还需要添加`--ignore-unmatch`
+
+     ```shell
+     # 其中 --force 表示强制执行
+     # --index-filter 为固定格式，会在每次历史中执行后面的命令
+     # --prune-empty 用于防止一些过滤器会生成空提交，此选项会删除此类提交
+     # --tag-name-filter cat 用于更新标签
+     # -- --all 重写全部，也可以使用 HEAD~8..HEAD 形式，指定具体范围
+     git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch target' --prune-empty --tag-name-filter cat -- --all
+     ```
+
+     
+
+2.   删除`git`历史文件备份，参考文章：[git底层原理](https://baijiahao.baidu.com/s?id=1687478489959361341)
+
+     ```shell
+     # 二选一即可，或者全部执行
+     rm -rf .git/refs/original/
+     git for-each-ref --format='delete %(refname)' refs/original | git update-ref --stdin
+     ```
+
+3.   设置`reflog`的过期时间为现在，这样放弃了所有历史的找回功能，参考文章：[git-reflog的用法总结](https://blog.csdn.net/chaiyu2002/article/details/81773041)
+
+     ```shell
+     git reflog expire --expire=now --all
+     ```
+
+4.   清理不必要的文件并优化本地存储库
+
+     ```shell
+     git gc --aggressive --prune=now
+     ```
+
+5.   最后强制推送到远程仓库
+
+     ```shell
+     git push origin --force --all
+     ```
+
+     
