@@ -118,9 +118,19 @@ systemctl restart vsftpd
      # 以下命令无法重新加载配置文件
      systemctl enable vsftpd
      systemctl start vsftpd
-
+     
      # 需要执行以下命令
      systemctl restart vsftpd
      #或者
      systemctl reload vsftpd
      ```
+
+4.   被动模式可以连接服务器，但不能列出目录
+
+     参考：
+     
+     [ftp主动和被动模式_FTP的两种连接方式](https://blog.csdn.net/weixin_39581571/article/details/111221908)
+     
+     [云服务器ftp被动和主动模式都连接失败](https://www.modb.pro/db/159559)
+     
+     [ftp主动模式与被动模式——为什么连接不上FTP服务器](https://www.php.cn/linux-464387.html)
