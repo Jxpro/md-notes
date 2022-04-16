@@ -2,7 +2,49 @@
 
 [TOC]
 
-## 一、下载安装
+## 一、Docker安装
+
+### 1.1 下载并修改配置文件
+
+```shell
+mkdir -p /data/redis/data
+cd /data/redis
+wget http://download.redis.io/redis-stable/redis.conf
+```
+
+找到以下三行进行修改：
+
+```ini
+# bind 127.0.0.1 -::1 (line 75)
+requirepass password (line 901)
+appendonly yes (line 1252)
+```
+
+### 1.2 启动redis
+
+```shell
+docker run -d --restart=always --name myredis -p 6379:6379 -v /data/redis/data:/data -v /data/redis/redis.conf:/etc/redis/redis.conf redis redis-server /etc/redis/redis.conf 
+```
+
+### 1.3 警告部分
+
+通过`docker logs containerID`可以看到以下输出，可见其中有两个`WARNING`
+
+但由于`docker`限制，**仍有待解决**，但不影响使用
+
+>   1:C 16 Apr 2022 02:51:45.345 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+>   1:C 16 Apr 2022 02:51:45.345 # Redis version=6.2.6, bits=64, commit=00000000, modified=0, pid=1, just started
+>   1:C 16 Apr 2022 02:51:45.345 # Configuration loaded
+>   1:M 16 Apr 2022 02:51:45.345 * monotonic clock: POSIX clock_gettime
+>   1:M 16 Apr 2022 02:51:45.346 * Running mode=standalone, port=6379.
+>   1:M 16 Apr 2022 02:51:45.346 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+>   1:M 16 Apr 2022 02:51:45.346 # Server initialized
+>   1:M 16 Apr 2022 02:51:45.346 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+>   1:M 16 Apr 2022 02:51:45.346 * Ready to accept connections
+
+## 二、源码安装
+
+### 2.1 安装
 
 ``````shell
 wget http://download.redis.io/redis-stable.tar.gz
@@ -28,7 +70,7 @@ Hint: It's a good idea to run 'make test' ;)
 make[1]: Leaving directory '/root/redis-stable/src'
 ```
 
-## 二、测试安装
+### 2.2 测试
 
 ```shell
 make test
@@ -68,7 +110,7 @@ Cleanup: may take some time... OK
 make[1]: Leaving directory '/root/redis-stable/src'
 ```
 
-## 三、基本配置
+### 2.3 配置
 
 **直接启动**`Redis`会有三个**Warning**：
 
@@ -150,3 +192,4 @@ root@iZwz91577x7sn2pgjejf5kZ:~# redis-server
 26080:M 02 Dec 2021 18:41:40.217 * DB loaded from disk: 0.000 seconds
 26080:M 02 Dec 2021 18:41:40.217 * Ready to accept connections
 ```
+
