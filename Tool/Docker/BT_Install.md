@@ -31,10 +31,10 @@ docker pull centos:centos7.9.2009
 
 ```shell
 # 没有启动 vsftpd 服务
-docker run -it --name btpanel -p 20:20 -p 21:21 -p 80:80 -p 443:443 -p 888:888 -p 3306:3306 -p 8888:8888 --privileged=true -v /home/www:/www centos:centos7.9.2009 /bin/bash
+docker run -it --name btpanel -p 20:20 -p 21:21 -p 80:80 -p 443:443 -p 888:888 -p 3306:3306 -p 8888:8888 --privileged=true -v /data/www:/www centos:centos7.9.2009 /bin/bash
 
 # 启动了的话改变一下映射端口或者关一下 vsftpd 服务
-docker run -it --name btpanel -p 20:20 -p 210:21 -p 80:80 -p 443:443 -p 888:888 -p 3306:3306 -p 8888:8888 --privileged=true -v /home/www:/www centos:centos7.9.2009 /bin/bash
+docker run -it --name btpanel -p 20:20 -p 210:21 -p 80:80 -p 443:443 -p 888:888 -p 3306:3306 -p 8888:8888 --privileged=true -v /data/www:/www centos:centos7.9.2009 /bin/bash
 ```
 
 由于docker中是一个**纯净版本**，我们首先需要给他升级并且安装必要的软件
