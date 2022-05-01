@@ -56,7 +56,66 @@
 
 >   每一个ini文件对应一个avd文件
 
-## 四、Android SDK Manager 无法启动
+## 四、HAXM安装失败
+
+### 4.1 问题
+
+>   Intel® HAXM installation failed. 
+>
+>   To install Intel® HAXM follow the instructions found at: https://github.com/intel/haxm/wiki/Installation-Instructions-on-Windows
+
+### 4.2 方法
+
+这大概率是由于`Hyper-V`未彻底关闭造成的，解决办法有两个：
+
+-   一是使用官网提供工具：[dgreadiness_v3.6](https://www.microsoft.com/en-us/download/details.aspx?id=53337)，下载完后解压，然后在 `Powershell` 中运行
+
+    ```
+    DG_Readiness_Tool_v3.6.ps1 -Disable
+    ```
+
+-   二是使用知乎大佬提供的脚本，将下面代码保存为bat文件并以管理员运行：
+
+    ```
+    @echo off
+    
+    dism /Online /Disable-Feature:microsoft-hyper-v-all /NoRestart
+    dism /Online /Disable-Feature:IsolatedUserMode /NoRestart
+    dism /Online /Disable-Feature:Microsoft-Hyper-V-Hypervisor /NoRestart
+    dism /Online /Disable-Feature:Microsoft-Hyper-V-Online /NoRestart
+    dism /Online /Disable-Feature:HypervisorPlatform /NoRestart
+    
+    
+    REM ===========================================
+    
+    mountvol X: /s
+    copy %WINDIR%\System32\SecConfig.efi X:\EFI\Microsoft\Boot\SecConfig.efi /Y
+    bcdedit /create {0cb3b571-2f2e-4343-a879-d86a476d7215} /d "DebugTool" /application osloader
+    bcdedit /set {0cb3b571-2f2e-4343-a879-d86a476d7215} path "\EFI\Microsoft\Boot\SecConfig.efi"
+    bcdedit /set {bootmgr} bootsequence {0cb3b571-2f2e-4343-a879-d86a476d7215}
+    bcdedit /set {0cb3b571-2f2e-4343-a879-d86a476d7215} loadoptions DISABLE-LSA-ISO,DISABLE-VBS
+    bcdedit /set {0cb3b571-2f2e-4343-a879-d86a476d7215} device partition=X:
+    mountvol X: /d
+    bcdedit /set hypervisorlaunchtype off
+    REG DELETE HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard /v EnableVirtualizationBasedSecurity /f
+    
+    echo.
+    echo.
+    echo.
+    echo.
+    echo 接下来 请重新启动您的计算机，完成剩下的操作。
+    echo 请注意！重启时的屏幕提示！
+    echo PS：在重启时，过了BIOS自检之后，看到黑白字符提示你按键的时候……
+    echo ……死按，狂按 F3键，只到它自动重启为止！!
+    echo 可以关闭此窗口了，重启电脑吧。。。
+    pause > nul
+    echo.
+    echo.
+    ```
+
+上述方法二选一，运行完以后都需要重启，重启时如有提示，请根据提示进行操作
+
+## 五、Android SDK Manager 无法启动
 
 可能的问题：
 
@@ -64,15 +123,15 @@
 2. 排查`find_java.bat`文件
 3. 删除 `C:\Windows\system32\`下的`java.exe、javaw.exe、javaws.exe`
 
-### 4.1 问题 1
+### 5.1 情况 1
 
 参考：[android SDK SDK Manager.exe 无法打开，一闪而过最终解决办法](https://blog.csdn.net/wang295689649/article/details/60960953)
 
-方案：到[AndroidDevTools](https://www.androiddevtools.cn/)下载下列压缩包，替换掉`SDK/tools`下的内容即可
+方法：到[AndroidDevTools](https://www.androiddevtools.cn/)下载下列压缩包，替换掉`SDK/tools`下的内容即可
 
 ![image-20220501160022209](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/new/2022-05-01-160023.png)
 
-### 4.2 问题2
+### 5.2 情况2
 
 参考：
 
@@ -80,7 +139,7 @@
 
 [Android SDK总结 SDK Manager无法启动、一闪而过的解决办法](https://blog.csdn.net/hueise_h/article/details/9134237)
 
-方案：到`SDK\tools\lib`下，`cmd`运行`find_java.bat`，看到如下输出：
+方法：到`SDK\tools\lib`下，`cmd`运行`find_java.bat`，看到如下输出：
 
 ![image-20220501160300114](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/new/2022-05-01-160301.png)
 
