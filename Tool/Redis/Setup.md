@@ -15,9 +15,9 @@ wget http://download.redis.io/redis-stable/redis.conf
 找到以下三行进行修改：
 
 ```ini
-# bind 127.0.0.1 -::1 (line 75)
-requirepass password (line 901)
-appendonly yes (line 1252)
+# bind 127.0.0.1 -::1 (line 75, 允许远程访问)
+requirepass password (line 901, 设置密码)
+appendonly yes (line 1252, 写入AOF文件)
 ```
 
 ### 1.2 启动redis
