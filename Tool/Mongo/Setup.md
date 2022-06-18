@@ -29,7 +29,7 @@ docker run -d --restart=always -p 27017:27017 --name mymongo -v /data/mongo:/dat
 首先进入容器
 
 ```shell
-docker exec -it containerID /bin/bash
+docker exec -it mymongo /bin/bash
 ```
 
 根据阿里云帮助文档，~~在未开启认证的环境下~~，先输入`mongo`，进入命令模式，然后切换到`admin`数据库，并创建管理员账号，管理员账号将在`system.users`中。
