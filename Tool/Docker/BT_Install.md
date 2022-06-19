@@ -9,7 +9,7 @@
 | 系统版本 | Ubuntu 18.04.6 LTS (GNU/Linux 4.15.0-48-generic x86_64) |
 |  docker  |                        20.10.10                         |
 
-## 二、安装
+## 二、安装(基于centos镜像)
 
 拉取镜像，宝塔对centos7**兼容性[^1]**最好 ，且centos8的docker镜像下载不了`step3`的`screen
 
@@ -31,10 +31,10 @@ docker pull centos:centos7.9.2009
 
 ```shell
 # 没有启动 vsftpd 服务
-docker run -it --name btpanel -p 20:20 -p 21:21 -p 80:80 -p 443:443 -p 888:888 -p 3306:3306 -p 8888:8888 --privileged=true -v /data/www:/www centos:centos7.9.2009 /bin/bash
+docker run -it --name btpanel -p 20:20 -p 21:21 -p 80:80 -p 443:443 -p 888:888 -p 3306:3306 -p 8888:8888 --privileged=true --restart always -v /data/www:/www centos:centos7.9.2009 /bin/bash
 
 # 启动了的话改变一下映射端口或者关一下 vsftpd 服务
-docker run -it --name btpanel -p 20:20 -p 210:21 -p 80:80 -p 443:443 -p 888:888 -p 3306:3306 -p 8888:8888 --privileged=true -v /data/www:/www centos:centos7.9.2009 /bin/bash
+docker run -it --name btpanel -p 20:20 -p 210:21 -p 80:80 -p 443:443 -p 888:888 -p 3306:3306 -p 8888:8888 --privileged=true --restart always -v /data/www:/www centos:centos7.9.2009 /bin/bash
 ```
 
 由于docker中是一个**纯净版本**，我们首先需要给他升级并且安装必要的软件
@@ -68,6 +68,28 @@ wget -O i.sh http://download.bt.cn/install/install_6.0.sh && sh i.sh
 ![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/10/29-223358.png)
 
 Tips：**删除镜像**后记得删除`/home/www`目录
+
+## 四、安装(直接使用baota镜像)
+
+使用说明：https://github.com/pch18-docker/baota
+
+Dockerfile：https://github.com/pch18-docker/baota/blob/clear/Dockerfile
+
+```shell
+docker run -d --name btpanel --net=host --privileged=true --restart always -v /data/www:/www pch18/baota:lnp
+```
+
+>   -   登陆地址 `http://{{面板ip地址}}:8888`
+>
+>   -   初始账号 `username`
+>   -   初始密码 `password`
+
+>   `pch18/baota`或`pch18/baota:latest`等同`pch18/baota:lnmp`
+>   `pch18/baota:lnmp`为最新版本的官方纯净安装的基础上安装`nginx`,`mysql`,`php`
+>   `pch18/baota:lnp` 为官方版本纯净安装的基础上安装`nginx`,`php`(不内置`mysql`,用于外置数据库的环境)
+>   `pch18/baota:lamp` 为官方版本纯净安装的基础上安装`apache`,`php`
+>   `pch18/baota:lap` 为官方版本纯净安装的基础上安装`apache`,`php`(不内置`mysql`,用于外置数据库的环境)
+>   `pch18/baota:clear` 为官方版本纯净安装, 不默认安装`nginx`,`mysql`,`php`等程序
 
 ## 三、问题
 
@@ -123,7 +145,7 @@ Tips：**删除镜像**后记得删除`/home/www`目录
      确定两点：
      1. dbus是否启动？如果没启动，则：
      /etc/init.d/dbus start
-
+     
      2. dbus启动了，守护进程dbus-daemon是否启动？如果没启动，则：
      dbus-daemon --system
      ```
