@@ -76,7 +76,7 @@ Tips：**删除镜像**后记得删除`/home/www`目录
 Dockerfile：https://github.com/pch18-docker/baota/blob/clear/Dockerfile
 
 ```shell
-docker run -d --name btpanel --net=host --privileged=true --restart always -v /data/www:/www pch18/baota:lnp
+docker run -d --name btpanel --net=host --privileged=true --restart always -v /data/wwwroot:/wwwroot pch18/baota:lnp
 ```
 
 >   -   登陆地址 `http://{{面板ip地址}}:8888`
