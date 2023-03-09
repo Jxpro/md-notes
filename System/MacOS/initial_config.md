@@ -60,41 +60,41 @@ brew install --cask iterm2
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-基本配置（~/.zshrc）
+以下为细节介绍，一步到位请直接复制zshrc汇总中的内容
 
-1.   修改`ZSH_THEME="tonotdo"`，`plugins=(git macos docker docker-compose)`
-2.   在`source $ZSH/oh-my-zsh.sh`前一行添加`FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"`
-3.   找到`export LANG=en_US.UTF-8`并解开注释，不然`git`等软件会显示中文
-
-添加alias
-
-```shell
-alias proxy="export all_proxy='http://127.0.0.1:7890'"
-alias unproxy="unset all_proxy"
-alias zshconfig="vim ~/.zshrc"
-alias python="python3"
-alias pip="pip3"
-alias ..="cd .."
-```
-
-默认开启代理
-
-```shell
-# default to set proxy
-export all_proxy="http://127.0.0.1:7890"
-```
-
-安装zsh插件
-
-```shell
-# 安装
-brew install zsh-syntax-highlighting zsh-autosuggestions
-
-# 在.zshrc中启用插件
-# brew installed plugins of zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-```
+>   基本配置（~/.zshrc）
+>
+>   1.   修改`ZSH_THEME="tonotdo"`，`plugins=(git macos docker docker-compose)`
+>   2.   在`source $ZSH/oh-my-zsh.sh`前一行添加`FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"`
+>   3.   找到`export LANG=en_US.UTF-8`并解开注释，不然`git`等软件会显示中文
+>
+>   添加alias
+>
+>   ```shell
+>   alias proxy="export all_proxy='http://127.0.0.1:7890'"
+>   alias unproxy="unset all_proxy"
+>   alias zshconfig="vim ~/.zshrc"
+>   alias python="python3"
+>   alias pip="pip3"
+>   alias ..="cd .."
+>   ```
+>
+>   默认开启代理
+>
+>   ```shell
+>   # default to set proxy
+>   export all_proxy="http://127.0.0.1:7890"
+>   ```
+>
+>   启用插件zsh插件（下节安装）
+>
+>   ```shell
+>   # 在.zshrc中启用插件
+>   # brew installed plugins of zsh
+>   source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+>   source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+>   ```
+>
 
 ### 4.2 starship
 
@@ -104,23 +104,15 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 brew install starship
 ```
 
-在.zshrc中启用
+打开starship配置文件
 
 ```shell
-# enable starship
-eval "$(starship init zsh)"
+vim ～/.config/starship.toml
 ```
 
-使用预设present
+将下面内容粘贴并保存
 
-```shell
-starship preset nerd-font-symbols > ~/.config/starship.toml
-```
-
-个性化配置（~/.config/starship.toml）
-
-```shell
-# 在开头加入以下声明，如存在相同[xxx]，请先删除
+```toml
 right_format = "$time"
 
 [time]
@@ -133,24 +125,169 @@ style = "bold #a0a9cb"
 read_only = " "
 truncation_length = 0
 truncate_to_repo = false
+
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[fossil_branch]
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[guix_shell]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[haxe]
+symbol = "⌘ "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = " "
+
+[meson]
+symbol = "喝 "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[os.symbols]
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "﯑ "
+Gentoo = " "
+HardenedBSD = "ﲊ "
+Illumos = " "
+Linux = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = " "
+openSUSE = " "
+OracleLinux = " "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = " "
+Solus = "ﴱ "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = " "
+
+[package]
+symbol = " "
+
+[pijul_channel]
+symbol = "🪺 "
+
+[python]
+symbol = " "
+
+[rlang]
+symbol = "ﳒ "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[spack]
+symbol = "🅢 "
+
 ```
 
-添加alias（~/.zshrc）
+以下为细节介绍，一步到位请直接复制zshrc汇总中的内容
 
-```shell
-alias sfconfig="vim ~/.config/starship.toml"
-```
+>   在.zshrc中启用
+>
+>   ```shell
+>   # enable starship
+>   eval "$(starship init zsh)"
+>   ```
+>
+>   添加alias（~/.zshrc）
+>
+>   ```shell
+>   alias sfconfig="vim ~/.config/starship.toml"
+>   ```
+>
 
-## 五、brew安装CLI和APP
+## 五、其他CLI和APP
 
 ```shell
 brew install \
+  zsh-syntax-highlighting \
   conda-zsh-completion \
+  zsh-autosuggestions \
   openjdk@17 \
   autojump \
   tree \
+  tldr \
   bat \
-  git 
+  git
 	
 brew install --cask \
   android-file-transfer \
@@ -176,7 +313,81 @@ brew install --cask \
 SN: GAWAE-FCWQ3-P8NYB-C7GF7-NEDRT-Q5DTB-MFZG6-6NEQC-CRMUD-8MZ2K-66SRB-SU8EW-EDLZ9-TGH3S-8SGA）
 ```
 
-### 5.1 git
+### 5.1 autojump
+
+介绍和使用：[autojump最全中文详细使用教程](https://blog.csdn.net/daerzei/article/details/101362569)
+
+配置见《zshrc汇总》
+
+### 5.2 jdk
+
+建立软连接
+
+```shell
+sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk
+```
+
+环境变量见《zshrc汇总》
+
+### 5.3 maven
+
+在[Maven官网](https://maven.apache.org/download.cgi)下载最新版[Binary tar.gz archive](https://dlcdn.apache.org/maven/maven-3/3.9.0/binaries/apache-maven-3.9.0-bin.tar.gz)，并解压到当前目录（Downloads）
+
+将解压目录移动到`/opt`下：`sudo mv Downloads/apache-maven-3.9.0 /opt`
+
+环境变量见《zshrc汇总》
+
+### 5.4 conda
+
+初始化shell
+
+```shell
+conda init "$(basename "${SHELL}")"
+```
+
+默认不加载base环境
+
+```shell
+conda config --set auto_activate_base false
+```
+
+禁用自带的提示符，否则使用starfish时，会再上面独占一行来显示（base）这样的提示符
+
+```shell
+conda config --set changeps1 False
+```
+
+### 5.6 nvm
+
+脚本安装nvm（官网不推荐brew安装）
+
+```shell
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+```
+
+安装node（先将zshrc汇总复制粘贴后，重启一下终端）
+
+```shell
+# 查看可以版本
+nvm lis-remote
+
+# 安装的第一个版本会成为默认版本（default的alias）
+nvm install 16
+
+# 最新的LTS版本
+nvm install 18
+
+# 切换回目前常用的版本
+nvm use 16
+```
+
+建立软连接
+
+```shell
+sudo ln -sfn ~/.nvm/versions/node/v16.19.1/bin/node /usr/local/bin/node
+```
+
+## 六 、git配置
 
 设置名称和邮箱
 
@@ -203,110 +414,6 @@ ssh-rsa...
 
 ```shell
 ssh -T git@github.com
-```
-
-### 5.2 autojump
-
-在.zshrc中启用
-
-```shell
-# autojump configuration
-[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
-```
-
-介绍和使用：[autojump最全中文详细使用教程](https://blog.csdn.net/daerzei/article/details/101362569)
-
-### 5.3 jdk
-
-建立软连接
-
-```shell
-sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk
-```
-
-安装Maven
-
-1.   在[Maven官网](https://maven.apache.org/download.cgi)下载最新版[Binary tar.gz archive](https://dlcdn.apache.org/maven/maven-3/3.9.0/binaries/apache-maven-3.9.0-bin.tar.gz)，并解压到当前目录（Downloads）
-2.   将解压目录移动到`/opt`下：`sudo mv Downloads/apache-maven-3.9.0 /opt`
-
-设置环境变量
-
-```shell
-# jdk configuration
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home"
-export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
-export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
-
-# maven configuration
-export M2_HOME="/opt/apache-maven-3.9.0"
-export MAVEN_HOME="/opt/apache-maven-3.9.0"
-export PATH="/opt/apache-maven-3.9.0/bin:$PATH"
-```
-
-### 5.4 conda
-
-初始化shell
-
-```shell
-conda init "$(basename "${SHELL}")"
-```
-
-默认不加载base环境
-
-```shell
-conda config --set auto_activate_base false
-```
-
-禁用自带的提示符，否则使用starfish时，会再上面独占一行来显示（base）这样的提示符
-
-```shell
-conda config --set changeps1 False
-```
-
-将pip安装的可执行文件加入环境变量
-
-```shell
-# python binary file dir
-export PATH="~/Library/Python/3.9/bin:$PATH"
-```
-
-## 六、nvm和conda
-
-脚本安装nvm（官网不推荐brew安装）
-
-```shell
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-```
-
-安装node
-
-```shell
-# 查看可以版本
-nvm lis-remote
-
-# 安装的第一个版本会成为默认版本（default的alias）
-nvm install 16
-
-# 最新的LTS版本
-nvm install 18
-
-# 切换回目前常用的版本
-nvm use 16
-```
-
-查看.zshrc
-
-```shell
-# nvm configuration
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-```
-
-建立软连接
-
-```shell
-sudo ln -sfn ~/.nvm/versions/node/v16.19.1/bin/node /usr/local/bin/node
 ```
 
 ## 七、zshrc汇总
@@ -387,7 +494,7 @@ ZSH_THEME="tonotdo"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git macos docker docker-compose)
 
-# enable brew completion before source
+# enable zsh completion
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
 # enable oh-my-zsh
@@ -448,9 +555,6 @@ export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 export M2_HOME="/opt/apache-maven-3.9.0"
 export MAVEN_HOME="/opt/apache-maven-3.9.0"
 export PATH="/opt/apache-maven-3.9.0/bin:$PATH"
-
-# python binary file dir
-export PATH="~/Library/Python/3.9/bin:$PATH"
 
 # nvm configuration
 export NVM_DIR="$HOME/.nvm"
