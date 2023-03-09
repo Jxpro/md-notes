@@ -12,6 +12,10 @@ sudo spctl --master-disable
 
 # 移除Clash的隔离属性
 sudo xattr -rd com.apple.quarantine /Applications/Clash\ for\ Windows.app
+
+# 开启TUN模式和全局模式（推荐）
+# 或设置终端代理
+export all_proxy="http://127.0.0.1:7890"
 ```
 
 ## 二、Homebrew
@@ -38,22 +42,13 @@ brew install --cask iterm2
 设置：
 
 1.   make iterm2 default term 设置为默认终端
-
 2.   appearance - general - theme 设置为 minimal
-
 3.   appearance - general - status bar location 设置为 bottom
-
 4.   profiles - colors - color presents - import 导入喜欢的配色方案（[Ayu Mirage](https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/schemes/Ayu%20Mirage.itermcolors)）并设置
-
-5.   enable brew completion before source
-
-      77 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
-6.    - text - font 设置为[MesloLGM Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Meslo.zip)（先下载安装）
-
+5.   text - cursor 设置为 vertical bar 并勾选 blinking cursor
+6.   text - font 设置为[MesloLGM Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Meslo.zip)（先下载安装）
 7.   profiles - window - background image 选择背景图片(选择iCloud中同步过来的照片要先保存到本地)
-
-8.   profiles - session - status bar enabled 勾选并配置
+8.   profiles - session - status bar enabled 勾选并配置（auto- rainbow选择automatic）
 
 ## 四、终端美化（oh-my-zsh+starfish）
 
@@ -150,14 +145,15 @@ alias sfconfig="vim ~/.config/starship.toml"
 
 ```shell
 brew install \
-	openjdk@17 \
-	autojump \
-	tree \
-	bat \
-	git 
+  conda-zsh-completion \
+  openjdk@17 \
+  autojump \
+  tree \
+  bat \
+  git 
 	
 brew install --cask \
-	android-file-transfer \
+  android-file-transfer \
   visual-studio-code \
   intellij-idea \
   google-chrome \
@@ -171,8 +167,8 @@ brew install --cask \
   docker \
   maczip \
   wechat \
-	iina \
-	mos \
+  iina \
+  mos \
   qq
   
 # istat-menus 激活
@@ -247,9 +243,34 @@ export MAVEN_HOME="/opt/apache-maven-3.9.0"
 export PATH="/opt/apache-maven-3.9.0/bin:$PATH"
 ```
 
-## 六、nvm和conda
+### 5.4 conda
 
-### 6.1 nvm
+初始化shell
+
+```shell
+conda init "$(basename "${SHELL}")"
+```
+
+默认不加载base环境
+
+```shell
+conda config --set auto_activate_base false
+```
+
+禁用自带的提示符，否则使用starfish时，会再上面独占一行来显示（base）这样的提示符
+
+```shell
+conda config --set changeps1 False
+```
+
+将pip安装的可执行文件加入环境变量
+
+```shell
+# python binary file dir
+export PATH="~/Library/Python/3.9/bin:$PATH"
+```
+
+## 六、nvm和conda
 
 脚本安装nvm（官网不推荐brew安装）
 
@@ -286,44 +307,6 @@ export NVM_DIR="$HOME/.nvm"
 
 ```shell
 sudo ln -sfn ~/.nvm/versions/node/v16.19.1/bin/node /usr/local/bin/node
-```
-
-### 6.2 conda
-
-安装miniconda
-
-```shell
-# 下载安装脚本
-curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -o i.sh
-
-# 安装，选择安装路径时直接默认
-sh ./i.sh
-
-# 默认不加载base环境
-conda config --set auto_activate_base false
-
-# 将pip安装的可执行文件加入环境变量
-# python binary file dir
-export PATH="~/Library/Python/3.9/bin:$PATH"
-```
-
-查看.zshrc
-
-```shell
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/xin/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/xin/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/xin/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/xin/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 ```
 
 ## 七、zshrc汇总
@@ -467,7 +450,7 @@ export MAVEN_HOME="/opt/apache-maven-3.9.0"
 export PATH="/opt/apache-maven-3.9.0/bin:$PATH"
 
 # python binary file dir
-export PATH="/Users/xin/Library/Python/3.9/bin:$PATH"
+export PATH="~/Library/Python/3.9/bin:$PATH"
 
 # nvm configuration
 export NVM_DIR="$HOME/.nvm"
@@ -476,14 +459,14 @@ export NVM_DIR="$HOME/.nvm"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/xin/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/xin/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/xin/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/xin/miniconda3/bin:$PATH"
+        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
     fi
 fi
 unset __conda_setup
