@@ -60,7 +60,7 @@ brew install --cask iterm2
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-以下为细节介绍，一步到位请直接复制zshrc汇总中的内容
+以下为细节介绍，一步到位请直接复制《5.7 zshrc》中的内容
 
 >   基本配置（~/.zshrc）
 >
@@ -76,7 +76,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 >   alias zshconfig="vim ~/.zshrc"
 >   alias python="python3"
 >   alias pip="pip3"
->   alias ..="cd .."
 >   ```
 >
 >   默认开启代理
@@ -104,10 +103,10 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 brew install starship
 ```
 
-打开starship配置文件
+创建starship配置文件
 
 ```shell
-vim ～/.config/starship.toml
+vim ~/.config/starship.toml
 ```
 
 将下面内容粘贴并保存
@@ -259,7 +258,7 @@ symbol = "🅢 "
 
 ```
 
-以下为细节介绍，一步到位请直接复制zshrc汇总中的内容
+以下为细节介绍，一步到位请直接复制《5.7 zshrc》中的内容
 
 >   在.zshrc中启用
 >
@@ -275,7 +274,7 @@ symbol = "🅢 "
 >   ```
 >
 
-## 五、其他CLI和APP
+## 五、CLI和APP
 
 ```shell
 brew install \
@@ -317,7 +316,7 @@ SN: GAWAE-FCWQ3-P8NYB-C7GF7-NEDRT-Q5DTB-MFZG6-6NEQC-CRMUD-8MZ2K-66SRB-SU8EW-EDLZ
 
 介绍和使用：[autojump最全中文详细使用教程](https://blog.csdn.net/daerzei/article/details/101362569)
 
-配置见《zshrc汇总》
+配置见《5.7 zshrc》
 
 ### 5.2 jdk
 
@@ -327,7 +326,7 @@ SN: GAWAE-FCWQ3-P8NYB-C7GF7-NEDRT-Q5DTB-MFZG6-6NEQC-CRMUD-8MZ2K-66SRB-SU8EW-EDLZ
 sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk
 ```
 
-环境变量见《zshrc汇总》
+环境变量见《5.7 zshrc》
 
 ### 5.3 maven
 
@@ -335,7 +334,7 @@ sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/Java
 
 将解压目录移动到`/opt`下：`sudo mv Downloads/apache-maven-3.9.0 /opt`
 
-环境变量见《zshrc汇总》
+环境变量见《5.7 zshrc》
 
 ### 5.4 conda
 
@@ -365,60 +364,15 @@ conda config --set changeps1 False
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 ```
 
-安装node（先将zshrc汇总复制粘贴后，重启一下终端）
+### 5.7 zshrc
+
+创建临时的.zshrc
 
 ```shell
-# 查看可以版本
-nvm lis-remote
-
-# 安装的第一个版本会成为默认版本（default的alias）
-nvm install 16
-
-# 最新的LTS版本
-nvm install 18
-
-# 切换回目前常用的版本
-nvm use 16
+vim ~/.zshrct
 ```
 
-建立软连接
-
-```shell
-# 如果/usr/local/下不存在bin目录，则先创建
-sudo mkdir -p /usr/local/bin
-sudo ln -sfn ~/.nvm/versions/node/v16.19.1/bin/node /usr/local/bin/node
-```
-
-## 六 、git配置
-
-设置名称和邮箱
-
-```shell
-git config --global user.name "name"
-git config --global user.email "email"
-```
-
-生成公私钥
-
-```shell
-ssh-keygen -t rsa
-...（直接一路回车）
-```
-
-查看公钥并上传至github
-
-```shell
-cat ~/.ssh/id_rsa.pub
-ssh-rsa...
-```
-
-测试连接（有warning直接yes就行）
-
-```shell
-ssh -T git@github.com
-```
-
-## 七、zshrc汇总
+将下面内容粘贴并保存
 
 ```shell
 # If you come from bash you might have to change your $PATH.
@@ -536,7 +490,6 @@ alias zshconfig="vim ~/.zshrc"
 alias sfconfig="vim ~/.config/starship.toml"
 alias python="python3"
 alias pip="pip3"
-alias ..="cd .."
 
 # default to set proxy
 export all_proxy="http://127.0.0.1:7890"
@@ -579,7 +532,79 @@ unset __conda_setup
 # <<< conda initialize <<<
 ```
 
-## 八、其他软件
+覆盖原来的.zshrc
+
+```shell
+mv ~/.zshrct ~/.zshrc
+```
+
+## 六、其他
+
+将zshrc覆盖后重启一下终端再进行下面操作
+
+### 6.1 node
+
+安装node
+
+```shell
+# 查看可以版本
+nvm ls-remote
+
+# 安装的第一个版本会成为默认版本（default的alias）
+nvm install 16
+
+# 最新的LTS版本
+nvm install 18
+
+# 切换回目前常用的版本
+nvm use 16
+```
+
+建立软连接
+
+```shell
+# 如果/usr/local/下不存在bin目录，则先创建
+sudo mkdir -p /usr/local/bin && sudo ln -sfn ~/.nvm/versions/node/v16.19.1/bin/node /usr/local/bin/node
+```
+
+### 6.2 git
+
+设置名称和邮箱
+
+```shell
+git config --global user.name "name"
+git config --global user.email "email"
+```
+
+生成公私钥
+
+```shell
+ssh-keygen -t rsa
+...（直接一路回车）
+```
+
+查看公钥并上传至github
+
+```shell
+cat ~/.ssh/id_rsa.pub
+ssh-rsa...
+```
+
+测试连接（有warning直接yes就行）
+
+```shell
+ssh -T git@github.com
+```
+
+### 6.3 sougou
+
+运行一下安装程序，完成安装
+
+```shell
+open /opt/homebrew/Caskroom/sogouinput/614,1672312033/sogou_mac_614.app
+```
+
+## 七、其他软件
 
 1.   [Alfred5[TNT]](https://appstorrent.ru/129-alfred.html)
 2.   [Bartender 4[TNT]](https://appstorrent.ru/133-macbartender.html)
