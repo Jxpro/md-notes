@@ -117,7 +117,7 @@ right_format = "$time"
 
 [time]
 disabled = false
-time_format = "%T" # Hour:Minute Format
+time_format = "%T"
 format = '[ $time]($style)'
 style = "bold #a0a9cb"
 
@@ -310,7 +310,7 @@ brew install --cask \
   
 # istat-menus 激活
 邮箱：982092332@qq.com
-SN: GAWAE-FCWQ3-P8NYB-C7GF7-NEDRT-Q5DTB-MFZG6-6NEQC-CRMUD-8MZ2K-66SRB-SU8EW-EDLZ9-TGH3S-8SGA）
+SN: GAWAE-FCWQ3-P8NYB-C7GF7-NEDRT-Q5DTB-MFZG6-6NEQC-CRMUD-8MZ2K-66SRB-SU8EW-EDLZ9-TGH3S-8SGA
 ```
 
 ### 5.1 autojump
@@ -384,6 +384,8 @@ nvm use 16
 建立软连接
 
 ```shell
+# 如果/usr/local/下不存在bin目录，则先创建
+sudo mkdir -p /usr/local/bin
 sudo ln -sfn ~/.nvm/versions/node/v16.19.1/bin/node /usr/local/bin/node
 ```
 
