@@ -301,6 +301,7 @@ brew install --cask \
   thunder \
   pycharm \
   docker \
+  fliqlo \
   maczip \
   wechat \
   iina \
