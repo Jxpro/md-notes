@@ -526,7 +526,7 @@ unset __conda_setup
 mv ~/.zshrct ~/.zshrc
 ```
 
-## 六、其他
+## 六、其他（重启iterm2）
 
 将zshrc覆盖后重启一下终端再进行下面操作
 
@@ -589,7 +589,8 @@ ssh -T git@github.com
 运行一下安装程序，完成安装
 
 ```shell
-open /opt/homebrew/Caskroom/sogouinput/614,1672312033/sogou_mac_614.app
+# xxx表示视版本而定，使用tab可自动补全
+open /opt/homebrew/Caskroom/sogouinput/xxx/sogou_mac_xxx.app
 ```
 
 ## 七、其他软件
