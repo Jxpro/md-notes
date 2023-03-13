@@ -52,6 +52,12 @@ brew install --cask iterm2
 
 ## 四、终端美化（oh-my-zsh+starfish）
 
+开启TUN模式和全局模式（推荐）或设置终端代理
+
+```shell
+export all_proxy="http://127.0.0.1:7890"
+```
+
 ### 4.1 oh-my-zsh
 
 安装oh-my-zsh
