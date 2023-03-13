@@ -321,9 +321,11 @@ SN: GAWAE-FCWQ3-P8NYB-C7GF7-NEDRT-Q5DTB-MFZG6-6NEQC-CRMUD-8MZ2K-66SRB-SU8EW-EDLZ
 
 ### 5.1 autojump
 
->   !!! autojump依赖的python（brew自动安装）会覆盖系统python，导致一些bug !!!
+>   autojump 依赖的 python（brew自动安装）会掩盖系统python（集成安装brew前安装的那个Xcode开发工具），会导致一些难以察觉bug ，使用时的指令都是python3和pip3 !!!
+>
+>   如需访问原来xcode开发工具集成的python和pip，需标明详细路径：/usr/bin/python3和/usr/bin/pip3 !!!
 
-介绍和使用：[autojump最全中文详细使用教程](https://blog.csdn.net/daerzei/article/details/101362569)
+介绍和使用：[autojump使用教程](https://blog.csdn.net/daerzei/article/details/101362569)
 
 配置见《5.7 zshrc》
 
@@ -545,9 +547,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-# default python3 binary file dir
-export PATH="~/Library/Python/3.9/bin:$PATH"
 ```
 
 覆盖原来的.zshrc
