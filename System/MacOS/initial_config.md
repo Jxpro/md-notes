@@ -329,7 +329,29 @@ sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/Java
 
 环境变量见《5.7 zshrc》
 
-### 5.3 conda
+### 5.3 maven
+
+在[Maven官网](https://maven.apache.org/download.cgi)下载最新版[Binary tar.gz archive](https://dlcdn.apache.org/maven/maven-3/3.9.0/binaries/apache-maven-3.9.0-bin.tar.gz)
+
+```shell
+curl https://dlcdn.apache.org/maven/maven-3/3.9.0/binaries/apache-maven-3.9.0-bin.tar.gz -o apache-maven-3.9.0-bin.tar.gz
+```
+
+解压到当前目录
+
+```shell
+tar -xf apache-maven-3.9.0-bin.tar.gz
+```
+
+将其移动到`/opt`目录下
+
+```shell
+sudo mv apache-maven-3.9.0 /opt
+```
+
+环境变量见《5.7 zshrc》
+
+### 5.4 conda
 
 初始化shell
 
@@ -349,7 +371,7 @@ conda config --set auto_activate_base false
 conda config --set changeps1 False
 ```
 
-### 5.4 nvm
+### 5.5 nvm
 
 脚本安装nvm（官网不推荐brew安装）
 
@@ -357,7 +379,7 @@ conda config --set changeps1 False
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 ```
 
-### 5.5 zshrc
+### 5.6 zshrc
 
 创建临时的.zshrc
 
@@ -498,6 +520,11 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home"
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+
+# maven configuration
+export M2_HOME="/opt/apache-maven-3.9.0"
+export MAVEN_HOME="/opt/apache-maven-3.9.0"
+export PATH="/opt/apache-maven-3.9.0/bin:$PATH"
 
 # nvm configuration
 export NVM_DIR="$HOME/.nvm"
