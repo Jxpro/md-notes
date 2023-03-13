@@ -321,6 +321,8 @@ SN: GAWAE-FCWQ3-P8NYB-C7GF7-NEDRT-Q5DTB-MFZG6-6NEQC-CRMUD-8MZ2K-66SRB-SU8EW-EDLZ
 
 ### 5.1 autojump
 
+>   !!! autojump依赖的python（brew自动安装）会覆盖系统python，导致一些bug !!!
+
 介绍和使用：[autojump最全中文详细使用教程](https://blog.csdn.net/daerzei/article/details/101362569)
 
 配置见《5.7 zshrc》
@@ -363,12 +365,6 @@ sudo mv apache-maven-3.9.0 /opt
 
 ```shell
 conda init "$(basename "${SHELL}")"
-```
-
-默认不加载base环境
-
-```shell
-conda config --set auto_activate_base false
 ```
 
 禁用自带的提示符，否则使用starfish时，会再上面独占一行来显示（base）这样的提示符
@@ -509,8 +505,6 @@ alias proxy="export all_proxy='http://127.0.0.1:7890'"
 alias unproxy="unset all_proxy"
 alias zshconfig="vim ~/.zshrc"
 alias sfconfig="vim ~/.config/starship.toml"
-alias python="python3"
-alias pip="pip3"
 
 # default to set proxy
 export all_proxy="http://127.0.0.1:7890"
@@ -551,6 +545,9 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# default python3 binary file dir
+export PATH="~/Library/Python/3.9/bin:$PATH"
 ```
 
 覆盖原来的.zshrc
