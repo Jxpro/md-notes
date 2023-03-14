@@ -297,6 +297,7 @@ brew install \
 brew install --cask \
   android-file-transfer \
   visual-studio-code \
+  monitorcontrol \
   intellij-idea \
   google-chrome \
   silicon-info \
@@ -318,6 +319,8 @@ brew install --cask \
 # istat-menus 激活
 邮箱：982092332@qq.com
 SN: GAWAE-FCWQ3-P8NYB-C7GF7-NEDRT-Q5DTB-MFZG6-6NEQC-CRMUD-8MZ2K-66SRB-SU8EW-EDLZ9-TGH3S-8SGA
+
+# monitorcontrol 用于键盘调节外接显示器的亮度，但调节过于频繁可能导致显示器花屏，需重启
 ```
 
 ### 5.1 autojump
