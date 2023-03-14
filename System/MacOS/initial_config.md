@@ -304,6 +304,7 @@ brew install --cask \
   sogouinput \
   cheatsheet \
   miniconda \
+  alt-tab \
   thunder \
   pycharm \
   docker \
