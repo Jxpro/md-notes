@@ -140,6 +140,7 @@ brew install \
   zsh-autosuggestions \
   openjdk@17 \
   autojump \
+  neofetch \
   tree \
   tldr \
   bat \
