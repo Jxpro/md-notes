@@ -112,7 +112,7 @@ brew install starship
 下载starship配置文件
 
 ```shell
-curl https://gist.githubusercontent.com/Jxpro/0a5729ac38d4b17a99142c4d71f27d8a/raw/f3819eb70df592926732c137d8389b2166bc26b0/starship.toml -o ~/.config/starship.toml
+curl https://gist.githubusercontent.com/Jxpro/0a5729ac38d4b17a99142c4d71f27d8a/raw/33ef48191f7e245aa3d3b053569b9c8c49207a3c/starship.toml -o ~/.config/starship.toml
 ```
 
 以下为细节介绍，一步到位请直接复制《5.7 zshrc》中的内容
