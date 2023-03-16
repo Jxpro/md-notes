@@ -298,6 +298,7 @@ brew install --cask \
   android-file-transfer \
   visual-studio-code \
   monitorcontrol \
+  spacelauncher \
   intellij-idea \
   google-chrome \
   silicon-info \
