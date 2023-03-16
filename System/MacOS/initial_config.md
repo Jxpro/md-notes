@@ -50,7 +50,7 @@ brew install --cask iterm2
 7.   profiles - window - background image 选择背景图片(选择iCloud中同步过来的照片要先保存到本地)
 8.   profiles - session - status bar enabled 勾选并配置（auto- rainbow选择automatic）
 
-## 四、终端美化（oh-my-zsh+starfish）
+## 四、终端美化（oh-my-zsh+starship）
 
 开启TUN模式和全局模式（推荐）或设置终端代理
 
@@ -374,7 +374,7 @@ sudo mv apache-maven-3.9.0 /opt
 conda init "$(basename "${SHELL}")"
 ```
 
-禁用自带的提示符，否则使用starfish时，会再上面独占一行来显示（base）这样的提示符
+禁用自带的提示符，否则使用starship时，会再上面独占一行来显示（base）这样的提示符
 
 ```shell
 conda config --set changeps1 False
@@ -511,7 +511,7 @@ export LANG=en_US.UTF-8
 alias proxy="export all_proxy='http://127.0.0.1:7890'"
 alias unproxy="unset all_proxy"
 alias zshconfig="vim ~/.zshrc"
-alias sfconfig="vim ~/.config/starship.toml"
+alias ssconfig="vim ~/.config/starship.toml"
 
 # default to set proxy
 export all_proxy="http://127.0.0.1:7890"
