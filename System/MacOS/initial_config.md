@@ -144,7 +144,8 @@ brew install \
   tree \
   tldr \
   bat \
-  git
+  git \
+  go
 	
 brew install --cask \
   android-file-transfer \
@@ -165,6 +166,7 @@ brew install --cask \
   fliqlo \
   maczip \
   wechat \
+  goland \
   iina \
   mos \
   qq
