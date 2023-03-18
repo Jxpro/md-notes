@@ -170,6 +170,7 @@ brew install --cask \
   goland \
   iina \
   mos \
+  bob \
   qq
   
 # istat-menus 激活
