@@ -327,6 +327,6 @@ open /opt/homebrew/Caskroom/sogouinput/xxx/sogou_mac_xxx.app
 3.   [Typora[TNT]](https://appstorrent.ru/861-typora.html)
 4.   [Navicat Premium[TNT]](https://appstorrent.ru/802-navicat-premium.html)
 5.   [Office Word](https://appstorrent.ru/80-microsoft-office-2019.html)，[Serializer](https://appstorrent.ru/751-microsoft-office-2021.html)
-6.   [Runcat (Appstore)](https://apps.apple.com/us/app/runcat/id1429033973?mt=12)
-7.   [小绿鲸](https://www.xljsci.com/)
-
+6.   [ParallelsDesktop](https://appstorrent.ru/61-parallels-desktop.html)
+7.   [Runcat (Appstore)](https://apps.apple.com/us/app/runcat/id1429033973?mt=12)
+8.   [小绿鲸](https://www.xljsci.com/)
