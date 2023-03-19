@@ -159,6 +159,7 @@ brew install --cask \
   sogouinput \
   cheatsheet \
   miniconda \
+  snipaste \
   telegram \
   alt-tab \
   thunder \
