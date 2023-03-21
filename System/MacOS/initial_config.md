@@ -162,6 +162,7 @@ brew install --cask \
   snipaste \
   telegram \
   alt-tab \
+  qqmusic \
   thunder \
   pycharm \
   docker \
