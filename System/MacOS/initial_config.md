@@ -150,6 +150,7 @@ brew install \
 brew install --cask \
   android-file-transfer \
   visual-studio-code \
+  tencent-meeting \
   monitorcontrol \
   spacelauncher \
   intellij-idea \
