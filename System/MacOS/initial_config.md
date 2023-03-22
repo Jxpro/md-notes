@@ -166,6 +166,7 @@ brew install --cask \
   cheatsheet \
   appcleaner \
   miniconda \
+  rectangle \
   snipaste \
   telegram \
   alt-tab \
