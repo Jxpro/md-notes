@@ -144,6 +144,7 @@ brew install \
   tree \
   tldr \
   bat \
+  exa \
   git \
   go
 	
