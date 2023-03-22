@@ -164,6 +164,7 @@ brew install --cask \
   istat-menus \
   sogouinput \
   cheatsheet \
+  appcleaner \
   miniconda \
   snipaste \
   telegram \
