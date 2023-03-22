@@ -49,6 +49,7 @@ brew install --cask iterm2
 6.   text - font 设置为[MesloLGM Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/Meslo.zip)（先下载安装）
 7.   profiles - window - background image 选择背景图片(选择iCloud中同步过来的照片要先保存到本地)
 8.   profiles - session - status bar enabled 勾选并配置（auto- rainbow选择automatic）
+9.   profiles - keys - key Mappings 点击Presets... 选择 Terminal.app Compatibility
 
 ## 四、终端美化（oh-my-zsh+starship）
 
