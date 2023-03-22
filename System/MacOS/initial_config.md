@@ -145,6 +145,7 @@ brew install \
   tldr \
   bat \
   exa \
+  fzf \
   git \
   go
 	
@@ -194,7 +195,29 @@ SN: GAWAE-FCWQ3-P8NYB-C7GF7-NEDRT-Q5DTB-MFZG6-6NEQC-CRMUD-8MZ2K-66SRB-SU8EW-EDLZ
 
 配置见《5.7 zshrc》
 
-### 5.2 jdk
+### 5.2 fzf
+
+安装键绑定和自动补全
+
+```shell
+/opt/homebrew/opt/fzf/install
+```
+
+安装基于`fzf`的`git`增强的脚本
+
+```shell
+git clone https://github.com/wfxr/forgit.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/forgit
+```
+
+安装基于`fzf`的`tab`增强的脚本
+
+```shell
+git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
+```
+
+配置见《5.7 zshrc》
+
+### 5.3 jdk
 
 建立软连接
 
@@ -204,7 +227,7 @@ sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/Java
 
 环境变量见《5.7 zshrc》
 
-### 5.3 maven
+### 5.4 maven
 
 在[Maven官网](https://maven.apache.org/download.cgi)下载最新版[Binary tar.gz archive](https://dlcdn.apache.org/maven/maven-3/3.9.0/binaries/apache-maven-3.9.0-bin.tar.gz)
 
@@ -226,7 +249,7 @@ sudo mv apache-maven-3.9.0 /opt
 
 环境变量见《5.7 zshrc》
 
-### 5.4 conda
+### 5.5 conda
 
 初始化shell
 
@@ -240,7 +263,7 @@ conda init "$(basename "${SHELL}")"
 conda config --set changeps1 False
 ```
 
-### 5.5 nvm
+### 5.6 nvm
 
 脚本安装nvm（官网不推荐brew安装）
 
@@ -248,12 +271,12 @@ conda config --set changeps1 False
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 ```
 
-### 5.6 zshrc
+### 5.7 zshrc
 
 下载配置好的.zshrc
 
 ```shell
-curl https://gist.githubusercontent.com/Jxpro/9f59d95d35871f3420c25d0704bae52f/raw/3d6f822b5cec244750e7a438853b1b6c5517967f/.zshrc -o ~/.zshrc
+curl https://gist.githubusercontent.com/Jxpro/9f59d95d35871f3420c25d0704bae52f/raw/5628fdab4c97a303319e9788a35f56016ea4a71b/.zshrc -o ~/.zshrc
 ```
 
 ## 六、其他（重启iterm2）
