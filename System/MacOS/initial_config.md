@@ -252,7 +252,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 下载配置好的.zshrc
 
 ```shell
-curl https://gist.githubusercontent.com/Jxpro/fe100f293a78b76d4e7f1b2b4fab18c5/raw/ce95575748ac8efd9c048b630bb0277d49de48ac/.zshrc -o ~/.zshrc
+curl https://gist.githubusercontent.com/Jxpro/9f59d95d35871f3420c25d0704bae52f/raw/5243896fb3d6e10d7edae5f00fb3b748783487d3/.zshrc -o ~/.zshrc
 ```
 
 ## 六、其他（重启iterm2）
