@@ -138,6 +138,7 @@ brew install \
   zsh-syntax-highlighting \
   conda-zsh-completion \
   zsh-autosuggestions \
+  the_silver_searcher \
   openjdk@17 \
   autojump \
   neofetch \
@@ -147,6 +148,7 @@ brew install \
   exa \
   fzf \
   git \
+  fd \
   go
 	
 brew install --cask \
@@ -276,7 +278,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 下载配置好的.zshrc
 
 ```shell
-curl https://gist.githubusercontent.com/Jxpro/9f59d95d35871f3420c25d0704bae52f/raw/5628fdab4c97a303319e9788a35f56016ea4a71b/.zshrc -o ~/.zshrc
+curl https://gist.githubusercontent.com/Jxpro/9f59d95d35871f3420c25d0704bae52f/raw/75e5f8b6e36fdf88b8263f41145db2131065e36a/.zshrc -o ~/.zshrc
 ```
 
 ## 六、其他（重启iterm2）
