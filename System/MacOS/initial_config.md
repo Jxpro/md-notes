@@ -140,6 +140,7 @@ brew install \
   conda-zsh-completion \
   zsh-autosuggestions \
   the_silver_searcher \
+  rm-improved \
   openjdk@17 \
   autojump \
   neofetch \
