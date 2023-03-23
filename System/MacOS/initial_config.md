@@ -145,6 +145,7 @@ brew install \
   autojump \
   neofetch \
   tree \
+  dust \
   tldr \
   bat \
   exa \
@@ -282,7 +283,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 下载配置好的.zshrc
 
 ```shell
-curl https://gist.githubusercontent.com/Jxpro/9f59d95d35871f3420c25d0704bae52f/raw/75e5f8b6e36fdf88b8263f41145db2131065e36a/.zshrc -o ~/.zshrc
+curl https://gist.githubusercontent.com/Jxpro/9f59d95d35871f3420c25d0704bae52f/raw/611b541de37c2bafdc5cd6cc7ace2e4bdae77e78/.zshrc -o ~/.zshrc
 ```
 
 ## 六、其他（重启iterm2）
