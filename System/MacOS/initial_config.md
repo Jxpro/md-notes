@@ -152,6 +152,7 @@ brew install \
   fzf \
   git \
   fd \
+  jq \
   go
 	
 brew install --cask \
