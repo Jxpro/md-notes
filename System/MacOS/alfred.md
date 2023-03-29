@@ -591,3 +591,16 @@ Alfred 支持使用移动端版本的`Alfred`来控制桌面端，但是收费�
     
     设置`Alfred`所有的配置内容，包括`Workflows`和`Appearance`，都可以备份和同步。设置方式很简单，点击`Set preference folder`弹窗中，找到 云盘（如`iCloud`）目录，在目录下新建一个文件夹来存放`Alfred`所有配置的同步文件（Alfred.alfredpreferences），这样，以后如果你有多台`MacOS`系统，登陆同一个`Apple`账号，就可以在所有的设备上同步配置。点击 `Reveal in Finder` 可以打开你设置的同步文件所在的目录。
 
+## 三、workflow推荐
+
+[ChatFred](https://alfred.app/workflows/chrislemke/chatfred/)：不仅可以直接在Alfred中与ChatGPT聊天，还集成了OpenAI的其他几个模型
+
+[Dash](https://alfred.app/workflows/chrislemke/chatfred/)：在Alfred中直接搜索Dash文档，回车打开文档
+
+[VSCodeDiff](https://alfred.app/workflows/logicxd/vscodediff/)：使用vscode比较剪切板最近两条内容
+
+[IP Address](https://alfred.app/workflows/alexchantastic/ip-address/)：获取您的内网和外网的ip地址
+
+[Template File](https://alfred.app/workflows/zbrl/template-file/)：快速新建文件和文件夹
+
+[TinyPNG](https://alfred.app/workflows/alfredapp/tinypng/)：调用TinyPNG压缩图片
