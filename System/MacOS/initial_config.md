@@ -20,6 +20,8 @@ export all_proxy="http://127.0.0.1:7890"
 
 ## 二、Homebrew
 
+安装[homebrew](https://brew.sh/)
+
 ```shell
 # 安装
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -29,6 +31,55 @@ echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 
 # 立即生效
 eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
+>   有的 casks 包很狡猾，希望自己提醒用户更新，在软件内下载更新包；这会妨碍 brew 统一进行版本管理。
+>
+>   另外在 brew 也提示过：`Casks with auto_updates or version :latest will not be upgraded.`
+>
+>   brew outdated 查看可用的更新；
+>   brew outdated --greedy 查看所有可用的更新，包括标记了 auto_updates 或者 latest 版本号的软件包；
+>   brew upgrade 更新所有软件包，不包括标记了 auto_updates 或者 latest 版本号的软件包；
+>   brew upgrade --greedy 更新所有可用软件包；
+
+基于上述原因，我们可以安装[brew-cask-upgrade](https://github.com/buo/homebrew-cask-upgrade)，它是一个扩展命令，通过提供交互性、改进的界面和更高的升级内容粒度来取代原生的升级。
+
+```shell
+brew tap buo/cask-upgrade
+```
+
+常用选项
+
+```shell
+brew cu -afi
+```
+
+所有选项
+
+```
+Usage: brew cu [command=run] [CASK] [options]
+Commands:
+    run         Default command, doesn't have to be specified. Executes cask upgrades.
+    pin         Pin the current app version, preventing it from being 
+                upgraded when issuing the `brew cu` command. See also `unpin`.
+    unpin       Unpin the current app version, allowing them to be 
+                upgraded by `brew cu` command. See also `pin`.
+    pinned      Print all pinned apps and its version. See also `pin`.
+
+Options:
+    -a, --all             Include apps that auto-update in the upgrade.
+        --cleanup         Cleans up cached downloads and tracker symlinks after
+                          updating.
+    -f  --force           Include apps that are marked as latest
+                          (i.e. force-reinstall them).
+        --no-brew-update  Prevent auto-update of Homebrew, taps, and formulae
+                          before checking outdated apps.
+    -y, --yes             Update all outdated apps; answer yes to updating packages.
+    -q, --quiet           Do not show information about installed apps or current options.
+    -v, --verbose         Make output more verbose.
+        --no-quarantine   Pass --no-quarantine option to `brew cask install`.
+    -i, --interactive     Running update in interactive mode
+        --include-mas     (Experimental) Include applications from Mac App Store.    
 ```
 
 ## 三、iTerm2
