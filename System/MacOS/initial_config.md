@@ -226,11 +226,12 @@ brew install --cask \
   qqmusic \
   thunder \
   pycharm \
+  goland \
   docker \
   fliqlo \
   maczip \
   wechat \
-  goland \
+  douyin \
   iina \
   mos \
   bob \
