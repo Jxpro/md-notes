@@ -211,7 +211,6 @@ brew install --cask \
   visual-studio-code \
   tencent-meeting \
   monitorcontrol \
-  spacelauncher \
   intellij-idea \
   google-chrome \
   silicon-info \
