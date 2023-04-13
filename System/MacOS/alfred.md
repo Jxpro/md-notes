@@ -1,5 +1,7 @@
 # Alfred配置详解和workflow推荐
 
+[TOC]
+
 `Alfred`是`macOS`平台强大的效率软件，本篇文章基于`Alfred 5.0.6 [2110]`进行介绍，主要讲解其`preferences`配置项，以及常用`workflow`推荐，暂不讲解如何制作。
 
 ## 一、配置概述
