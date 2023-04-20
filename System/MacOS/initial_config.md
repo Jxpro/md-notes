@@ -208,6 +208,7 @@ brew install \
 	
 brew install --cask \
   android-file-transfer \
+  mathpix-snipping-tool \
   visual-studio-code \
   tencent-meeting \
   monitorcontrol \
