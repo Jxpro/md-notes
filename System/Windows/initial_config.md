@@ -142,11 +142,12 @@ D0ownload: -> [SocketCore.cc:1021] errorCode=1 SSL/TLS handshake failure: Error:
 git config --global credential.helper manager
 ```
 
-设置名称和邮箱
+设置名称，邮箱和默认分支
 
 ```
 git config --global user.name "name"
 git config --global user.email "email"
+git config --global init.defaultBranch main
 ```
 
 生成公私钥
