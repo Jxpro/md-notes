@@ -371,11 +371,12 @@ sudo mkdir -p /usr/local/bin && sudo ln -sfn ~/.nvm/versions/node/v16.19.1/bin/n
 
 ### 6.2 git
 
-设置名称和邮箱
+设置名称，邮箱和默认分支
 
 ```shell
 git config --global user.name "name"
 git config --global user.email "email"
+git config --global init.defaultBranch main
 ```
 
 生成公私钥
