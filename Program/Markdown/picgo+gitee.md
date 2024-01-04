@@ -16,12 +16,14 @@ npm install picgo -g
 
 ![img](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2021/10/29-223421.png)
 
-## 二、准备Gitee仓库
+## 二、准备Gitee（github）仓库
 
-1.   **创建或选择**一个gitee仓库
+1.   **创建或选择**一个gitee（github）仓库
      -   需要保证**仓库公开**，不然可以上传，但是无法下载显示，因为没公开
-     -   需要保证有README.md，文件或者不为空仓库，不然无法删除，原因未知
-2.   生成私人令牌`Token`，权限选择`projects`即可，其他可不选
+     -   需要保证有README.md，文件或者不为空仓库，不然无法删除，原因未知（还能删除？忘记当时怎么想了，TODO 验证一下）
+2.   生成私人令牌`Token`，权限选择`projects`即可（github选择public_repo），其他可不选
+
+>   ！！！ gitee目前好像加了访问限制，使用github或其他图床
 
 ## 三、配置PicGo
 
@@ -37,6 +39,7 @@ cd C:\Users\username\AppData\Roaming\Typora\picgo\win64\
 # 用于格式化图片名称，防止重复
 .\picgo install super-prefix
 # PicGo Gitee图床插件
+# 不用gitee可以不用装了
 .\picgo install gitee-uploader
 ```
 
@@ -87,6 +90,40 @@ cd C:\Users\username\AppData\Roaming\Typora\picgo\win64\
     "fileFormat": "YYYY-MM-DD-HHmmss"
 }
 ```
+
+>   或者直接打开配置文件，复制粘贴以下配置（没安装gitee-uploader请删除gitee相关部分）：
+>
+>   ```
+>   {
+>     "picBed": {
+>       "uploader": "github",
+>       "current": "github",
+>       "transformer": "path",
+>       "github": {
+>         "repo": "username/reponame",
+>         "branch": "master",
+>         "token": "token",
+>         "path": "path", // 以 '/' 结尾，比如 md/new/
+>         "customUrl": ""
+>       },
+>         "gitee": {
+>         "repo": "username/reponame",
+>         "branch": "master",
+>         "token": "token",
+>         "path": "md/$customPath",
+>         "customPath": "yearMonth",
+>         "customUrl": ""
+>       },
+>     },
+>     "picgoPlugins": {
+>       "picgo-plugin-gitee-uploader": true,
+>       "picgo-plugin-super-prefix": true
+>     },
+>     "picgo-plugin-super-prefix": {
+>       "fileFormat": "YYYY-MM-DD-HHmmss"
+>     }
+>   }
+>   ```
 
 打开Typora，验证图片上传，查看是否成功
 
