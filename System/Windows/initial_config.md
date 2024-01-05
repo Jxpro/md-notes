@@ -284,7 +284,7 @@ scoop bucket add java
 scoop bucket add games
 scoop bucket add extras
 
-scoop install qq vim nvm lsd which touch maven steam wechat zotero vscode starship vncviewer openjdk17 miniconda3 everything dismplusplus vcredist2022 translucenttb sublime-text
+scoop install qq vim nvm lsd which touch maven steam wechat zotero vscode starship vncviewer openjdk17 miniconda3 everything dismplusplus vcredist2022 translucenttb sublime-text filezilla
 
 (Google在校园网不稳定，需要切换移动热点，所以分开下)
 scoop install go googlechrome
