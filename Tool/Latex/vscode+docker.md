@@ -137,6 +137,108 @@ mkdir .devcontainer && touch .devcontainer/devcontainer.json
     "latex-workshop.latex.recipe.default": "lastUsed",
     // 用于反向同步的内部查看器的键绑定。ctrl/cmd +点击(默认)或双击
     "latex-workshop.view.pdf.internal.synctex.keybinding": "ctrl-click",
+    // 编译工具和命令
+    "latex-workshop.latex.tools": [
+        {
+            "name": "pdflatexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "xelatexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-xelatex",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "lualatexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-lualatex",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ]
+        },
+        // {
+        //     "name": "tectonic",
+        //     "command": "tectonic",
+        //     "args": [
+        //         "--synctex",
+        //         "--keep-logs",
+        //         "%DOC%.tex"
+        //     ],
+        //     "env": {}
+        // },
+    ],
+    // 配置编译链
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk (pdflatex)",
+            "tools": [
+                "pdflatexmk"
+            ]
+        },
+        {
+            "name": "latexmk (xelatex)",
+            "tools": [
+                "xelatexmk"
+            ]
+        },
+        {
+            "name": "latexmk (lualatex)",
+            "tools": [
+                "lualatexmk"
+            ]
+        },
+        {
+            "name": "pdflatex -> bibtex -> pdflatex * 2",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        // {
+        //     "name": "tectonic",
+        //     "tools": [
+        //         "tectonic"
+        //     ]
+        // },
+    ],
     //文件清理。此属性必须是字符串数组
     // "latex-workshop.latex.clean.fileTypes": [
     //     "*.aux",
@@ -157,94 +259,12 @@ mkdir .devcontainer && touch .devcontainer/devcontainer.json
     //     "*.ist",
     //     "*.fls",
     //     "*.log",
-    //     "*.fdb_latexmk"
-    // ],
-    // 编译工具和命令
-    // "latex-workshop.latex.tools": [
-    //     {
-    //         "name": "latexmk",
-    //         "command": "latexmk",
-    //         "args": [
-    //             "-synctex=1",
-    //             "-interaction=nonstopmode",
-    //             "-file-line-error",
-    //             "-pdf",
-    //             "-outdir=%OUTDIR%",
-    //             "%DOCFILE%"
-    //         ]
-    //     },
-    //     {
-    //         "name": "xelatex",
-    //         "command": "xelatex",
-    //         "args": [
-    //             "-synctex=1",
-    //             "-interaction=nonstopmode",
-    //             "-file-line-error",
-    //             "%DOCFILE%"
-    //         ]
-    //     },
-    //     {
-    //         "name": "pdflatex",
-    //         "command": "pdflatex",
-    //         "args": [
-    //             "-synctex=1",
-    //             "-interaction=nonstopmode",
-    //             "-file-line-error",
-    //             "%DOCFILE%"
-    //         ]
-    //     },
-    //     {
-    //         "name": "bibtex",
-    //         "command": "bibtex",
-    //         "args": [
-    //             "%DOCFILE%"
-    //         ]
-    //     }
-    // ],
-    // // 用于配置编译链
-    // "latex-workshop.latex.recipes": [
-    //     {
-    //         "name": "LaTeXmk",
-    //         "tools": [
-    //             "latexmk"
-    //         ]
-    //     },
-    //     {
-    //         "name": "XeLaTeX",
-    //         "tools": [
-    //             "xelatex"
-    //         ]
-    //     },
-    //     {
-    //         "name": "PDFLaTeX",
-    //         "tools": [
-    //             "pdflatex"
-    //         ]
-    //     },
-    //     {
-    //         "name": "BibTeX",
-    //         "tools": [
-    //             "bibtex"
-    //         ]
-    //     },
-    //     {
-    //         "name": "xelatex -> bibtex -> xelatex * 2",
-    //         "tools": [
-    //             "xelatex",
-    //             "bibtex",
-    //             "xelatex",
-    //             "xelatex"
-    //         ]
-    //     },
-    //     {
-    //         "name": "pdflatex -> bibtex -> pdflatex * 2",
-    //         "tools": [
-    //             "pdflatex",
-    //             "bibtex",
-    //             "pdflatex",
-    //             "pdflatex"
-    //         ]
-    //     }
+    //     "*.snm",
+    //     "*.nav",
+    //     "*.vrb",
+    //     "*.fdb_latexmk",
+    //     "*.synctex(busy)",
+    //     "*.synctex.gz(busy)",
     // ],
 }
 ```
