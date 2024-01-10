@@ -284,7 +284,7 @@ scoop bucket add java
 scoop bucket add games
 scoop bucket add extras
 
-scoop install qq vim nvm lsd which touch maven steam wechat zotero vscode starship vncviewer openjdk17 miniconda3 everything dismplusplus vcredist2022 translucenttb sublime-text filezilla
+scoop install qq vim nvm lsd which touch maven docker steam wechat zotero vscode starship vncviewer openjdk17 miniconda3 everything dismplusplus vcredist2022 translucenttb sublime-text filezilla
 
 (Google在校园网不稳定，需要切换移动热点，所以分开下)
 scoop install go googlechrome
@@ -298,8 +298,7 @@ scoop install pycharm-professional
 手动设置项
 
 ```
-curl -o C:\Users\xin\.config\starship.toml https://gist.githubusercontent.com/Jxpro/0a5729ac38d4b17a99142c4d71f27d8a/raw/2c0cdb47972979007ceb253531d773b379e9d3b2/starship.toml
-
+# 注册表 设置
 D:\Scoop\apps\vim\current\install-context.reg
 D:\Scoop\apps\everything\current\install-context.reg
 D:\Scoop\apps\sublime-text\current\install-context.reg
@@ -308,10 +307,20 @@ D:\Scoop\apps\vscode\current\install-associations.reg
 D:\Scoop\apps\zotero\current\install-zotero-url-protocol.ps1
 (D:\Scoop\apps\zotero\current\uninstall-zotero-url-protocol.ps1)
 
+# conda 设置
 conda init powershell (可选)
 
+# starship 设置
 notepad $PROFILE
 Invoke-Expression (&starship init powershell)
+curl -o C:\Users\xin\.config\starship.toml https://gist.githubusercontent.com/Jxpro/0a5729ac38d4b17a99142c4d71f27d8a/raw/2c0cdb47972979007ceb253531d773b379e9d3b2/starship.toml
+
+# docker 设置
+# 运行需要管理员权限，无法和vscode插件搭配，除非以管理员身份打开vscode
+# 目前解决方法未知，暂时推荐手动安装docker desktop的方案
+sudo dockerd --register-service
+sudo Start-Service docker
+sudo Set-Service docker -StartupType Automatic
 ```
 
 命令提示符（CMD）下执行，保证chrome数据一致性：
