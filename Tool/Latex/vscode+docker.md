@@ -42,7 +42,7 @@ $USER：这是一个环境变量，代表当前登录的用户的用户名。
 拉取镜像
 
 ```
-docker pull texlive/texlive:latest
+docker pull texlive/texlive
 ```
 
 ### 3.2 使用模板构建镜像（体积更小但没xelatex）
@@ -56,7 +56,7 @@ curl -o Dockerfile https://raw.githubusercontent.com/James-Yu/LaTeX-Workshop/mas
 构建镜像
 
 ```
-docker build -t texlive:jamesyu .
+docker build -t jamesyu/texlive .
 ```
 
 镜像构建时间较长，请耐心等待。。。
@@ -88,7 +88,7 @@ mkdir .devcontainer && touch .devcontainer/devcontainer.json
 ```
 {
     "name": "TeX Live base",
-    "image": "texlive/texlive:latest", //或者 texlive:jamesyu
+    "image": "texlive/texlive", //或者 jamesyu/texlive
     "customizations": {
         "vscode": {
             "extensions": [
@@ -113,7 +113,16 @@ mkdir .devcontainer && touch .devcontainer/devcontainer.json
 ## 六、结尾
 
 1.   在容器内的VSCode安装（[copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)），[LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)（可能会自动安装）
-2.   setting.json中配置（copilot），LaTeX Workshop
+2.   将Windows字体移至docker容器内
+
+```
+# 复制字体文件
+docker cp C:\Windows\Fonts <container-name>:/usr/share/fonts/
+# 更新字体缓存
+fc-cache -fv
+```
+
+3.   setting.json中配置（copilot），LaTeX Workshop
 
 ```json
 {
