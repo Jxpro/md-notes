@@ -1,5 +1,7 @@
 # 使用VSCode+Docker搭建LaTex环境，可配copilot
 
+[TOC]
+
 前置要求：
 
 1.   Windows下安装好 WSL2 ，Windows10/11一键安装命令：`wsl --install`；或者有云服务器（推荐），使用ssh进行连接。
@@ -33,57 +35,35 @@ $USER：这是一个环境变量，代表当前登录的用户的用户名。
 
 这样用户就可以在不使用 `sudo` 的情况下运行 Docker 命令了，不然VSCode无法使用Docker
 
-## 三、克隆模板仓库
+## 三、构建Docker镜像
 
-简单版本
+### 3.1 直接使用texlive官方完整镜像（推荐）
 
-```
-git clone https://github.com/James-Yu/LaTeX-Workshop.git && cd LaTeX-Workshop
-```
-
-高级版本
+拉取镜像
 
 ```
-git clone https://github.com/James-Yu/LaTeX-Workshop.git --depth 1 --filter=blob:none --sparse && cd LaTeX-Workshop
-git sparse-checkout set samples/docker
-git pull origin
-
-
-说明：
---depth 1 表示只下载最近的一次提交，以减小下载量，加快下载速度
---filter=blob:none 表示不需要下载除代码之外的其他文件（比如提交记录），也可以提高下载速度
---sparse 表示使用稀疏克隆，只下载部分文件
-
-git sparse-checkout set <folder_path> 会自动拉取最新的文件
-
-git pull origin 用于日后保持代码同步
+docker pull texlive/texlive:latest
 ```
 
-复制模板到指定位置
+### 3.2 使用模板构建镜像（体积更小但没xelatex）
+
+下载模板
 
 ```
-cp -r samples/docker ~/latex && cd ~/latex
+curl -o Dockerfile https://raw.githubusercontent.com/James-Yu/LaTeX-Workshop/master/samples/docker/.devcontainer/Dockerfile
 ```
 
-## 四、构建Docker镜像
+构建镜像
 
 ```
-docker build -f ~/LaTeX-Workshop/samples/docker/.devcontainer/Dockerfile -t latex:workshop .
+docker build -t texlive:jamesyu .
 ```
 
 镜像构建时间较长，请耐心等待。。。
 
-但是这个镜像下好像没有`xelatex`引擎/编译器
+>   这个镜像下好像没有`xelatex`引擎/编译器！！！
 
-## 五、VSCode打开容器
-
-打开VSCode，左侧边栏进入WSL或者服务器，打开模板位置`~/latex`，右下角会弹出提示，在容器中重新打开即可：
-
->   若没有弹出，按下ctrl+shift+p，输入Remote-Containers: Reopen in Container即可
-
-![image-20240109220346497](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2024/01-09-220347.png)
-
-## 六、配置git仓库
+## 四、配置git仓库
 
 初始化
 
@@ -97,15 +77,42 @@ git init
 curl -o .gitignore https://raw.githubusercontent.com/github/gitignore/main/TeX.gitignore
 ```
 
-初始化提交
+配置容器环境
 
 ```
-git add . && git commit -m "Initial Status"
+mkdir .devcontainer && touch .devcontainer/devcontainer.json
 ```
 
-## 七、结尾
+加入以下内容
 
-1.   在容器内的VSCode安装（[copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)），[LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)（后者可能会自动安装）
+```
+{
+    "name": "TeX Live base",
+    "image": "texlive/texlive:latest", //或者 texlive:jamesyu
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "GitHub.copilot",
+                "GitHub.copilot-chat",
+                "donjayamanne.githistory",
+                "james-yu.latex-workshop"
+            ]
+        }
+    }
+}
+```
+
+## 五、VSCode打开目录
+
+使用VSCode打开目录，右下角会弹出提示，在容器中重新打开即可：
+
+>   若没有弹出，按下ctrl+shift+p，输入Remote-Containers: Reopen in Container即可
+
+![image-20240109220346497](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2024/01-09-220347.png)
+
+## 六、结尾
+
+1.   在容器内的VSCode安装（[copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)），[LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)（可能会自动安装）
 2.   setting.json中配置（copilot），LaTeX Workshop
 
 ```json
