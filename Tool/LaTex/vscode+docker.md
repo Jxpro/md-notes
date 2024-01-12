@@ -148,6 +148,7 @@ fc-cache -fv
     "latex-workshop.view.pdf.internal.synctex.keybinding": "ctrl-click",
     // 编译工具和命令
     "latex-workshop.latex.tools": [
+        // pdflatex 能更好的处理英文，适合 IEEE 模板，而且好像编译速度更快，但是无法处理中文
         {
             "name": "pdflatexmk",
             "command": "latexmk",
@@ -160,6 +161,7 @@ fc-cache -fv
                 "%DOC%"
             ]
         },
+        // xelatex 能处理中文，但 IEEE 模板中会出现警告：Some font shapes were not available, defaults substituted.
         {
             "name": "xelatexmk",
             "command": "latexmk",
@@ -214,6 +216,9 @@ fc-cache -fv
     ],
     // 配置编译链
     "latex-workshop.latex.recipes": [
+        // 这里 recipes 的顺序会决定菜单栏里的顺序，且每次启动 vscode 时，默认recipe都是第一个
+        // 需要根据上面tools里提到的特点选择，比如 IEEE 就用 pdfLaTeX，而中文就用 XeLaTeX
+        // 正确地设置默认的编译链可以避免每次启动 vscode 时都要手动选择一次编译链
         {
             "name": "latexmk (pdflatex)",
             "tools": [
