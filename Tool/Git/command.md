@@ -21,6 +21,7 @@
 | git pull[^1] origin main[:repo]   | **拉取**远程仓库分支到本地并 [与repo ] **合并**              |
 | git fetch origin main[:repo]      | **拉取**远程仓库分支到本地 [并命名为 repo ]                  |
 | git merge main                    | 将main分支与当前分支**合并**                                 |
+| git config --global (--unset) ... | （取消）设置**配置项**（core.editor "code --wait"/vim）      |
 
 [^1]:pull 根据不同的配置，可等于 fetch + merge 或 fetch + rebase（详细见下文）
 
