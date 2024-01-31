@@ -56,3 +56,16 @@ EOF
 systemctl daemon-reload
 systemctl restart docker
 ```
+
+## 四、配置权限
+
+配置 Docker 的权限，使得用户可以在不使用 `sudo` 的情况下运行 Docker 命令。
+
+```sh
+sudo usermod -aG docker $USER
+
+# -aG：组合命令，-a 表示 append，用于将用户添加到一个新的组里；-G 表示 group，用于指定组名。
+# docker：这是你要将用户添加到的组的名称，在这个情况下是 docker 组。
+# $USER：这是一个环境变量，代表当前登录的用户的用户名。
+```
+
