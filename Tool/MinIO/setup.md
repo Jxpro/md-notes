@@ -214,6 +214,12 @@ sudo systemctl enable minio.service
     Process: 34607 ExecStart=/usr/local/bin/minio server $MINIO_OPTS $MINIO_VOLUMES (code=exited, status=1/FAILURE)
    Main PID: 34607 (code=exited, status=1/FAILURE)
         CPU: 247ms
+        
+Jan 30 19:03:09 iZbp1dul7chbryf0g1wjb3Z systemd[1]: minio.service: Scheduled restart jo>
+Jan 30 19:03:09 iZbp1dul7chbryf0g1wjb3Z systemd[1]: Stopped MinIO.
+Jan 30 19:03:09 iZbp1dul7chbryf0g1wjb3Z systemd[1]: minio.service: Start request repeat>
+Jan 30 19:03:09 iZbp1dul7chbryf0g1wjb3Z systemd[1]: minio.service: Failed with result '>
+Jan 30 19:03:09 iZbp1dul7chbryf0g1wjb3Z systemd[1]: Failed to start MinIO.
 ```
 
 将`/usr/lib/systemd/system/minio.service`中的`User`和`Group`字段去掉，以默认或当前用户可以运行成功，但是有点违背官方推荐的最小权限原则。
@@ -233,6 +239,11 @@ Jan 30 19:07:09 iZbp1dul7chbryf0g1wjb3Z systemd[1]: Starting MinIO...
 Jan 30 19:07:09 iZbp1dul7chbryf0g1wjb3Z minio[34896]: ERROR Unable to use the drive /root/minio/data: lstat /root/minio>
 Jan 30 19:07:09 iZbp1dul7chbryf0g1wjb3Z systemd[1]: minio.service: Main process exited, code=exited, status=1/FAILURE
 Jan 30 19:07:09 iZbp1dul7chbryf0g1wjb3Z systemd[1]: minio.service: Failed with result 'exit-code'.
+Jan 30 19:07:09 iZbp1dul7chbryf0g1wjb3Z systemd[1]: Failed to start MinIO.
+Jan 30 19:07:09 iZbp1dul7chbryf0g1wjb3Z systemd[1]: minio.service: Scheduled restart jo>
+Jan 30 19:07:09 iZbp1dul7chbryf0g1wjb3Z systemd[1]: Stopped MinIO.
+Jan 30 19:07:09 iZbp1dul7chbryf0g1wjb3Z systemd[1]: minio.service: Start request repeat>
+Jan 30 19:07:09 iZbp1dul7chbryf0g1wjb3Z systemd[1]: minio.service: Failed with result '>
 Jan 30 19:07:09 iZbp1dul7chbryf0g1wjb3Z systemd[1]: Failed to start MinIO.
 ```
 
