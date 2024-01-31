@@ -2,9 +2,25 @@
 
 [TOC]
 
-## 一、tar & gzip
+## 一、vi & vim
+
+| 命令 | 功能                             |
+| ---- | -------------------------------- |
+| w    | 移动到下一个单词头部             |
+| e    | 移动到下一个单词尾部             |
+| b    | 移动到前一个单词头部             |
+| ge   | 移动到前一个单词尾部             |
+| W    | 向后移动到以空格分隔的字符串头部 |
+| E    | 向后移动到以空格分隔的字符串尾部 |
+| B    | 向前移动到以空格分隔的字符串头部 |
+| gE   | 向前移动到以空格分隔的字符串尾部 |
+
+![vi-vim](https://raw.githubusercontent.com/Jxpro/PicBed/master/md/2024/01-31-162827.gif)
+
+## 二、tar & gzip
 
 1.   基础概念
+
      -   **打包**：将一堆文件或目录什么的变成一个总的文件。
      -   **压缩**：将一个大的文件经过某种压缩算法变成一个小文件。
 
@@ -20,7 +36,7 @@
      -   -v 详细显示处理的文件
      -   -r 像压缩归档文件末尾追加文件
      -   -u 更新原压缩包中的文件，仅将较新的文件附加到存档中
-     -    -t 列出存档中文件的目录
+     -   -t 列出存档中文件的目录
 
 3.   为了方便用户在打包解包的同时压缩或解压文件，tar命令提供了一种特殊的功能，就是可以在打包解包的同时调用其他的压缩程序，比如：gzip，bzip2等。
 
@@ -66,7 +82,33 @@
          -   uncompressed_name：压缩前的文件名
              Tips：对于非gzip 格式的文件，压缩前文件长度显示为 -1，例如由compress压缩的 .Z文件。
 
-## 二、systemctl
+## 三、su & sudo
+
+1.   sudo是一种**权限管理机制**，依赖于/etc/sudoers
+
+     其定义了授权给哪个用户可以以管理员的身份能够执行什么样的管理命令；
+
+     格式：sudo -u username command
+
+     默认情况下，系统只有root用户可以执行sudo命令。需要root用户通过使用visudo命令编辑sudo的配置文件/etc/sudoers，才可以授权其他普通用户执行sudo命令。
+
+2.   su
+
+     su 为`switch user`，即切换用户的简写。
+
+     格式为两种：
+
+     -   su - username （-l为login，即登陆的简写）
+     -   su username
+
+     如果不指定用户名，默认即为root，所以切换到root的身份的命令即为：su [-] [root]
+
+     `su username`与`su - username`的不同之处如下：
+
+     -   su - username 切换用户后，**同时切换到新用户的工作环境中**。
+     -   su username 切换用户后，**不改变原用户的工作目录，及其他环境变量目录**。
+
+## 四、systemctl
 
 查询服务是否开机启动
 
@@ -122,44 +164,21 @@ systemctl status xxx.service
 systemctl --failed
 ```
 
-## 三、su 和 sudo
-
-1.   sudo是一种**权限管理机制**，依赖于/etc/sudoers
-
-     其定义了授权给哪个用户可以以管理员的身份能够执行什么样的管理命令；
-
-     格式：sudo -u username command
-
-     默认情况下，系统只有root用户可以执行sudo命令。需要root用户通过使用visudo命令编辑sudo的配置文件/etc/sudoers，才可以授权其他普通用户执行sudo命令。
-
-2.   su
-
-     su 为`switch user`，即切换用户的简写。
-
-     格式为两种：
-
-     -   su - username （-l为login，即登陆的简写）
-     -   su username
-
-     如果不指定用户名，默认即为root，所以切换到root的身份的命令即为：su [-] [root]
-
-     `su username`与`su - username`的不同之处如下：
-
-     -   su - username 切换用户后，**同时切换到新用户的工作环境中**。
-     -   su username 切换用户后，**不改变原用户的工作目录，及其他环境变量目录**。
-
-## 四、sed命令
+## 五、sed
 
 >   `sed`是一种流编辑器，它是文本处理中非常中的工具，能够完美的配合正则表达式使用，功能不同凡响。处理时，把当前处理的行存储在临时缓冲区中，称为“模式空间”（pattern space），接着用sed命令处理缓冲区中的内容，处理完成后，把缓冲区的内容送往屏幕。接着处理下一行，这样不断重复，直到文件末尾。文件内容并没有 改变，除非你使用重定向存储输出。Sed主要用来自动编辑一个或多个文件；简化对文件的反复操作；编写转换程序等。
 
 ### sed命令格式
 
 -   命令格式
+
     ```shell
     sed [options] 'command' file(s)
     sed [options] -f scriptfile file(s)
     ```
+
 -   选项
+
     ```shell
     -e<script>或--expression=<script>：以选项中的指定的script来处理输入的文本文件；
     -f<script文件>或--file=<script文件>：以选项中指定的script文件来处理输入的文本文件；
@@ -167,7 +186,9 @@ systemctl --failed
     -n或--quiet或——silent：仅显示script处理后的结果；
     -V或--version：显示版本信息。
     ```
+
 -   命令
+
     ```shell
     a\ 在当前行下面插入文本。
     i\ 在当前行上面插入文本。
@@ -195,6 +216,7 @@ systemctl --failed
     = 打印当前行号码。
     # 把注释扩展到下一个换行符以前。
     ```
+
 -   参数
     文件：指定待处理的文本文件列表。
 
