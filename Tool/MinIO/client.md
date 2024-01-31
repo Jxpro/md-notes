@@ -4,6 +4,8 @@
 
 MinIO客户端mc命令行工具提供了一个现代化的选择，用以替代UNIX命令如ls、cat、cp、mirror和diff，同时支持文件系统和兼容Amazon S3的云存储服务。
 
+命令文档：https://min.io/docs/minio/linux/reference/minio-mc.html?ref=docs
+
 ## 一、二进制文件
 
 创建文件夹
