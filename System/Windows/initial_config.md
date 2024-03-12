@@ -284,7 +284,11 @@ scoop bucket add java
 scoop bucket add games
 scoop bucket add extras
 
-scoop install qq vim nvm lsd which touch maven docker steam wechat zotero vscode starship vncviewer openjdk17 miniconda3 everything dismplusplus vcredist2022 translucenttb sublime-text filezilla
+scoop install qq vim nvm lsd which touch maven steam wechat zotero vscode mathpix starship vncviewer openjdk17 miniconda3 everything dismplusplus vcredist2022 translucenttb sublime-text filezilla
+
+# 运行需要管理员权限，无法和vscode插件搭配，除非以管理员身份打开vscode
+# 目前解决方法未知，暂时推荐手动安装docker desktop的方案
+scoop install docker
 
 (Google在校园网不稳定，需要切换移动热点，所以分开下)
 scoop install go googlechrome
