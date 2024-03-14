@@ -340,9 +340,10 @@ mklink /d "C:\Users\xin\AppData\Local\Google\Chrome\User Data" "D:\Scoop\persist
 3.   有道词典：https://fanyi.youdao.com/download-Windows
 4.   VMware：https://www.123pan.com/s/HQeA-kx4Sh
 5.   搜狗输入法：https://pinyin.sogou.com/windows/?r=mac&t=pinyin
-6.   Bandizip安装包：https://www.bandisoft.com/bandizip
-7.   Bandizip破解：https://www.123pan.com/s/HQeA-TN1Sh
-8.   Bandizip配置：
+6.   IObit Unlocker：https://www.123pan.com/s/HQeA-Rc1Sh
+7.   Bandizip安装包：https://www.bandisoft.com/bandizip
+8.   Bandizip破解：https://www.123pan.com/s/HQeA-TN1Sh
+9.   Bandizip配置：
 
 ```
 curl -o config.reg https://gist.githubusercontent.com/Jxpro/2b40d4cc5e3ccdb550fcf74ca18e44b7/raw/c9986ec32bc30b936de60c3a1962c40c3044bfbf/Bandizip
