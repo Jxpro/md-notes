@@ -113,14 +113,36 @@ mkdir .devcontainer && touch .devcontainer/devcontainer.json
 ## 六、结尾
 
 1.   在容器内的VSCode安装（[copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)），[LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop)（可能会自动安装）
-2.   将Windows字体移至docker容器内
 
-```
-# 复制字体文件
-docker cp C:\Windows\Fonts <container-name>:/usr/share/fonts/
-# 更新字体缓存
-fc-cache -fv
-```
+2.   中文编译相关问题：
+
+     -   将`Windows`字体复制至`docker`容器内，防止某些情况下报错：`Package fontspec: The font "SimSum/SimHei" cannot be found.`
+
+     ```
+     # 复制字体文件
+     docker cp C:\Windows\Fonts <container-name>:/usr/share/fonts/
+     # 更新字体缓存
+     fc-cache -fv
+     ```
+
+     -   `amsmath`与`anyfontsize`搭配使用，防止警告：`LaTeX Font: Size substitutions with differences (Font) up to 0.41063pt have occurred.`
+
+     ```
+     \usepackage{anyfontsize}
+     \usepackage{amsmath}
+     ```
+
+     -   防止`ctex-fontset-fandol.def`中的警告：`Package fontspec: Font "FandolSong-Regular" does not contain requested (fontspec) Script "CJK".`
+
+     ```
+     方法1：
+     在\documentclass{ctexart}中加入选项：
+     \documentclass[fontset=windows]{ctexart}
+     
+     方法2：
+     在\documentclass{ctexart}之前，加上：
+     \PassOptionsToPackage{quiet}{xeCJK}
+     ```
 
 3.   setting.json中配置（copilot），LaTeX Workshop
 
