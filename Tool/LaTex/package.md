@@ -12,3 +12,9 @@
 \usepackage{anyfontsize} % 某些字体在特定大小下不可用，可能会引发警告信息，这个可以抑制警告
 ```
 
+## BibTex编译相关
+
+```tex
+\usepackage{hyperref} % 解决报错Undefined control sequence.(\url)，并提供链接跳转功能
+```
+
