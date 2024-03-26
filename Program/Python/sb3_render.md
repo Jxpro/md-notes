@@ -216,6 +216,14 @@ def render(self, mode: Optional[str] = None) -> Optional[np.ndarray]:
 3.   如果我们在渲染时加上`mode`参数，使用`env.render(mode='human')`，则`mode`会在`33`行保持`human`这个值，随后进入`40`行的`if`结构，然后进入`46`行的`if`部分，由`Stable Baselines3`手动执行渲染。
 4.   另外需要注意，虽然`make_vec_env`创建的向量化环境`vec_env`也有`render_mode`字段，但却不会与`OpenAI Gym`环境的`render_mode`字段保持同步，因此即使环境创建后设置`vec_env.render_mode='human'`，也只会导致代码进入`36`行的`if`结构（无论`mode`为何值，因此也会使`env.render(mode='human')`方法失效），然后调用`OpenAI Gym`环境的`render`方法，而其对应的`render_mode`值依旧为`rgb_array`，不会打开窗口渲染动画。
 
+## 官方文档
+
+>   -   to overcome the current Gymnasium limitation (only one render mode allowed per env instance, see [issue #100](https://github.com/Farama-Foundation/Gymnasium/issues/100)), we recommend using `render_mode="rgb_array"` since we can both have the image as a numpy array and display it with OpenCV. if no mode is passed or `mode="rgb_array"` is passed when calling `vec_env.render` then we use the default mode, otherwise, we use the OpenCV display. Note that if `render_mode != "rgb_array"`, you can only call `vec_env.render()` (without argument or with `mode=env.render_mode`).
+>   -   methods and attributes of the underlying Gym envs can be accessed, called and set using `vec_env.get_attr("attribute_name")`, `vec_env.env_method("method_name", args1, args2, kwargs1=kwargs1)` and `vec_env.set_attr("attribute_name", new_value)`.
+
+-   为了克服当前`OpenAI Gym`的限制（每个环境实例只允许一种渲染模式，参见[问题#100](https://github.com/Farama-Foundation/Gymnasium/issues/100)），我们建议使用`render_mode="rgb_array"`，因为我们既可以将图像作为`numpy`数组，又可以用`OpenCV`显示它。如果在调用`vec_env.render`时没有传递模式或传递了`mode="rgb_array"`，那么我们使用默认模式，否则，我们使用`OpenCV`显示。请注意，如果`render_mode != "rgb_array"`，你只能调用`vec_env.render()`（不带参数或者带`mode=env.render_mode`）。
+-   可以通过`vec_env.get_attr("attribute_name")`、`vec_env.env_method("method_name", args1, args2, kwargs1=kwargs1)`和`vec_env.set_attr("attribute_name", new_value)`来访问、调用和设置底层`OpenAI Gym`环境的方法和属性。
+
 ## 总结
 
 本文讨论了如何解决`Stable Baselines3`在使用向量化环境时，无法通过`render_mode='human'`参数来直接渲染动画窗口的问题。通常情况下，在使用`OpenAI Gym`环境进行强化学习训练或评估时，通过指定`render_mode='human'`参数，并在每次执行动作后调用`render`函数，可以可视化地展现出环境的状态变化。但在`Stable Baselines3`的`make_vec_env`函数创建的向量化环境中，由于缺少`render_mode`参数，直接调用`render`函数并不能打开动画窗口。
