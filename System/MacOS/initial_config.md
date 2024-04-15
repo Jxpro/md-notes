@@ -4,7 +4,14 @@
 
 ## 一、Clash
 
-下载地址：[Clash for Windows（Mac版）](https://github.com/Fndroid/clash_for_windows_pkg)
+~~下载地址：[Clash for Windows（Mac版）](https://github.com/Fndroid/clash_for_windows_pkg)~~
+
+GitHub已删库，archive地址
+
+```
+https://www.clash.la/releases/
+https://github.com/Z-Siqi/Clash-for-Windows_Chinese/releases
+```
 
 ```shell
 # 开启任意来源
