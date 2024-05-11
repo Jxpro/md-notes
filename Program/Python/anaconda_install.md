@@ -63,6 +63,9 @@ conda create -n py2 python=2
 
 # 清楚多余的包
 conda clean -y --all
+
+# 禁用自带的提示符，否则使用starship时，会再上面独占一行来显示（base）这样的提示符
+conda config --set changeps1 False
 ```
 
 ## 五、安装过程报错
