@@ -15,6 +15,11 @@
 举例：
 
 ```sh
+# 列出所有组
+cat /etc/group
+
+addgroup common
+
 groupadd -r minio-users
 
 # -r 参数通常用于创建系统用户组，这种用户组不是为了登录系统的，而是为了运行系统服务。
@@ -37,7 +42,12 @@ groupadd -r minio-users
 举例：
 
 ```sh
-useradd -M -r -g minio-users minio-user：
+# 列出所有用户
+cat /etc/passwd
+
+adduser --ingroup common xin
+
+useradd -M -r -g minio-users minio-user
 
 # -M 参数表示不要自动创建用户的家目录。
 # -r 参数（跟 groupadd 里的 -r 类似）表示创建一个系统用户，用于运行服务，而不是登录系统。
@@ -89,5 +99,31 @@ usermod -aG docker $USER
 # -aG：组合命令，-a 表示 append，用于将用户添加到一个新的组里；-G 表示 group，用于指定组名。
 # docker：这是你要将用户添加到的组的名称，在这个情况下是 docker 组。
 # $USER：这是一个环境变量，代表当前登录的用户的用户名。
+```
+
+## 五、sudo privilege
+
+打开相关配置文件
+
+```shell
+# 使用 nano 编辑文件
+# 直接编辑，完成后按下 Ctrl+O 保存文件，直接 Enter 保存更改到当前文件
+# 保存文件后，按下 Ctrl+X 退出
+sudo visudo
+
+# visudo 实际编辑了 /etc/sudoers 文件，可以直接使用 vi/vim 编辑
+sudo vim /etc/sudoers
+```
+
+找到下面一行，进行复制
+
+```shell
+root  ALL=(ALL)    ALL
+```
+
+粘贴到下一行，并将 `root` 修改为 `$user` 对应的用户名
+
+```shell
+user  ALL=(ALL)    ALL
 ```
 
