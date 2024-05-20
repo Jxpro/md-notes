@@ -62,7 +62,7 @@ sudo apt install -y mysql-server-8.0
 
 ```shell
 # 直接登录mysql，默认安装时没有设置密码
-# sudo 不能省略！！！具体见 mysql_secure_installation 中关于root密码的说明
+# 如果当前为普通用户，则 sudo 不能省略！！！具体见 mysql_secure_installation 中关于root密码的说明
 sudo mysql -u root
 # 为 mysql 8.0 设置新密码，其实也可以跳过
 # 因为后面 mysql_secure_installation 可以确保 root 用户只能在本机登录，而在本机通过 auth_socket 认证插件，可以直接使用 sudo 登录而不需要输密码
