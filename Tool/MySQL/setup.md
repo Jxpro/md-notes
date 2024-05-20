@@ -192,6 +192,12 @@ bind-address            = 0.0.0.0
 mysqlx-bind-address     = 127.0.0.1
 ```
 
+重启mysql服务
+
+```shell
+sudo systemctl restart mysql
+```
+
 ### 1.5 创建新用户
 
 首先使用`root`登录到`mysql`
@@ -209,13 +215,13 @@ CREATE USER 'your_username'@'%' IDENTIFIED BY 'your_password';
 最后赋予相应的权限
 
 ```sql
--- 授予全部权限
+-- 授予全部 root 权限
 -- *.*表示对所有数据库和所有表的权限。
 -- WITH GRANT OPTION允许该用户将其权限授予其他用户。
 GRANT ALL PRIVILEGES ON *.* TO 'your_username'@'%' WITH GRANT OPTION;
 
--- 赋予某个数据库上的大部分权限
-GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER ON your_database_name.* TO 'your_username'@'%';
+-- 赋予某个数据库上的全部权限
+GRANT ALL PRIVILEGES ON your_database_name.* TO 'your_username'@'%' WITH GRANT OPTION;
 ```
 
 执行以下命令来刷新权限设置，确保更改立即生效：
