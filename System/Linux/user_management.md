@@ -124,6 +124,6 @@ root  ALL=(ALL)    ALL
 粘贴到下一行，并将 `root` 修改为 `$user` 对应的用户名
 
 ```shell
-user  ALL=(ALL)    ALL
+user  ALL=(ALL)    NOPASSWD:ALL
 ```
 
