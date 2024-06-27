@@ -93,7 +93,7 @@ ufw disable
     | UDP  | 4789     | calico networking      | BGP          |
     | TCP  | 5473     | calico networking      | BGP          |
 
-### 2.5 虚拟内存
+### 2.5 虚拟内存（默认可用，检查一下）
 
 官方要求关闭 `swap`，开启这个可能会导致 `Kubernetes` 的内存或性能问题，详细参考文章：[因打开了 swap 导致的 Kubernetes 重启后无法自愈问题](https://nolebase.ayaka.io/%E7%AC%94%E8%AE%B0/%F0%9F%A7%B1%20%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD/%F0%9F%9A%A2%20Kubernetes/%E5%9B%A0%E6%89%93%E5%BC%80%E4%BA%86%20swap%20%E5%AF%BC%E8%87%B4%E7%9A%84%20Kubernetes%20%E9%87%8D%E5%90%AF%E5%90%8E%E6%97%A0%E6%B3%95%E8%87%AA%E6%84%88%E9%97%AE%E9%A2%98.html)
 
@@ -124,7 +124,7 @@ vi /etc/fstab
 
 注释关于 `swap` 的那一行（如果有），然后可以使用 `free -m` 命令来查看确认交换分区已被禁用
 
-### 2.6 时钟同步
+### 2.6 时钟同步（默认可用，检查一下）
 
 #### 2.6.1 检测
 
@@ -158,10 +158,10 @@ systemctl restart systemd-timesyncd.service
 查看时间
 
 ```shell
-timedatectl status 
+timedatectl status
 ```
 
-### 2.7 网络配置
+### 2.7 网络配置（默认可用，检查一下）
 
 #### 2.7.1 检测
 
@@ -213,7 +213,7 @@ EOF
 
 ## 三、软件安装
 
->   `Docker Engine` 没有实现 [CRI](https://kubernetes.io/zh-cn/docs/concepts/architecture/cri/)， 而这是容器运行时在 `Kubernetes `中工作所需要的。 `v1.24` 之前的版本直接集成了 `Docker Engine` 的一个组件，名为 `dockershim`，但现在不再是 `Kubernetes` 的一部分。为此，必须安装一个额外的服务 [cri-dockerd](https://github.com/Mirantis/cri-dockerd)。 
+>   `Docker Engine` 没有实现 [CRI](https://kubernetes.io/zh-cn/docs/concepts/architecture/cri/)， 而这是容器运行时在 `Kubernetes `中工作所需要的。 `v1.24` 之前的版本直接集成了 `Docker Engine` 的一个组件，名为 `dockershim`，但现在不再是 `Kubernetes` 的一部分。为此，必须安装一个额外的服务 [cri-dockerd](https://github.com/Mirantis/cri-dockerd)。
 >
 >   另外也可以使用 [containerd](https://github.com/containerd/containerd) 运行时环境，该组件随 `Docker` 一起安装，但是需要额外的配置文件。
 
@@ -261,6 +261,24 @@ sudo systemctl restart docker
 ```
 
 ### 3.2 Containerd
+
+所有命令
+
+```shell
+sudo containerd config default | sudo tee /etc/containerd/config.toml > /dev/null
+sudo sed -i 's/sandbox_image\ =.*/sandbox_image\ =\ "registry.aliyuncs.com\/google_containers\/pause:3.9"/g' /etc/containerd/config.toml
+sudo sed -i 's/SystemdCgroup\ =\ false/SystemdCgroup\ =\ true/g' /etc/containerd/config.toml
+sudo sed -i '/\[plugins."io.containerd.grpc.v1.cri".registry.mirrors\]/,/\[plugins."io.containerd.grpc.v1.cri".x509_key_pair_streaming\]/c\
+      [plugins."io.containerd.grpc.v1.cri".registry.mirrors]\
+        [plugins."io.containerd.grpc.v1.cri".registry.mirrors."docker.io"]\
+          endpoint = ["https://mirrors.docker.com"]\
+        [plugins."io.containerd.grpc.v1.cri".registry.mirrors."registry.k8s.io"]\
+          endpoint = ["https://registry.aliyuncs.com/google_containers"]\n\
+    [plugins."io.containerd.grpc.v1.cri".x509_key_pair_streaming]' /etc/containerd/config.toml
+sudo systemctl restart containerd
+```
+
+详细步骤解释：
 
 生成默认配置文件然后进行修改
 
@@ -320,9 +338,9 @@ sudo systemctl restart containerd
 sudo apt update && sudo apt install -y apt-transport-https
 
 curl -fsSL https://mirrors.aliyun.com/kubernetes-new/core/stable/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-    
+
 echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://mirrors.aliyun.com/kubernetes-new/core/stable/v1.30/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-    
+
 sudo apt update
 sudo apt install -y kubelet kubeadm kubectl
 sudo apt-mark hold kubelet kubeadm kubectl
@@ -364,6 +382,7 @@ sudo kubeadm config images pull \
 
 ```shell
 sudo ip addr add 47.102.xx.xx/24 dev eth0 label eth0:0
+sudo ip link set dev eth0:0 up
 ```
 
 添加网卡后进行初始化
@@ -512,6 +531,8 @@ wget https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/cu
 打开下载的配置文件 `custom-resources.yaml`，修改 `cidr`为 `kubeadm init` 时指定的 ` --pod-network-cidr`
 
 ```yaml
+# This section includes base Calico installation configuration.
+# For more information, see: https://docs.tigera.io/calico/latest/reference/installation/api#operator.tigera.io/v1.Installation
 apiVersion: operator.tigera.io/v1
 kind: Installation
 metadata:
@@ -522,11 +543,20 @@ spec:
     ipPools:
     - name: default-ipv4-ippool
       blockSize: 26
-      # 这里修改为 --pod-network-cidr 中的值
       cidr: 192.168.0.0/16
       encapsulation: VXLANCrossSubnet
       natOutgoing: Enabled
       nodeSelector: all()
+
+---
+
+# This section configures the Calico API server.
+# For more information, see: https://docs.tigera.io/calico/latest/reference/installation/api#operator.tigera.io/v1.APIServer
+apiVersion: operator.tigera.io/v1
+kind: APIServer
+metadata:
+  name: default
+spec: {}
 ```
 
 创建容器，等待几分钟，直到所有容器 `Ready`
@@ -539,7 +569,7 @@ kubectl apply -f custom-resources.yaml
 
 发现两个 `calico-node` 一直无法启动
 
-```
+```shell
 kubectl get pods -A
 NAMESPACE         NAME                                       READY   STATUS    ...
 calico-system     calico-kube-controllers-7b8cc9bb64-pqcwz   1/1     Running   ...
@@ -561,20 +591,20 @@ tigera-operator   tigera-operator-76ff79f7fd-6jfmk           1/1     Running   .
 
 使用 `describe` 查看容器状态
 
-```
+```shell
 kubectl describe pod calico-node-j4jnb -n calico-system
 ```
 
 发现无法建立 `BGP` 连接，具体原因是因为其使用的是内网 `IP`（10.0.4.11），导致无法与公网连接
 
-```
+```shell
 Warning  Unhealthy  22s  kubelet  (combined from similar events): Readiness probe failed: 2024-06-27 08:09:58.227 [INFO][656] confd/health.go 202: Number of node(s) with BGP peering established = 0
 calico/node is not ready: BIRD is not ready: BGP not established with 10.0.4.11
 ```
 
 但是查看发现其上报了公网 `IP`（150.158.xx.xx）
 
-```
+```shell
 kubectl get nodes -o wide
 NAME         STATUS   ROLES           AGE   VERSION   INTERNAL-IP     ...
 k8s-master   Ready    control-plane   22m   v1.30.2   47.102.xx.xx    ...
@@ -585,6 +615,59 @@ k8s-node1    Ready    <none>          22m   v1.30.2   150.158.xx.xx   ...
 
 查阅资料初步得出的结论是，`calico` 会自动使用第一个网卡上的第一个 `IP` 地址；
 
-测试以后发现，即使我们像初始化 `Master` 一样，使用 `sudo ip add ...` 添加了 `IP`；
+测试以后发现，即使我们像初始化 `Master` 一样，使用 `sudo ip add ...` 添加了公网 `IP`；
 
-它也在内网 `IP` 之后，不会被 `calico `检测到，导致无法建立 `BGP` 连接，暂时未找到解决办法。
+它也在内网 `IP` 之后，不会被 `calico ` 检测到，导致无法建立 `BGP` 连接，~~暂时未找到解决办法。~~
+
+目前找到了检测公网 `IP`的方法，但是仍然无法建立 `BGP` 连接。
+
+### 6.5 找到指定IP的方法
+
+在下载的配置文件中添加字段 `nodeAddressAutodetectionV4.cidrs`，使用掩码覆盖到公网 `IP`
+
+```yaml
+# This section includes base Calico installation configuration.
+# For more information, see: https://docs.tigera.io/calico/latest/reference/installation/api#operator.tigera.io/v1.Installation
+apiVersion: operator.tigera.io/v1
+kind: Installation
+metadata:
+  name: default
+spec:
+  # Configures Calico networking.
+  calicoNetwork:
+    nodeAddressAutodetectionV4:
+      cidrs:
+        - '47.0.0.0/8'
+        - '150.0.0.0/8'
+    ipPools:
+    - name: default-ipv4-ippool
+      blockSize: 26
+      cidr: 192.168.0.0/16
+      encapsulation: VXLANCrossSubnet
+      natOutgoing: Enabled
+      nodeSelector: all()
+
+---
+
+# This section configures the Calico API server.
+# For more information, see: https://docs.tigera.io/calico/latest/reference/installation/api#operator.tigera.io/v1.APIServer
+apiVersion: operator.tigera.io/v1
+kind: APIServer
+metadata:
+  name: default
+spec: {}
+```
+
+### 6.6 该问题还没有解决
+
+测试以后发现，不知道为什么，即使通过 `nodeAddressAutodetectionV4` 成功检测到了公网 `IP`；
+
+但是 `calico `仍然无法建立 `BGP` 连接，暂时也未找到解决办法。
+
+```shell
+Warning  Unhealthy  2m25s (x2 over 2m26s)  kubelet            Readiness probe failed: calico/node is not ready: BIRD is not ready: Error querying BIRD: unable to connect to BIRDv4 socket: dial unix /var/run/calico/bird.ctl: connect: connection refused
+Warning  Unhealthy  119s                   kubelet            Readiness probe failed: 2024-06-27 12:11:38.695 [INFO][267] confd/health.go 202: Number of node(s) with BGP peering established = 0
+calico/node is not ready: BIRD is not ready: BGP not established with 150.158.xx.xx
+Warning  Unhealthy  89s  kubelet  Readiness probe failed: 2024-06-27 12:12:08.702 [INFO][301] confd/health.go 202: Number of node(s) with BGP peering established = 0
+...
+```
