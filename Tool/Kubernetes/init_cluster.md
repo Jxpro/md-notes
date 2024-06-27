@@ -470,6 +470,13 @@ sudo kubeadm token create --print-join-command
 
 ### 5.2 加入集群
 
+我们同样手动将公网 `IP` 绑定到一个虚拟网卡上， `Worker` 节点才能以公网 `IP`加入集群，该配置在重启后失效，但是用于加入集群没问题。
+
+```shell
+sudo ip addr add 47.102.xx.xx/24 dev eth0 label eth0:0
+sudo ip link set dev eth0:0 up
+```
+
 在 `Worker` 节点上运行命令便加入了集群
 
 ```shell
