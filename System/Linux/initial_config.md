@@ -230,6 +230,12 @@ export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_pr
 unset http_proxy https_proxy all_proxy
 ```
 
+有些服务器默认没有开启bbr，使用这个脚本开启
+
+```shell
+wget -qO- https://raw.githubusercontent.com/teddysun/across/master/bbr.sh | sudo bash 2>/dev/null
+```
+
 ## 五、Application
 
 常用软件包
@@ -261,6 +267,7 @@ git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/p
 ```shell
 sudo apt install -y ufw
 sudo ufw enable
+sudo ufw allow 22
 sudo ufw allow 80
 sudo ufw allow 443
 
