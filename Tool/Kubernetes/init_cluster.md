@@ -66,25 +66,26 @@ ufw disable
 
 #### 2.4.2 或者开启相关端口
 
--   master 节点
+官方文档：https://kubernetes.io/docs/reference/networking/ports-and-protocols/
 
-    | 协议 | 端口范围  | 作用                    | 使用者                       |
-    | ---- | --------- | ----------------------- | ---------------------------- |
-    | TCP  | 6443      | Kubernetes API 服务器   | 所有组件                     |
-    | TCP  | 2379-2380 | etcd 服务器客户端 API   | kube-apiserver、etcd         |
-    | TCP  | 10250     | Kubelet API             | kubelet 自身、控制平面组件   |
-    | TCP  | 10251     | kube-scheduler          | kube-scheduler 自身          |
-    | TCP  | 10252     | kube-controller-manager | kube-controller-manager 自身 |
-    | TCP  | 10252     | kube-controller-manager | kube-controller-manager 自身 |
+-   Control plane
 
--   worker节点
+    | Protocol | Direction | Port Range | Purpose                 |
+    | -------- | --------- | ---------- | ----------------------- |
+    | TCP      | Inbound   | 6443       | Kubernetes API server   |
+    | TCP      | Inbound   | 2379-2380  | etcd server client API  |
+    | TCP      | Inbound   | 10250      | Kubelet API             |
+    | TCP      | Inbound   | 10259      | kube-scheduler          |
+    | TCP      | Inbound   | 10257      | kube-controller-manager |
+    
+-   Worker node(s)
 
-    | 协议 | 端口范围    | 作用          | 使用者                     |
-    | ---- | ----------- | ------------- | -------------------------- |
-    | TCP  | 10250       | Kubelet API   | kubelet 自身、控制平面组件 |
-    | TCP  | 30000-32767 | NodePort 服务 | 所有组件                   |
+    | Protocol | Direction | Port Range | Purpose     |
+    | -------- | --------- | ---------- | ----------- |
+    | TCP      | Inbound   | 10250      | Kubelet API |
+    | TCP      | Inbound   | 10256      | kube-proxy  |
 
--   所有节点
+-   所有节点（不确定）
 
     | 协议 | 端口范围 | 作用                   | 使用者       |
     | ---- | -------- | ---------------------- | ------------ |
