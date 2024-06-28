@@ -77,7 +77,7 @@ ufw disable
     | TCP      | Inbound   | 10250      | Kubelet API             |
     | TCP      | Inbound   | 10259      | kube-scheduler          |
     | TCP      | Inbound   | 10257      | kube-controller-manager |
-    
+
 -   Worker node(s)
 
     | Protocol | Direction | Port Range | Purpose     |
@@ -237,14 +237,12 @@ for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker c
 sudo apt-get update
 sudo apt-get install -y ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo curl -fsSL https://mirrors.cloud.tencent.com/docker-ce/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 
 # Add the repository to Apt sources:
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://mirrors.cloud.tencent.com/docker-ce/linux/ubuntu/ \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 
 # Install using the apt repository
@@ -382,8 +380,9 @@ sudo kubeadm config images pull \
 所以我们可以手动将公网 `IP` 绑定到一个虚拟网卡上，这样才能成功初始化 `Master` 节点，该配置在重启后会失效，但是用于初始化没问题。
 
 ```shell
-sudo ip addr add 47.102.xx.xx/24 dev eth0 label eth0:0
-sudo ip link set dev eth0:0 up
+sudo ip link add veth0 type dummy
+sudo ip addr add 47.102.xx.xx/24 dev veth0
+sudo ip link set dev veth0 up
 ```
 
 添加网卡后进行初始化
@@ -473,8 +472,9 @@ sudo kubeadm token create --print-join-command
 我们同样手动将公网 `IP` 绑定到一个虚拟网卡上， `Worker` 节点才能以公网 `IP`加入集群，该配置在重启后失效，但是用于加入集群没问题。
 
 ```shell
-sudo ip addr add 47.102.xx.xx/24 dev eth0 label eth0:0
-sudo ip link set dev eth0:0 up
+sudo ip link add veth0 type dummy
+sudo ip addr add 150.158.xx.xx/24 dev veth0
+sudo ip link set dev veth0 up
 ```
 
 在 `Worker` 节点上运行命令便加入了集群
@@ -501,7 +501,8 @@ k8s-node1    NotReady   <none>          25s     v1.30.2
 ### 6.1 创建 tigera-operator
 
 ```shell
-kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
+wget https://raw.staticdn.net/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
+kubectl create -f tigera-operator.yaml
 ```
 
 查看容器状态
@@ -530,10 +531,12 @@ tigera-operator   tigera-operator-76ff79f7fd-vsjl7     1/1     Running   0      
 
 ### 6.2 启动 calico
 
-下载配置文件
+下载或打开配置文件
 
 ```shell
-wget https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/custom-resources.yaml
+wget https://raw.staticdn.net/projectcalico/calico/v3.28.0/manifests/custom-resources.yaml
+
+vim custom-resources.yaml
 ```
 
 打开下载的配置文件 `custom-resources.yaml`，修改 `cidr`为 `kubeadm init` 时指定的 ` --pod-network-cidr`
@@ -631,7 +634,7 @@ k8s-node1    Ready    <none>          22m   v1.30.2   150.158.xx.xx   ...
 
 ### 6.5 找到指定IP的方法
 
-在下载的配置文件中添加字段 `nodeAddressAutodetectionV4.cidrs`，使用掩码覆盖到公网 `IP`
+在下载的配置文件中添加字段 `nodeAddressAutodetectionV4.interface`，使用匹配挂载到公网 `IP` 的虚拟网卡
 
 ```yaml
 # This section includes base Calico installation configuration.
@@ -644,9 +647,7 @@ spec:
   # Configures Calico networking.
   calicoNetwork:
     nodeAddressAutodetectionV4:
-      cidrs:
-        - '47.0.0.0/8'
-        - '150.0.0.0/8'
+      interface: veth.*
     ipPools:
     - name: default-ipv4-ippool
       blockSize: 26
@@ -679,3 +680,4 @@ calico/node is not ready: BIRD is not ready: BGP not established with 150.158.xx
 Warning  Unhealthy  89s  kubelet  Readiness probe failed: 2024-06-27 12:12:08.702 [INFO][301] confd/health.go 202: Number of node(s) with BGP peering established = 0
 ...
 ```
+
