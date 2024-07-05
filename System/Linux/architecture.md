@@ -70,14 +70,14 @@ $ file /lib/systemd/systemd
 
 [关于CPU架构是x86、x86_64、amd64的叫法区别](https://blog.csdn.net/wf19930209/article/details/79536506)
 
-## 5 查看Mint系统对应的Ubuntu系统
+## 5、查看Mint系统对应的Ubuntu系统
 
 [参考](https://zhuanlan.zhihu.com/p/83166352)
 
 使用`cat /etc/os-release`命令也可以获取到 Ubuntu 代号
 
 ```shell
-cat /etc/os-release
+$ cat /etc/os-release
 
 # 输出
 NAME="Ubuntu"
@@ -103,3 +103,30 @@ UBUNTU_CODENAME=bionic
 -   x86_64是一种64位的指令集，x86_64是x86指令的超集，在x86上可以运行的程序，在x86_64上也可以运行，`x86_64`是AMD发明的，也叫`AMD64`
 
 现在用的intel/amd的桌面级CPU基本上都是x86_64，与之相对的`arm`、`pcc`等都不是`x86_64`
+
+## 6、查看虚拟化方式
+
+-   `lscpu`
+-   `systemd-detect-virt`
+
+```shell
+$ lscpu
+
+Architecture:            x86_64
+  CPU op-mode(s):        32-bit, 64-bit
+  Address sizes:         46 bits physical, 48 bits virtual
+  Byte Order:            Little Endian
+CPU(s):                  2
+  On-line CPU(s) list:   0,1
+Vendor ID:               GenuineIntel
+...
+Virtualization features:
+  Hypervisor vendor:     KVM
+  Virtualization type:   full
+Caches (sum of all):
+...
+
+$ systemd-detect-virt
+kvm
+```
+
