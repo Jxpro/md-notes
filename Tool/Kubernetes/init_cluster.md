@@ -1,4 +1,4 @@
-# Ubuntu 搭建 k8s 集群
+# Ubuntu 搭建 k8s 集群 ( 公网，详细讲解版 )
 
 [TOC]
 
@@ -492,7 +492,7 @@ k8s-master   NotReady   control-plane   4m14s   v1.30.2
 k8s-node1    NotReady   <none>          25s     v1.30.2
 ```
 
-## 六、网络插件
+## 六、网络插件 Calico (failed)
 
 在 `Master` 节点中执行命令进行配置
 
