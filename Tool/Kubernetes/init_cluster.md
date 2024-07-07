@@ -102,7 +102,7 @@ ufw disable
 
 使用 `free -m` 命令来查看 `Swap ` 是否禁用
 
-```
+```shell
 free -m
                total        used        free      shared  buff/cache   available
 Mem:            1963         287         599           2        1076        1515
@@ -111,19 +111,10 @@ Swap:              0           0           0
 
 #### 2.5.2 关闭
 
-永久关闭需要先解除程序占用，临时关闭 `swap`
-
 ```shell
-swapoff -a
+sudo swapoff -a
+sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 ```
-
-然后修改配置文件永久关闭，打开这个文件
-
-```shell
-vi /etc/fstab
-```
-
-注释关于 `swap` 的那一行（如果有），然后可以使用 `free -m` 命令来查看确认交换分区已被禁用
 
 ### 2.6 时钟同步（默认可用，检查一下）
 
