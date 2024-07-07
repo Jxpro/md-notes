@@ -167,7 +167,7 @@ k8s-master   NotReady   control-plane   4m14s   v1.30.2
 k8s-node1    NotReady   <none>          25s     v1.30.2
 ```
 
-## 六、网络插件 Calico
+## 六、网络插件 Calico (failed)
 
 >   在 `Master` 节点上操作
 
@@ -187,3 +187,10 @@ wget https://raw.staticdn.net/projectcalico/calico/v3.28.0/manifests/custom-reso
 kubectl apply -f custom-resources.yaml
 ```
 
+### 6.3 遇到的问题
+
+相比于公网 Pod 无法启动，内网集群 Pod 虽然可以启动，但是仍然无法通信，目前没找到解决办法
+
+```shell
+Readiness probe failed: calico/node is not ready: BIRD is not ready: Error querying BIRD: unable to connect to BIRDv4 socket: dial unix /var/run/calico/bird.ctl: connect: connection refused
+```
