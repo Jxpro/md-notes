@@ -29,9 +29,9 @@
 ```shell
 sudo tee -a /etc/hosts <<-'EOF'
 # k8s cluster
-172.29.140.19 master
-172.29.140.20 node1
-172.29.140.21 node2
+172.29.140.34 master
+172.29.140.35 node1
+172.29.140.36 node2
 EOF
 ```
 
@@ -135,7 +135,7 @@ sudo kubeadm config images pull \
 ```shell
 sudo kubeadm init \
       --image-repository=registry.aliyuncs.com/google_containers \
-      --apiserver-advertise-address=172.29.140.19 \
+      --apiserver-advertise-address=172.29.140.34 \
       --pod-network-cidr=192.168.0.0/16 \
       --service-cidr=10.96.0.0/16 \
       --kubernetes-version=$(kubeadm version -o short)
@@ -167,9 +167,9 @@ k8s-master   NotReady   control-plane   4m14s   v1.30.2
 k8s-node1    NotReady   <none>          25s     v1.30.2
 ```
 
-## 六、网络插件 Calico (failed)
+## 六、网络插件 Calico
 
->   在 `Master` 节点上操作
+>   在 `Master` 节点上操作，直接看 `6.4` 节的解决方案
 
 ### 6.1 创建 tigera-operator
 
@@ -194,3 +194,24 @@ kubectl apply -f custom-resources.yaml
 ```shell
 Readiness probe failed: calico/node is not ready: BIRD is not ready: Error querying BIRD: unable to connect to BIRDv4 socket: dial unix /var/run/calico/bird.ctl: connect: connection refused
 ```
+
+### 6.4 解决方案
+
+>   上面的命令都不用管了
+
+使用 `v3.25` 版本的另一种部署方式
+
+```shell
+kubectl apply -f https://calico-v3-25.netlify.app/archive/v3.25/manifests/calico.yaml
+```
+
+虽然仍然报错，甚至也说 `BGP` 无法连接
+
+```shell
+  Warning  Unhealthy  3m19s  kubelet            Readiness probe failed: calico/node is not ready: BIRD is not ready: Error querying BIRD: unable to connect to BIRDv4 socket: dial unix /var/run/bird/bird.ctl: connect: no such file or directory
+  Warning  Unhealthy  3m18s  kubelet            Readiness probe failed: calico/node is not ready: BIRD is not ready: Error querying BIRD: unable to connect to BIRDv4 socket: dial unix /var/run/calico/bird.ctl: connect: connection refused
+  Warning  Unhealthy  3m15s  kubelet            Readiness probe failed: 2024-07-09 12:44:59.682 [INFO][225] confd/health.go 180: Number of node(s) with BGP peering established = 1
+calico/node is not ready: BIRD is not ready: BGP not established with 172.29.140.27
+```
+
+但是 `Pod` 之间可以通信了！！！目前不懂为什么
