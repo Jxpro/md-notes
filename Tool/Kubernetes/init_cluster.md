@@ -256,16 +256,44 @@ sudo systemctl restart docker
 
 ```shell
 sudo containerd config default | sudo tee /etc/containerd/config.toml > /dev/null
-sudo sed -i 's/sandbox_image\ =.*/sandbox_image\ =\ "registry.aliyuncs.com\/google_containers\/pause:3.9"/g' /etc/containerd/config.toml
+sudo sed -i '/registry.k8s.io/pause/s|3.8|3.9|' /etc/containerd/config.toml
 sudo sed -i 's/SystemdCgroup\ =\ false/SystemdCgroup\ =\ true/g' /etc/containerd/config.toml
-sudo sed -i '/\[plugins."io.containerd.grpc.v1.cri".registry.mirrors\]/,/\[plugins."io.containerd.grpc.v1.cri".x509_key_pair_streaming\]/c\
-      [plugins."io.containerd.grpc.v1.cri".registry.mirrors]\
-        [plugins."io.containerd.grpc.v1.cri".registry.mirrors."docker.io"]\
-          endpoint = ["https://mirrors.docker.com"]\
-        [plugins."io.containerd.grpc.v1.cri".registry.mirrors."registry.k8s.io"]\
-          endpoint = ["https://registry.aliyuncs.com/google_containers"]\n\
-    [plugins."io.containerd.grpc.v1.cri".x509_key_pair_streaming]' /etc/containerd/config.toml
+sudo sed -i 's/config_path\ =\ ""/config_path\ =\ "\/etc\/containerd\/certs.d"/g' /etc/containerd/config.toml
 sudo systemctl restart containerd
+```
+
+```shell
+mkdir -p /etc/containerd/certs.d/docker.io
+cat > /etc/containerd/certs.d/docker.io/hosts.toml <<-'EOF'
+server = "https://docker.io"
+
+[host."https://mirrors.docker.com"]
+  capabilities = ["pull", "resolve"]
+EOF
+
+mkdir -p /etc/containerd/certs.d/registry-1.docker.io
+cat > /etc/containerd/certs.d/registry-1.docker.io/hosts.toml <<-'EOF'
+server = "https://registry-1.docker.io"
+
+[host."https://mirrors.docker.com"]
+  capabilities = ["pull", "resolve"]
+EOF
+
+mkdir -p /etc/containerd/certs.d/registry.k8s.io
+tee /etc/containerd/certs.d/registry.k8s.io/hosts.toml <<-'EOF'
+server = "https://registry.k8s.io"
+
+[host."https://mirrors.k8s.com"]
+  capabilities = ["pull", "resolve"]
+EOF
+
+mkdir -p /etc/containerd/certs.d/quay.io
+tee /etc/containerd/certs.d/quay.io/hosts.toml << 'EOF'
+server = "https://quay.io"
+
+[host."https://mirrors.quay.com"]
+  capabilities = ["pull", "resolve"]
+EOF
 ```
 
 详细步骤解释：
@@ -278,7 +306,7 @@ sudo containerd config default | sudo tee /etc/containerd/config.toml
 sudo containerd config default | sudo tee /etc/containerd/config.toml > /dev/null
 ```
 
-配置 `pause` 镜像，防止 `kubeadm` 的警告：
+配置 `pause` 镜像，防止 `kubeadm` 的警告
 
 >   detected that the sandbox image "registry.k8s.io/pause:3.9" of the container runtime is inconsistent with that used by kubeadm.It is recommended to use "registry.aliyuncs.com/google_containers/pause:3.9" as the CRI sandbox image.
 
@@ -302,16 +330,46 @@ sudo sed -i 's/sandbox_image\ =.*/sandbox_image\ =\ "registry.aliyuncs.com\/goog
 sudo sed -i 's/SystemdCgroup\ =\ false/SystemdCgroup\ =\ true/g' /etc/containerd/config.toml
 ```
 
-配置容器镜像加速器
+配置容器镜像加速器，使用 `config_path` 的方式
+
+>   DEPRECATION: The `mirrors` property of `[plugins."io.containerd.grpc.v1.cri".registry]` is deprecated since containerd v1.5 and will be removed in containerd v2.0. Use `config_path` instead.
 
 ```shell
-sudo sed -i '/\[plugins."io.containerd.grpc.v1.cri".registry.mirrors\]/,/\[plugins."io.containerd.grpc.v1.cri".x509_key_pair_streaming\]/c\
-      [plugins."io.containerd.grpc.v1.cri".registry.mirrors]\
-        [plugins."io.containerd.grpc.v1.cri".registry.mirrors."docker.io"]\
-          endpoint = ["https://mirrors.docker.com"]\
-        [plugins."io.containerd.grpc.v1.cri".registry.mirrors."registry.k8s.io"]\
-          endpoint = ["https://registry.aliyuncs.com/google_containers"]\n\
-    [plugins."io.containerd.grpc.v1.cri".x509_key_pair_streaming]' /etc/containerd/config.toml
+sudo sed -i 's/config_path\ =\ ""/config_path\ =\ "\/etc\/containerd\/certs.d"/g' /etc/containerd/config.toml
+```
+
+```shell
+mkdir -p /etc/containerd/certs.d/docker.io
+cat > /etc/containerd/certs.d/docker.io/hosts.toml <<-'EOF'
+server = "https://docker.io"
+
+[host."https://mirrors.docker.com"]
+  capabilities = ["pull", "resolve"]
+EOF
+
+mkdir -p /etc/containerd/certs.d/registry-1.docker.io
+cat > /etc/containerd/certs.d/registry-1.docker.io/hosts.toml <<-'EOF'
+server = "https://registry-1.docker.io"
+
+[host."https://mirrors.docker.com"]
+  capabilities = ["pull", "resolve"]
+EOF
+
+mkdir -p /etc/containerd/certs.d/registry.k8s.io
+tee /etc/containerd/certs.d/registry.k8s.io/hosts.toml <<-'EOF'
+server = "https://registry.k8s.io"
+
+[host."https://mirrors.k8s.com"]
+  capabilities = ["pull", "resolve"]
+EOF
+
+mkdir -p /etc/containerd/certs.d/quay.io
+tee /etc/containerd/certs.d/quay.io/hosts.toml << 'EOF'
+server = "https://quay.io"
+
+[host."https://mirrors.quay.com"]
+  capabilities = ["pull", "resolve"]
+EOF
 ```
 
 重启 `containerd` 服务
@@ -359,9 +417,7 @@ EOF
 初始化前先拉取所需要的镜像，方便查找初始化的 `warning` 或 `error`
 
 ```shell
-sudo kubeadm config images pull \
-      --image-repository=registry.aliyuncs.com/google_containers \
-      --kubernetes-version=$(kubeadm version -o short)
+sudo kubeadm config images pull --kubernetes-version=$(kubeadm version -o short)
 ```
 
 在不同厂商的云服务器之间，我们需要使用公网访问 `k8s `集群中的每个节点，但是网卡上绑定的是内网 `IP`，会导致 `kubeadm init ` 指定 `--apiserver-advertise-address` 为公网 `IP` 时，`etcd` 无法启动，初始化失败。
@@ -380,7 +436,6 @@ sudo ip link set dev veth0 up
 
 ```shell
 sudo kubeadm init \
-      --image-repository=registry.aliyuncs.com/google_containers \
       --apiserver-advertise-address=47.102.xx.xx \
       --pod-network-cidr=192.168.0.0/16 \
       --service-cidr=10.96.0.0/16 \
