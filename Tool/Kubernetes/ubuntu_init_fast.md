@@ -101,39 +101,39 @@ sudo systemctl restart docker
 
 ```shell
 sudo containerd config default | sudo tee /etc/containerd/config.toml > /dev/null
-sudo sed -i '/registry.k8s.io/pause/s|3.8|3.9|' /etc/containerd/config.toml
+sudo sed -i '/registry.k8s.io\/pause/s|3.8|3.9|' /etc/containerd/config.toml
 sudo sed -i 's/SystemdCgroup\ =\ false/SystemdCgroup\ =\ true/g' /etc/containerd/config.toml
 sudo sed -i 's/config_path\ =\ ""/config_path\ =\ "\/etc\/containerd\/certs.d"/g' /etc/containerd/config.toml
 sudo systemctl restart containerd
 ```
 
 ```shell
-mkdir -p /etc/containerd/certs.d/docker.io
-cat > /etc/containerd/certs.d/docker.io/hosts.toml <<-'EOF'
+sudo mkdir -p /etc/containerd/certs.d/docker.io
+sudo tee /etc/containerd/certs.d/docker.io/hosts.toml <<-'EOF'
 server = "https://docker.io"
 
 [host."https://mirrors.docker.com"]
   capabilities = ["pull", "resolve"]
 EOF
 
-mkdir -p /etc/containerd/certs.d/registry-1.docker.io
-cat > /etc/containerd/certs.d/registry-1.docker.io/hosts.toml <<-'EOF'
+sudo mkdir -p /etc/containerd/certs.d/registry-1.docker.io
+sudo tee /etc/containerd/certs.d/registry-1.docker.io/hosts.toml <<-'EOF'
 server = "https://registry-1.docker.io"
 
 [host."https://mirrors.docker.com"]
   capabilities = ["pull", "resolve"]
 EOF
 
-mkdir -p /etc/containerd/certs.d/registry.k8s.io
-tee /etc/containerd/certs.d/registry.k8s.io/hosts.toml <<-'EOF'
+sudo mkdir -p /etc/containerd/certs.d/registry.k8s.io
+sudo tee /etc/containerd/certs.d/registry.k8s.io/hosts.toml <<-'EOF'
 server = "https://registry.k8s.io"
 
 [host."https://mirrors.k8s.com"]
   capabilities = ["pull", "resolve"]
 EOF
 
-mkdir -p /etc/containerd/certs.d/quay.io
-tee /etc/containerd/certs.d/quay.io/hosts.toml << 'EOF'
+sudo mkdir -p /etc/containerd/certs.d/quay.io
+sudo tee /etc/containerd/certs.d/quay.io/hosts.toml << 'EOF'
 server = "https://quay.io"
 
 [host."https://mirrors.quay.com"]
