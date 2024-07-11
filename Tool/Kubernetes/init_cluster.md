@@ -188,7 +188,7 @@ sudo sysctl --system
 安装 `ipset` 和 `ipvsadm`
 
 ```bash
-sudo apt install -y ipset ipvsadm
+sudo apt update && sudo apt install -y ipset ipvsadm
 ```
 
 加载内核模块
