@@ -51,6 +51,19 @@ sudo modprobe br_netfilter
 
 云服务需要在安全组中操作防火墙，建议先开启所有端口，测试通过后逐一关闭
 
+### 2.4 IPVS (可选)
+
+```shell
+sudo apt update && sudo apt install -y ipset ipvsadm
+sudo tee /etc/modules-load.d/ipvs.conf <<-'EOF'
+ip_vs
+ip_vs_rr
+ip_vs_wrr
+ip_vs_sh
+nf_conntrack
+EOF
+```
+
 ## 三、软件安装
 
 ### 3.1 Docker
