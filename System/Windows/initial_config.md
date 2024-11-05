@@ -285,7 +285,7 @@ scoop bucket add games
 scoop bucket add extras
 scoop bucket add versions
 
-scoop install qq vim nvm lsd which touch maven steam wechat zotero vscode ffmpeg mathpix rustdesk starship vncviewer openjdk17 miniconda3 everything filezilla dismplusplus vcredist2022 translucenttb sublime-text snipaste-beta
+scoop install qq vim nvm lsd which touch maven steam wechat zotero vscode ffmpeg mathpix rustdesk starship vncviewer openjdk17 miniconda3 everything filezilla dismplusplus vcredist2022 translucenttb sublime-text treesize-free
 
 # 运行需要管理员权限，无法和vscode插件搭配，除非以管理员身份打开vscode
 # 目前解决方法未知，暂时推荐手动安装docker desktop的方案
@@ -342,9 +342,10 @@ mklink /d "C:\Users\xin\AppData\Local\Google\Chrome\User Data" "D:\Scoop\persist
 4.   VMware：https://www.123pan.com/s/HQeA-kx4Sh
 5.   搜狗输入法：https://pinyin.sogou.com/windows/?r=mac&t=pinyin
 6.   IObit Unlocker：https://www.123pan.com/s/HQeA-Rc1Sh
-7.   Bandizip安装包：https://www.bandisoft.com/bandizip
-8.   Bandizip破解：https://www.123pan.com/s/HQeA-TN1Sh
-9.   Bandizip配置：
+7.   Pixpin：https://pixpinapp.com/
+8.   Bandizip安装包：https://www.bandisoft.com/bandizip
+9.   Bandizip破解：https://www.123pan.com/s/HQeA-TN1Sh
+10.   Bandizip配置：
 
 ```
 curl -o config.reg https://gist.githubusercontent.com/Jxpro/2b40d4cc5e3ccdb550fcf74ca18e44b7/raw/c9986ec32bc30b936de60c3a1962c40c3044bfbf/Bandizip
