@@ -415,7 +415,13 @@ ssh -T git@github.com
 open /opt/homebrew/Caskroom/sogouinput/xxx/sogou_mac_xxx.app
 ```
 
-## 七、其他软件
+## 七、其他软件（SIP）
+
+>   `SIP：System Integrity Protection`（系统完整性保护），锁定某些系统文件夹，以防止在`Mac`上的修改，执行和删除关键系统级文件，即使是管理员账户也不例外。默认情况下`macOS`系统都会启用`SIP`安全功能。
+>
+>   部分破解软件安装后打不开，或者出现闪退等错误提示，就有那可能是`SIP`系统完整性没有关闭。在遇到这种情况的时候，我们可以手动关闭`SIP`系统完整性保护，正常使用后尝试重新打开。
+>
+>   `M`芯片的`Mac`在关机状态下长按住开机键，直到进入设置界面后松开进入到恢复模式，开启或关闭`SIP`。
 
 1.   [Alfred5[TNT]](https://appstorrent.ru/129-alfred.html)
 2.   [Bartender 4[TNT]](https://appstorrent.ru/133-macbartender.html)
