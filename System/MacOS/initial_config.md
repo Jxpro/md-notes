@@ -119,13 +119,13 @@ export all_proxy="http://127.0.0.1:7890"
 
 ### 4.1 oh-my-zsh
 
-安装oh-my-zsh
+安装`oh-my-zsh`
 
 ```shell
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-以下为细节介绍，一步到位请直接复制《5.7 zshrc》中的内容
+以下为细节介绍，一步到位请直接复制《5.8 zshrc》中的内容
 
 >   基本配置（~/.zshrc）
 >
@@ -162,19 +162,19 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 ### 4.2 starship
 
-安装starship
+安装`starship`
 
 ```shell
 brew install starship
 ```
 
-下载starship配置文件
+下载`starship`配置文件
 
 ```shell
 curl https://gist.githubusercontent.com/Jxpro/0a5729ac38d4b17a99142c4d71f27d8a/raw/2c0cdb47972979007ceb253531d773b379e9d3b2/starship.toml -o ~/.config/starship.toml
 ```
 
-以下为细节介绍，一步到位请直接复制《5.7 zshrc》中的内容
+以下为细节介绍，一步到位请直接复制《5.8 zshrc》中的内容
 
 >   在.zshrc中启用
 >
@@ -230,6 +230,7 @@ brew install --cask \
   rectangle \
   snipaste \
   telegram \
+  rustdesk \
   alt-tab \
   qqmusic \
   thunder \
@@ -262,7 +263,7 @@ SN: GAWAE-FCWQ3-P8NYB-C7GF7-NEDRT-Q5DTB-MFZG6-6NEQC-CRMUD-8MZ2K-66SRB-SU8EW-EDLZ
 
 介绍和使用：[autojump使用教程](https://blog.csdn.net/daerzei/article/details/101362569)
 
-配置见《5.7 zshrc》
+配置见《5.8 zshrc》
 
 ### 5.2 fzf
 
@@ -284,7 +285,7 @@ git clone https://github.com/wfxr/forgit.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/
 git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
 ```
 
-配置见《5.7 zshrc》
+配置见《5.8 zshrc》
 
 ### 5.3 jdk
 
@@ -294,7 +295,7 @@ git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/p
 sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk
 ```
 
-环境变量见《5.7 zshrc》
+环境变量见《5.8 zshrc》
 
 ### 5.4 maven
 
@@ -317,17 +318,17 @@ mv apache-maven-3.9.0 maven
 sudo mv maven /opt
 ```
 
-环境变量见《5.7 zshrc》
+环境变量见《5.8 zshrc》
 
 ### 5.5 conda
 
-初始化shell
+初始化`shell`
 
 ```shell
 conda init "$(basename "${SHELL}")"
 ```
 
-禁用自带的提示符，否则使用starship时，会再上面独占一行来显示（base）这样的提示符
+禁用自带的提示符，否则使用`starship`时，会再上面独占一行来显示（base）这样的提示符
 
 ```shell
 conda config --set changeps1 False
@@ -335,15 +336,43 @@ conda config --set changeps1 False
 
 ### 5.6 nvm
 
-脚本安装nvm（官网不推荐brew安装）
+脚本安装`nvm`（官网不推荐`brew`安装）
 
 ```shell
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 ```
 
-### 5.7 zshrc
+### 5.7 rustdesk
 
-下载配置好的.zshrc
+通过`rustup`脚本自动安装`rust`
+
+```shell
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+克隆`custom-rustdesk`项目
+
+```shell
+git clone https://github.com/Jxpro/custom-rustdesk.git
+```
+
+自定义`ID`
+
+```shell
+cargo run -- --id $cust_id --uuid $(ioreg -rd1 -c IOPlatformExpertDevice | grep IOPlatformUUID | awk -F'"' '{print $4}')
+```
+
+替换配置文件
+
+```shell
+cp ~/Library/Preferences/com.carriez.RustDesk/RustDesk.toml ~/Library/Preferences/com.carriez.RustDesk/RustDesk.toml.bak
+
+sed -i '' "s|enc_id = '[^']*'|enc_id = 'new_enc_id_value'|" ~/Library/Preferences/com.carriez.RustDesk/RustDesk.toml
+```
+
+### 5.8 zshrc
+
+下载配置好的`.zshrc`
 
 ```shell
 curl https://gist.githubusercontent.com/Jxpro/9f59d95d35871f3420c25d0704bae52f/raw/2fab2bda4d6f441cfb113e6958623eae5cac402b/.zshrc -o ~/.zshrc
@@ -355,7 +384,7 @@ curl https://gist.githubusercontent.com/Jxpro/9f59d95d35871f3420c25d0704bae52f/r
 
 ### 6.1 node
 
-安装node
+安装`node`
 
 ```shell
 # 查看可以版本
@@ -395,14 +424,14 @@ ssh-keygen -t rsa
 ...（直接一路回车）
 ```
 
-查看公钥并上传至github
+查看公钥并上传至`github`
 
 ```shell
 cat ~/.ssh/id_rsa.pub
 ssh-rsa...
 ```
 
-测试连接（有warning直接yes就行）
+测试连接（有`warning`直接`yes`就行）
 
 ```shell
 ssh -T git@github.com
