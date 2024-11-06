@@ -200,8 +200,10 @@ brew install \
   the_silver_searcher \
   rm-improved \
   openjdk@17 \
+  pkg-config \
   autojump \
   neofetch \
+  mysql \
   tree \
   dust \
   tldr \
@@ -221,9 +223,7 @@ brew install --cask \
   monitorcontrol \
   intellij-idea \
   google-chrome \
-  silicon-info \
   istat-menus \
-  sogouinput \
   cheatsheet \
   appcleaner \
   miniconda \
@@ -241,6 +241,7 @@ brew install --cask \
   wechat \
   douyin \
   zotero \
+  utools \
   iina \
   mos \
   bob \
@@ -300,7 +301,7 @@ sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/Java
 在[Maven官网](https://maven.apache.org/download.cgi)下载最新版[Binary tar.gz archive](https://dlcdn.apache.org/maven/maven-3/3.9.0/binaries/apache-maven-3.9.0-bin.tar.gz)
 
 ```shell
-curl https://dlcdn.apache.org/maven/maven-3/3.9.0/binaries/apache-maven-3.9.0-bin.tar.gz -o apache-maven-3.9.0-bin.tar.gz
+curl https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz -o apache-maven-3.9.9-bin.tar.gz
 ```
 
 解压到当前目录
@@ -312,7 +313,8 @@ tar -xf apache-maven-3.9.0-bin.tar.gz
 将其移动到`/opt`目录下
 
 ```shell
-sudo mv apache-maven-3.9.0 /opt
+mv apache-maven-3.9.0 maven
+sudo mv maven /opt
 ```
 
 环境变量见《5.7 zshrc》
@@ -336,7 +338,7 @@ conda config --set changeps1 False
 脚本安装nvm（官网不推荐brew安装）
 
 ```shell
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 ```
 
 ### 5.7 zshrc
@@ -344,7 +346,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 下载配置好的.zshrc
 
 ```shell
-curl https://gist.githubusercontent.com/Jxpro/9f59d95d35871f3420c25d0704bae52f/raw/f4f26ac1a2cb1fac2237fe0d14d638008bf2a190/.zshrc -o ~/.zshrc
+curl https://gist.githubusercontent.com/Jxpro/9f59d95d35871f3420c25d0704bae52f/raw/2fab2bda4d6f441cfb113e6958623eae5cac402b/.zshrc -o ~/.zshrc
 ```
 
 ## 六、其他（重启iterm2）
@@ -360,20 +362,20 @@ curl https://gist.githubusercontent.com/Jxpro/9f59d95d35871f3420c25d0704bae52f/r
 nvm ls-remote
 
 # 安装的第一个版本会成为默认版本（default的alias）
-nvm install 16
-
-# 最新的LTS版本
 nvm install 18
 
+# 最新的LTS版本
+nvm install 22
+
 # 切换回目前常用的版本
-nvm use 16
+nvm use 18
 ```
 
 建立软连接
 
 ```shell
 # 如果/usr/local/下不存在bin目录，则先创建
-sudo mkdir -p /usr/local/bin && sudo ln -sfn ~/.nvm/versions/node/v16.19.1/bin/node /usr/local/bin/node
+sudo mkdir -p /usr/local/bin && sudo ln -sfn ~/.nvm/versions/node/v18.20.4/bin/node /usr/local/bin/node
 ```
 
 ### 6.2 git
@@ -406,15 +408,6 @@ ssh-rsa...
 ssh -T git@github.com
 ```
 
-### 6.3 sougou
-
-运行一下安装程序，完成安装
-
-```shell
-# xxx表示视版本而定，使用tab可自动补全
-open /opt/homebrew/Caskroom/sogouinput/xxx/sogou_mac_xxx.app
-```
-
 ## 七、其他软件（SIP）
 
 >   `SIP：System Integrity Protection`（系统完整性保护），锁定某些系统文件夹，以防止在`Mac`上的修改，执行和删除关键系统级文件，即使是管理员账户也不例外。默认情况下`macOS`系统都会启用`SIP`安全功能。
@@ -431,4 +424,6 @@ open /opt/homebrew/Caskroom/sogouinput/xxx/sogou_mac_xxx.app
 6.   [Office Word](https://appstorrent.ru/80-microsoft-office-2019.html)，[Serializer](https://appstorrent.ru/751-microsoft-office-2021.html)
 7.   [ParallelsDesktop](https://appstorrent.ru/61-parallels-desktop.html)
 8.   [Runcat (Appstore)](https://apps.apple.com/us/app/runcat/id1429033973?mt=12)
-9.   [小绿鲸](https://www.xljsci.com/)
+9.   [搜狗输入法](https://pinyin.sogou.com/mac/)
+10.   [小绿鲸](https://www.xljsci.com/)
+
