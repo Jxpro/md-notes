@@ -208,7 +208,7 @@ brew install \
   dust \
   tldr \
   bat \
-  exa \
+  eza \
   fzf \
   git \
   fd \
@@ -375,7 +375,7 @@ sed -i '' "s|enc_id = '[^']*'|enc_id = 'new_enc_id_value'|" ~/Library/Preference
 下载配置好的`.zshrc`
 
 ```shell
-curl https://gist.githubusercontent.com/Jxpro/9f59d95d35871f3420c25d0704bae52f/raw/2fab2bda4d6f441cfb113e6958623eae5cac402b/.zshrc -o ~/.zshrc
+curl https://gist.githubusercontent.com/Jxpro/9f59d95d35871f3420c25d0704bae52f/raw/6df5c324de11fbccc7318182f37e55f1c7ba123a/.zshrc -o ~/.zshrc
 ```
 
 ## 六、其他（重启iterm2）
