@@ -296,7 +296,7 @@ mkdir ~/.config
 curl https://gist.githubusercontent.com/Jxpro/0a5729ac38d4b17a99142c4d71f27d8a/raw/33ef48191f7e245aa3d3b053569b9c8c49207a3c/starship.toml -o ~/.config/starship.toml
 
 mv ~/.zshrc ~/.zshrc.back
-curl https://gist.githubusercontent.com/Jxpro/8923b5120fb325b31109ba57868cb306/raw/ed37b15390ab907ae3c73db96e7f21fe9517ceb8/.zshrc -o ~/.zshrc
+curl https://gist.githubusercontent.com/Jxpro/8923b5120fb325b31109ba57868cb306/raw/ee1d8e3d2feab07c49bf0e992daab11e028cc468/.zshrc -o ~/.zshrc
 ```
 
 ## 六、Docker
