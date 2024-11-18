@@ -6,19 +6,19 @@
 
 Windows11 专业版密钥，（报0x80072efd 连接错误就更换网络）
 
-```
+```shell
 J8WVF-9X3GM-4WVYC-VDHQG-42CXT
 ```
 
 激活未成功使用下面命令，选择选项1
 
-```
+```shell
 irm https://massgrave.dev/get | iex
 ```
 
 Typora 补丁最后可用一版
 
-```
+```shell
 https://download.typora.io/windows/typora-setup-x64-1.7.5.exe
 https://www.123pan.com/s/HQeA-UX1Sh
 ```
@@ -30,7 +30,7 @@ https://www.123pan.com/s/HQeA-UX1Sh
 
 uTools
 
-```
+```shell
 https://www.u.tools/
 ```
 
@@ -40,13 +40,13 @@ https://www.u.tools/
 
 设置`PowerShell`执行策略
 
-```
+```shell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
 下载配置文件
 
-```
+```shell
 irm get.scoop.sh -outfile 'install.ps1'
 ```
 
@@ -54,13 +54,13 @@ irm get.scoop.sh -outfile 'install.ps1'
 
 >   scoop配置文件位于"~\\.config\scoop\config.json"
 
-```
+```shell
 .\install.ps1 -ScoopDir 'D:\Scoop' -ScoopGlobalDir 'D:\Scoop\global'
 ```
 
 添加缩写别名
 
-```
+```shell
 # Install app
 scoop alias add i 'scoop install $args[0]' 'Innstall app'
 scoop alias add add 'scoop install $args[0]' 'Install app'
@@ -85,7 +85,7 @@ scoop alias add st 'scoop status' 'Check for update'
 
 检查问题
 
-```
+```shell
 PS C:\Users\xin> scoop checkup
 WARN  LongPaths support is not enabled.
   You can enable it by running:
@@ -104,13 +104,13 @@ WARN  Found 5 potential problems.
 
 1.   安装命令行工具
 
-```
+```shell
 scoop install git 7zip innounp dark sudo aria2
 ```
 
 2.   设置注册表
 
-```
+```shell
 D:\Scoop\apps\7zip\current\install-context.reg
 D:\Scoop\apps\git\current\install-context.reg
 D:\Scoop\apps\git\current\install-file-associations.reg
@@ -121,7 +121,7 @@ sudo Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 
 
 aria2配置
 
-```
+```shell
 scoop config aria2-enabled true
 scoop config aria2-warning-enabled false
 scoop config aria2-retry-wait 4
@@ -132,7 +132,7 @@ scoop config aria2-split 32
 
 aria2 玄学命令，一般是用于解决SSL错误（详请见下方），但好像有时一些unknown的错误也莫名其妙好了，报错可以一试
 
-```
+```shell
 D0ownload: -> [SocketCore.cc:1021] errorCode=1 SSL/TLS handshake failure: Error: 由于吊销服务器已脱机，吊销功能无法检查吊销。
 ```
 
@@ -140,13 +140,13 @@ D0ownload: -> [SocketCore.cc:1021] errorCode=1 SSL/TLS handshake failure: Error:
 
 设置认证客户端
 
-```
+```shell
 git config --global credential.helper manager
 ```
 
 设置名称，邮箱和默认分支
 
-```
+```shell
 git config --global user.name "name"
 git config --global user.email "email"
 git config --global init.defaultBranch main
@@ -154,21 +154,21 @@ git config --global init.defaultBranch main
 
 生成公私钥
 
-```
+```shell
 ssh-keygen -t rsa
 ...（直接一路回车）
 ```
 
 查看公钥并上传至github
 
-```
+```shell
 cat ~/.ssh/id_rsa.pub
 ssh-rsa...
 ```
 
 测试连接（有warning直接yes就行）
 
-```
+```shell
 ssh -T git@github.com
 ```
 
@@ -180,14 +180,14 @@ ssh -T git@github.com
 
 GitHub已删库，archive地址
 
-```
+```shell
 https://www.clash.la/releases/
 https://github.com/Z-Siqi/Clash-for-Windows_Chinese/releases
 ```
 
 0.20.39 sha256sum (原版拷贝)
 
-```
+```shell
 linux-arm64-targz: e328abfe68c122c396f7296bb610934f9ca407af97b0f50d99ff62d43aaf63e0
 linux-amd64-targz: e07c5e358bce99511c103262ba0d6d0167c70242f2e68827b09f7a2918d43dc0
 mac-arm64-7z: fab650bed23604702302a67042e1d210331bcb482107838717b19e8883f746f9
@@ -206,31 +206,31 @@ exe: 477274ce22d30559ae5df8d41b0adb0a8461be0501d26a0500452ab68c650608
 
 查看版本
 
-```
+```shell
 $psversiontable
 ```
 
 使用`winget`自动安装 PowerShell
 
-```
+```shell
 winget install --id Microsoft.Powershell --source winget
 ```
 
 使用MSI包手动安装
 
-```
+```shell
 https://github.com/PowerShell/PowerShell/releases
 ```
 
 在Windows终端中取消显示版本：设置 - powershell - 命令行
 
-```
+```shell
 "C:\Program Files\PowerShell\7\pwsh.exe" -Nologo
 ```
 
 图标美化，历史命令列表显示
 
-```
+```shell
 Install-Module -Name Terminal-Icons -Repository PSGallery
 
 notepad $PROFILE
@@ -243,13 +243,13 @@ Set-PSReadLineOption -PredictionViewstyle Listview
 
 在家目录下新建.wslconfig
 
-```
+```shell
 vim .wslconfig
 ```
 
 输入下面内容
 
-```
+```shell
 [experimental]
 autoProxy=false
 ```
@@ -258,13 +258,13 @@ autoProxy=false
 
 然后以管理员运行命令
 
-```
+```shell
 wsl --install
 ```
 
 设置好账户以后使用以下命令，去除提示："See "man sudo_root" for details."
 
-```
+```shell
 touch ~/.sudo_as_admin_successful
 ```
 
@@ -272,14 +272,14 @@ touch ~/.sudo_as_admin_successful
 
 字体，记得在设置里修改字体
 
-```
+```shell
 scoop bucket add nerd-fonts
 scoop install Meslo-NF FiraCode-NF
 ```
 
 软件，一键安装
 
-```
+```shell
 scoop bucket add java
 scoop bucket add games
 scoop bucket add extras
@@ -302,7 +302,7 @@ scoop install pycharm-professional
 
 手动设置项
 
-```
+```shell
 # 注册表 设置
 D:\Scoop\apps\vim\current\install-context.reg
 D:\Scoop\apps\everything\current\install-context.reg
@@ -330,7 +330,7 @@ sudo Set-Service docker -StartupType Automatic
 
 命令提示符（CMD）下执行，保证chrome数据一致性：
 
-```
+```shell
 mklink /d "C:\Users\xin\AppData\Local\Google\Chrome\User Data" "D:\Scoop\persist\googlechrome\User Data"
 ```
 
@@ -347,6 +347,6 @@ mklink /d "C:\Users\xin\AppData\Local\Google\Chrome\User Data" "D:\Scoop\persist
 9.   Bandizip破解：https://www.123pan.com/s/HQeA-TN1Sh
 10.   Bandizip配置：
 
-```
+```shell
 curl -o config.reg https://gist.githubusercontent.com/Jxpro/2b40d4cc5e3ccdb550fcf74ca18e44b7/raw/c9986ec32bc30b936de60c3a1962c40c3044bfbf/Bandizip
 ```
