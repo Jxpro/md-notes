@@ -133,6 +133,10 @@ scoop config aria2-split 32
 aria2 玄学命令，一般是用于解决SSL错误（详请见下方），但好像有时一些unknown的错误也莫名其妙好了，报错可以一试
 
 ```shell
+命令:
+scoop config aria2-options --check-certificate=false
+
+错误:
 D0ownload: -> [SocketCore.cc:1021] errorCode=1 SSL/TLS handshake failure: Error: 由于吊销服务器已脱机，吊销功能无法检查吊销。
 ```
 
@@ -331,7 +335,14 @@ sudo Set-Service docker -StartupType Automatic
 命令提示符（CMD）下执行，保证chrome数据一致性：
 
 ```shell
+mkdir "C:\Users\xin\AppData\Local\Google\Chrome"
 mklink /d "C:\Users\xin\AppData\Local\Google\Chrome\User Data" "D:\Scoop\persist\googlechrome\User Data"
+
+# 修改 C:\Users\xin\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar 中的快捷方式
+目标:
+D:\Scoop\apps\googlechrome\current\chrome.exe --user-data-dir="D:\Scoop\apps\googlechrome\current\User Data"
+起始位置:
+D:\Scoop\apps\googlechrome\current
 ```
 
 ## 七、余项
