@@ -4,6 +4,8 @@
 
 ## 前言
 
+### Windows 激活
+
 Windows11 专业版密钥，（报0x80072efd 连接错误就更换网络）
 
 ```shell
@@ -16,6 +18,8 @@ J8WVF-9X3GM-4WVYC-VDHQG-42CXT
 irm https://massgrave.dev/get | iex
 ```
 
+### typora 破解
+
 Typora 补丁最后可用一版
 
 ```shell
@@ -23,12 +27,18 @@ https://download.typora.io/windows/typora-setup-x64-1.7.5.exe
 https://www.123pan.com/s/HQeA-UX1Sh
 ```
 
-系统设置
+最新破解程序
+
+```shell
+https://github.com/743859910/Typora_Unlocker
+```
+
+### 系统设置
 
 -   存储，高级存储设置，保存新内容的地方，全部修改为D盘；或者分区给C盘多点空间
 -   windows更新，高级选项，传递优化，关闭
 
-uTools
+### uTools
 
 ```shell
 https://www.u.tools/
@@ -105,7 +115,7 @@ WARN  Found 5 potential problems.
 1.   安装命令行工具
 
 ```shell
-scoop install git 7zip innounp dark sudo aria2
+scoop install git 7zip innounp dark sudo aria2 vim lsd which touch
 ```
 
 2.   设置注册表
@@ -289,13 +299,9 @@ scoop bucket add games
 scoop bucket add extras
 scoop bucket add versions
 
-scoop install qq vim nvm lsd which touch maven steam wechat zotero vscode ffmpeg mathpix rustdesk starship vncviewer openjdk17 miniconda3 everything filezilla dismplusplus vcredist2022 translucenttb sublime-text treesize-free
+scoop install nvm maven steam tabby wechat zotero ffmpeg mathpix rustdesk starship openjdk17 miniconda3 everything dismplusplus vcredist2022 translucenttb sublime-text treesize-free
 
-# 运行需要管理员权限，无法和vscode插件搭配，除非以管理员身份打开vscode
-# 目前解决方法未知，暂时推荐手动安装docker desktop的方案
-scoop install docker
-
-(Google在校园网不稳定，需要切换移动热点，所以分开下)
+(Google在校园网不稳定，需要切换移动热点，或者切换梯子节点，所以分开下)
 scoop install go googlechrome
 
 (文件太大了，且容易有bug，推荐安装包)
@@ -311,52 +317,47 @@ scoop install pycharm-professional
 D:\Scoop\apps\vim\current\install-context.reg
 D:\Scoop\apps\everything\current\install-context.reg
 D:\Scoop\apps\sublime-text\current\install-context.reg
-D:\Scoop\apps\vscode\current\install-context.reg
-D:\Scoop\apps\vscode\current\install-associations.reg
-D:\Scoop\apps\zotero\current\install-zotero-url-protocol.ps1
-(D:\Scoop\apps\zotero\current\uninstall-zotero-url-protocol.ps1)
-
-# conda 设置
-conda init powershell (可选)
 
 # starship 设置
 notepad $PROFILE
 Invoke-Expression (&starship init powershell)
 curl -o C:\Users\xin\.config\starship.toml https://gist.githubusercontent.com/Jxpro/0a5729ac38d4b17a99142c4d71f27d8a/raw/2c0cdb47972979007ceb253531d773b379e9d3b2/starship.toml
 
-# docker 设置
-# 运行需要管理员权限，无法和vscode插件搭配，除非以管理员身份打开vscode
-# 目前解决方法未知，暂时推荐手动安装docker desktop的方案
-sudo dockerd --register-service
-sudo Start-Service docker
-sudo Set-Service docker -StartupType Automatic
+# nvm 设置，重启终端
+nvm install 22.11.0
+nvm use 22.11.0
+npm install -g yarn
 ```
 
-命令提示符（CMD）下执行，保证chrome数据一致性：
+命令提示符（CMD）下执行，保证`Chrome`数据一致性：
 
 ```shell
 mkdir "C:\Users\xin\AppData\Local\Google\Chrome"
 mklink /d "C:\Users\xin\AppData\Local\Google\Chrome\User Data" "D:\Scoop\persist\googlechrome\User Data"
+```
 
-# 修改 C:\Users\xin\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar 中的快捷方式
-目标:
+修改`Chrome`快捷方式，保持固定到任务栏的图标一致性：
+
+```shell
+位置:
+C:\Users\xin\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Scoop Apps
+
+属性中的目标:
 D:\Scoop\apps\googlechrome\current\chrome.exe --user-data-dir="D:\Scoop\apps\googlechrome\current\User Data"
-起始位置:
-D:\Scoop\apps\googlechrome\current
+去掉 --user-data-dir="D:\Scoop\apps\googlechrome\current\User Data" 
 ```
 
 ## 七、余项
 
 1.   IDM破解版（管理员权限执行绿化）：https://www.123pan.com/s/HQeA-Ml4Sh
-2.   小绿鲸阅读器：https://www.xljsci.com/download.html
-3.   有道词典：https://fanyi.youdao.com/download-Windows
-4.   VMware：https://www.123pan.com/s/HQeA-kx4Sh
-5.   搜狗输入法：https://pinyin.sogou.com/windows/?r=mac&t=pinyin
-6.   IObit Unlocker：https://www.123pan.com/s/HQeA-Rc1Sh
-7.   Pixpin：https://pixpinapp.com/
-8.   Bandizip安装包：https://www.bandisoft.com/bandizip
-9.   Bandizip破解：https://www.123pan.com/s/HQeA-TN1Sh
-10.   Bandizip配置：
+2.   有道词典：https://fanyi.youdao.com/download-Windows
+3.   搜狗输入法：https://pinyin.sogou.com/windows/?r=mac&t=pinyin
+4.   IObit Unlocker：https://www.123pan.com/s/HQeA-Rc1Sh
+5.   Pixpin：https://pixpinapp.com/
+6.   Cursor：https://www.cursor.com/
+7.   Bandizip安装包：https://www.bandisoft.com/bandizip
+8.   Bandizip破解：https://www.123pan.com/s/HQeA-TN1Sh
+9.   Bandizip配置：
 
 ```shell
 curl -o config.reg https://gist.githubusercontent.com/Jxpro/2b40d4cc5e3ccdb550fcf74ca18e44b7/raw/c9986ec32bc30b936de60c3a1962c40c3044bfbf/Bandizip
