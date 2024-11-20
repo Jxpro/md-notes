@@ -44,7 +44,74 @@ https://github.com/743859910/Typora_Unlocker
 https://www.u.tools/
 ```
 
-## 一、Scoop 
+## 一、clash for window
+
+>   没有 7z 解压工具可以使用在线 7z 转 zip：https://convertio.co/zh/7z-zip/
+>
+>   注意在安装目录下新建data文件，这样不会把数据存到c盘！
+
+GitHub已删库，archive地址
+
+```shell
+https://www.clash.la/releases/
+https://github.com/Z-Siqi/Clash-for-Windows_Chinese/releases
+```
+
+0.20.39 sha256sum (原版拷贝)
+
+```shell
+linux-arm64-targz: e328abfe68c122c396f7296bb610934f9ca407af97b0f50d99ff62d43aaf63e0
+linux-amd64-targz: e07c5e358bce99511c103262ba0d6d0167c70242f2e68827b09f7a2918d43dc0
+mac-arm64-7z: fab650bed23604702302a67042e1d210331bcb482107838717b19e8883f746f9
+arm64-dmg: 479d9cef5932d70506592869b01e6e12a4c61411307c0d83615ba3f6c2b41631
+mac-7z: c703d3b404941ee09be68a78ea9542f4d2183b9f3e0d389599c37c2df98bd89a
+dmg: 5b6bec7cc143f4d95b6ed4d830b20347000aad06edb3d8e5e95daa97481d83af
+arm64-exe: bfc3e984f88c35e9f77ed89559ac5374b7d387ec8d980ce600aeeabfac6074f1
+arm64-7z: 504acb6bee6f0eadb47b4f7787c3707ca58ddc8a8177802486cf15fad27f7f65
+ia32-exe: 951e79041d6eb815efcc2f9171883f67a635e04274ce69a5d202f7fee3872f63
+ia32-7z: c9846fbd309eac5bebb40937120f6b716000b38f3fa5e5ea7674c4fbb55e04ee
+exe: 477274ce22d30559ae5df8d41b0adb0a8461be0501d26a0500452ab68c650608
+7z: 88db22840497c067c073ab2415fff6fe71f633d64af2fca62c37859ffba1640c
+```
+
+## 二、Powershell
+
+查看版本
+
+```shell
+$psversiontable
+```
+
+使用`winget`自动安装 PowerShell
+
+```shell
+winget install --id Microsoft.Powershell --source winget
+```
+
+使用MSI包手动安装
+
+```shell
+https://github.com/PowerShell/PowerShell/releases
+```
+
+在Windows终端中取消显示版本：设置 - powershell - 命令行
+
+```shell
+"C:\Program Files\PowerShell\7\pwsh.exe" -Nologo
+```
+
+图标美化，历史命令列表显示
+
+```shell
+Install-Module -Name Terminal-Icons -Repository PSGallery
+
+notepad $PROFILE
+
+Import-Module -Name Terminal-Icons
+Set-PSReadLineOption -PredictionViewstyle Listview
+```
+
+## 三、Scoop 
 
 >   网络错误可先到第二步挂上梯子
 
@@ -150,7 +217,7 @@ scoop config aria2-options --check-certificate=false
 D0ownload: -> [SocketCore.cc:1021] errorCode=1 SSL/TLS handshake failure: Error: 由于吊销服务器已脱机，吊销功能无法检查吊销。
 ```
 
-## 二、Git
+## 四、Git
 
 设置认证客户端
 
@@ -184,73 +251,6 @@ ssh-rsa...
 
 ```shell
 ssh -T git@github.com
-```
-
-## 三、clash for window
-
->   没有 7z 解压工具可以使用在线 7z 转 zip：https://convertio.co/zh/7z-zip/
->
->   注意在安装目录下新建data文件，这样不会把数据存到c盘！
-
-GitHub已删库，archive地址
-
-```shell
-https://www.clash.la/releases/
-https://github.com/Z-Siqi/Clash-for-Windows_Chinese/releases
-```
-
-0.20.39 sha256sum (原版拷贝)
-
-```shell
-linux-arm64-targz: e328abfe68c122c396f7296bb610934f9ca407af97b0f50d99ff62d43aaf63e0
-linux-amd64-targz: e07c5e358bce99511c103262ba0d6d0167c70242f2e68827b09f7a2918d43dc0
-mac-arm64-7z: fab650bed23604702302a67042e1d210331bcb482107838717b19e8883f746f9
-arm64-dmg: 479d9cef5932d70506592869b01e6e12a4c61411307c0d83615ba3f6c2b41631
-mac-7z: c703d3b404941ee09be68a78ea9542f4d2183b9f3e0d389599c37c2df98bd89a
-dmg: 5b6bec7cc143f4d95b6ed4d830b20347000aad06edb3d8e5e95daa97481d83af
-arm64-exe: bfc3e984f88c35e9f77ed89559ac5374b7d387ec8d980ce600aeeabfac6074f1
-arm64-7z: 504acb6bee6f0eadb47b4f7787c3707ca58ddc8a8177802486cf15fad27f7f65
-ia32-exe: 951e79041d6eb815efcc2f9171883f67a635e04274ce69a5d202f7fee3872f63
-ia32-7z: c9846fbd309eac5bebb40937120f6b716000b38f3fa5e5ea7674c4fbb55e04ee
-exe: 477274ce22d30559ae5df8d41b0adb0a8461be0501d26a0500452ab68c650608
-7z: 88db22840497c067c073ab2415fff6fe71f633d64af2fca62c37859ffba1640c
-```
-
-## 四、Powershell
-
-查看版本
-
-```shell
-$psversiontable
-```
-
-使用`winget`自动安装 PowerShell
-
-```shell
-winget install --id Microsoft.Powershell --source winget
-```
-
-使用MSI包手动安装
-
-```shell
-https://github.com/PowerShell/PowerShell/releases
-```
-
-在Windows终端中取消显示版本：设置 - powershell - 命令行
-
-```shell
-"C:\Program Files\PowerShell\7\pwsh.exe" -Nologo
-```
-
-图标美化，历史命令列表显示
-
-```shell
-Install-Module -Name Terminal-Icons -Repository PSGallery
-
-notepad $PROFILE
-
-Import-Module -Name Terminal-Icons
-Set-PSReadLineOption -PredictionViewstyle Listview
 ```
 
 ## 五、WSL
