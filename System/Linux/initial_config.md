@@ -242,7 +242,7 @@ wget -qO- https://raw.githubusercontent.com/teddysun/across/master/bbr.sh | sudo
 
 ```shell
 sudo apt update
-sudo apt install -y lrzsz git zsh nginx socat autojump fzf net-tools exa fd-find wget build-essential
+sudo apt install -y lrzsz git zsh nginx socat autojump fzf net-tools exa fd-find wget build-essential unzip
 ```
 
 安装`ohmyzsh`和`starship`
@@ -279,6 +279,7 @@ sudo timedatectl set-timezone Asia/Shanghai
 
 ```shell
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+nvm install 18
 
 mkdir -p ~/miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
@@ -298,6 +299,11 @@ curl https://gist.githubusercontent.com/Jxpro/0a5729ac38d4b17a99142c4d71f27d8a/r
 mv ~/.zshrc ~/.zshrc.back
 curl https://gist.githubusercontent.com/Jxpro/8923b5120fb325b31109ba57868cb306/raw/ee1d8e3d2feab07c49bf0e992daab11e028cc468/.zshrc -o ~/.zshrc
 ```
+
+服务器探针`NodeStatus`
+
+-   服务端：https://github.com/cokemine/nodestatus
+-   客户端：https://github.com/cokemine/nodestatus-client-go
 
 ## 六、Docker
 
