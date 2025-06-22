@@ -6,7 +6,7 @@
 
 >   [OpenAI Gym](https://gym.openai.com/) is a toolkit for reinforcement learning (RL) widely used in research. The network simulator [ns–3](https://www.nsnam.org/) is the de-facto standard for academic and industry studies in the areas of networking protocols and communication technologies. ns3-gym is a framework that integrates both OpenAI Gym and ns-3 in order to encourage usage of RL in networking research.
 
-OpenAI Gym 是广泛应用于研究的强化学习工具包。网络模拟器 ns-3 是网络协议和通信技术领域学术和工业研究的事实标准。ns3-gym 是一个集成了 OpenAI Gym 和 ns-3 的框架，旨在鼓励在网络研究中使用 RL。
+OpenAI Gym 是广泛应用于研究的强化学习工具包。网络模拟器 ns-3 是网络协议和通信技术领域学术和工业研究的事实标准。[ns3-gym](https://github.com/tkn-tub/ns3-gym) 是一个集成了 OpenAI Gym 和 ns-3 的框架，旨在鼓励在网络研究中使用 RL。
 
 注意仅适用于`NS-3.29`，使用`app`分支，而不是`app-ns-3.36+`
 
@@ -47,7 +47,7 @@ git checkout app # 注意使用 app 分支，默认是 app-ns-3.36+ 分支
 cd ../..
 
 ./waf clean
-./waf configure --enable-examples --enable-tests
+./waf configure --build-profile=optimized
 ./waf build
 ```
 
