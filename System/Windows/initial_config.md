@@ -283,6 +283,13 @@ wsl --install
 touch ~/.sudo_as_admin_successful
 ```
 
+使用下面命令替换 DNS 服务器，并禁止 Windows 重新生成，解决可能遇到的网络问题
+
+```shell
+echo 'nameserver 8.8.8.8' | sudo tee /etc/resolv.conf > /dev/null
+echo '\n[network]\ngenerateResolvConf = false' | sudo tee -a /etc/wsl.conf > /dev/null
+```
+
 ## 六、其他
 
 字体，记得在设置里修改字体
