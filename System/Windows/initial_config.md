@@ -191,6 +191,7 @@ scoop install git 7zip innounp dark sudo aria2 vim lsd which touch
 D:\Scoop\apps\7zip\current\install-context.reg
 D:\Scoop\apps\git\current\install-context.reg
 D:\Scoop\apps\git\current\install-context.reg
+D:\Scoop\apps\vim\current\install-context.reg
 sudo Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -Value 1
 ```
 
@@ -314,7 +315,6 @@ scoop install pycharm-professional
 
 ```shell
 # 注册表 设置
-D:\Scoop\apps\vim\current\install-context.reg
 D:\Scoop\apps\everything\current\install-context.reg
 D:\Scoop\apps\sublime-text\current\install-context.reg
 
