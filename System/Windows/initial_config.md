@@ -190,7 +190,7 @@ scoop install git 7zip innounp dark sudo aria2 vim lsd which touch
 ```shell
 D:\Scoop\apps\7zip\current\install-context.reg
 D:\Scoop\apps\git\current\install-context.reg
-D:\Scoop\apps\git\current\install-file-associations.reg
+D:\Scoop\apps\git\current\install-context.reg
 sudo Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' -Name 'LongPathsEnabled' -Value 1
 ```
 
