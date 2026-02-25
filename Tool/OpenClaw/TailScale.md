@@ -74,7 +74,7 @@ openclaw gateway restart
 - `allowTailscale: true` : 允许 Tailscale 身份认证，使 tailnet 可以访问 control ui
 - `resetOnExit: false` : OpenClaw 退出时不清除 Tailscale Serve 规则
 
-### 4.2 重启网关
+### 4.2 网关规则
 
 OpenClaw 自动生成的 serve 规则，tailscale serve status --json 查看：
 
@@ -95,7 +95,27 @@ OpenClaw 自动生成的 serve 规则，tailscale serve status --json 查看：
 
 参考：https://docs.openclaw.ai/zh-CN/gateway/tailscale
 
-## 五、设备认证
+## 五、域名授权
+
+在`/root/.openclaw/openclaw.json`中加入域名白名单（**v2026.2.23**引入）：
+
+```shell
+openclaw config set "gateway.controlUi.allowedOrigins" '["http://localhost:5173"]' --json
+```
+
+结果如下
+
+```json
+{
+  "gateway": {
+    "controlUi": {
+      "allowedOrigins": ["http://localhost:5173"]
+    }
+  }
+}
+```
+
+## 六、设备认证
 
 运行 `openclaw status --deep | grep Tailscale`，查看控制面板地址并打开，需要注意 clash 代理
 
@@ -115,37 +135,37 @@ openclaw devices approve <requestId>
 
 参考：https://docs.openclaw.ai/zh-CN/web/control-ui
 
-## 六、踩坑记录：WebSocket 连接失败
+## 七、踩坑记录：WebSocket 连接失败
 
-### 6.1 描述
+### 7.1 描述
 
 通过 Tailscale Serve 访问 OpenClaw，页面能正常加载，但 WebSocket 连接失败。
 
-### 6.2 排查过程
+### 7.2 排查过程
 
 1. ❌ 怀疑 Tailscale Serve 不支持 WebSocket → 排除，Go 的 `httputil.ReverseProxy` 支持 Upgrade 头
 2. ❌ 怀疑 CORS/Origin 不匹配（HTTPS→HTTP）→ 不是根因
 3. ✅ 查看 OpenClaw 日志发现真正原因：**设备未配对 (not-paired)**
 
-### 6.3 根本原因
+### 7.3 根本原因
 
 - `allowTailscale: true` 让 HTTP 请求通过了 Tailscale 身份验证，所以页面能加载
 - 但 WebSocket 连接还需要完成 OpenClaw 的**设备配对流程**
 - 浏览器设备未配对 → WS 握手被 OpenClaw 主动拒绝（close code=1008）
 
-### 6.4 解决方案
+### 7.4 解决方案
 
 1. 在浏览器中访问页面发起配对请求
 2. 批准配对：`openclaw devices approve <device-id>`
 3. 刷新页面，WebSocket 即可正常连接
 
-## 七、Windows Clash 配置
+## 八、Windows Clash 配置
 
-### 7.1 选项一
+### 8.1 选项一
 
 直接关闭 Clash 代理模型进行访问
 
-### 7.2 选项二
+### 8.2 选项二
 
 修改 Clash DNS 解析配置
 
@@ -176,7 +196,7 @@ dns:
  - DOMAIN-SUFFIX,ts.net,🎯 本地直连
 ```
 
-## 八、要点总结
+## 九、要点总结
 
 - Tailscale Serve 本身**支持 WebSocket**，遇到 WS 问题先查应用层
 - `allowTailscale` 只解决 HTTP 认证，WS 还需要设备配对
