@@ -108,7 +108,7 @@ Install-Module -Name Terminal-Icons -Repository PSGallery
 notepad $PROFILE
 
 Import-Module -Name Terminal-Icons
-Set-PSReadLineOption -PredictionViewstyle Listview
+try { Set-PSReadLineOption -PredictionViewStyle ListView } catch { }
 ```
 
 ## 三、Scoop 
